@@ -76,6 +76,15 @@ html_title = project
 # so a file named "default.css" will overwrite the builtin "default.css".
 #html_static_path = ['_static']
 
+html_theme_options = {
+    "repository_url": f"https://github.com/{github_user}/{github_repo_name}",
+    "use_repository_button": True,
+    "use_edit_page_button": True,
+    "path_to_docs": "content",
+    "use_download_button": False,
+    "notebook_interface": "jupyterlab",
+    "binderhub_url": "https://mybinder.org",
+}
 
 # HTML context:
 from os.path import dirname, realpath, basename
