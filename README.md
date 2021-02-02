@@ -4,4 +4,4 @@
 
 ## Credit and license
 
-- https://enccs.github.io/cmake-workshop/#credits
+- https://enccs.github.io/veloxchem-workshop/#credits
