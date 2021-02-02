@@ -1,5 +1,5 @@
-LESSON NAME
-===========
+VeloxChem
+=========
 
 Intro
 
