@@ -10,17 +10,20 @@ Intro
    prerequisites
 
 
+.. toctree::
+   :hidden:
+   :maxdepth: 1
+   :caption: The lesson
+   
+   intro
+
+
 
 .. csv-table::
    :widths: auto
    :delim: ;
 
-   20 min ; :doc:`filename`
-
-
-.. toctree::
-   :maxdepth: 1
-   :caption: The lesson
+   20 min ; :doc:`intro`
 
 
 .. toctree::
