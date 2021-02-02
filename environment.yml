@@ -4,5 +4,6 @@ channels:
   - conda-forge
 dependencies:
   - libblas * *mkl
+  - mpi * *openmpi
   - veloxchem
   - pytest
