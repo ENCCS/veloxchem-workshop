@@ -22,7 +22,7 @@ copyright = '2020, The contributors'
 author = 'The contributors'
 github_user = 'ENCCS'
 github_repo_name = 'veloxchem-workshop'  # auto-detected from dirname if blank
-github_version = 'main'
+github_version = 'master'
 conf_py_path = '/content/' # with leading and trailing slash
 
 # -- General configuration ---------------------------------------------------
