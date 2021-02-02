@@ -39,6 +39,7 @@ extensions = [
     #'sphinx.ext.intersphinx',
     "sphinxcontrib.bibtex",
     "sphinx.ext.todo",
+    "jupyter_book",
 ]
 
 # configure sphinxcontrib.bibtex
