@@ -3,5 +3,6 @@ channels:
   - veloxchem
   - conda-forge
 dependencies:
+  - libblas * *mkl
   - veloxchem
   - pytest
