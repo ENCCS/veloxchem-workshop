@@ -41,7 +41,8 @@ extensions = [
     "sphinx.ext.todo",
 ]
 
-#bibtex_bibfiles = ["bibliography.bib"]
+# configure sphinxcontrib.bibtex
+bibtex_bibfiles = ["bibliography.bib"]
 
 # Settings for myst_nb:
 # https://myst-nb.readthedocs.io/en/latest/use/execute.html#triggering-notebook-execution
