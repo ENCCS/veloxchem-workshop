@@ -17,8 +17,8 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'LESSON NAME'
-copyright = '2020, The contributors'
+project = 'VeloxChem'
+copyright = '2021, The contributors'
 author = 'The contributors'
 github_user = 'ENCCS'
 github_repo_name = 'veloxchem-workshop'  # auto-detected from dirname if blank
@@ -37,7 +37,11 @@ extensions = [
     # remove once sphinx_rtd_theme updated for contrast and accessibility:
     'sphinx_rtd_theme_ext_color_contrast',
     #'sphinx.ext.intersphinx',
+    "sphinxcontrib.bibtex",
+    "sphinx.ext.todo",
 ]
+
+#bibtex_bibfiles = ["bibliography.bib"]
 
 # Settings for myst_nb:
 # https://myst-nb.readthedocs.io/en/latest/use/execute.html#triggering-notebook-execution
