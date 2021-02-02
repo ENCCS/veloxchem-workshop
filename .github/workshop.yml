@@ -1,7 +1,0 @@
-name: workshop
-channels:
-  - veloxchem
-  - conda-forge
-dependencies:
-  - veloxchem
-  - pytest
