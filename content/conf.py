@@ -20,9 +20,9 @@
 project = 'LESSON NAME'
 copyright = '2020, The contributors'
 author = 'The contributors'
-github_user = 'coderefinery'
-github_repo_name = ''  # auto-detected from dirname if blank
-github_version = 'master'
+github_user = 'ENCCS'
+github_repo_name = 'veloxchem-workshop'  # auto-detected from dirname if blank
+github_version = 'main'
 conf_py_path = '/content/' # with leading and trailing slash
 
 # -- General configuration ---------------------------------------------------
@@ -42,9 +42,9 @@ extensions = [
 # Settings for myst_nb:
 # https://myst-nb.readthedocs.io/en/latest/use/execute.html#triggering-notebook-execution
 #jupyter_execute_notebooks = "off"
-#jupyter_execute_notebooks = "auto"   # *only* execute if at least one output is missing.
+jupyter_execute_notebooks = "auto"   # *only* execute if at least one output is missing.
 #jupyter_execute_notebooks = "force"
-jupyter_execute_notebooks = "cache"
+#jupyter_execute_notebooks = "cache"
 
 # Add any paths that contain templates here, relative to this directory.
 #templates_path = ['_templates']
