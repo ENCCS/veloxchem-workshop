@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'environment.yml'
+      - 'postBuild'
 
 jobs:
   build:
