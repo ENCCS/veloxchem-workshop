@@ -7,3 +7,4 @@ dependencies:
   - mpi * *openmpi
   - veloxchem
   - pytest
+  - nglview
