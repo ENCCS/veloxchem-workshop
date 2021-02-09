@@ -3,8 +3,10 @@ name: Build Notebook Container
 on:
   push:
     paths:
-      - 'environment.yml'
-      - 'postBuild'
+      - environment.yml
+      - apt.txt
+      - postBuild
+      - .github/workflows/binder.yml
 
 jobs:
   build:
