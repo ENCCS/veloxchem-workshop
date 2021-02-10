@@ -9,5 +9,5 @@ dependencies:
   - pytest
   - nglview
   - nodejs
-  pip:
-    - py3Dmol
+  - pip:
+      - py3Dmol
