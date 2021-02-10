@@ -1,4 +1,2 @@
-#jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build
-#jupyter labextension install @jupyter-widgets/jupyterlab-sidecar
-#jupyter labextension install jupyterlab_3dmol
-#jupyter labextension install nglview-js-widgets
+jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build
+jupyter labextension install nglview-js-widgets
