@@ -9,5 +9,12 @@ dependencies:
   - pytest
   - nglview
   - nodejs
+  - scipy
+  - numpy
+  - matplotlib
+  - altair
+  - plotly
+  - sympy
+  - pandas
   - pip:
       - py3Dmol
