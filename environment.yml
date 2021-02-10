@@ -8,3 +8,4 @@ dependencies:
   - veloxchem
   - pytest
   - nglview
+  - nodejs
