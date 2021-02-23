@@ -80,7 +80,6 @@ html_title = project
 thebe_config = {
     "repository_url": f"https://github.com/{github_user}/{github_repo_name}",
     "repository_branch": "master",
-    "selector": "div.highlight",
 }
 
 # HTML context:
