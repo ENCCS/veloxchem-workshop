@@ -24,6 +24,7 @@ Intro
    :delim: ;
 
    20 min ; :doc:`intro`
+   20 min ; :doc:`visualization`
 
 
 .. toctree::
@@ -33,15 +34,6 @@ Intro
    quick-reference
    guide
 
-
-.. code-block:: python
-   :class: thebe
-
-   print("hi!")
-
-And adding a button:
-
-.. thebe-button:: Click me!
 
 .. _learner-personas:
 
