@@ -16,5 +16,6 @@ dependencies:
   - plotly
   - sympy
   - pandas
+  - jupyterlab_code_formatter
   - pip:
       - py3Dmol
