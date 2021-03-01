@@ -1,7 +1,10 @@
-Sphinx
-sphinx_rtd_theme
-sphinx_rtd_theme_ext_color_contrast
-myst_nb
+black
+isort
+myst-nb
+sphinx
+sphinx-book-theme
 sphinx-lesson
-sphinxcontrib-bibtex
 sphinx-thebe
+#sphinx_rtd_theme
+#sphinx_rtd_theme_ext_color_contrast
+sphinxcontrib-bibtex
