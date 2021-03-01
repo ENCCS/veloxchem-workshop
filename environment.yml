@@ -17,5 +17,7 @@ dependencies:
   - sympy
   - pandas
   - jupyterlab_code_formatter
+  - qcelemental
+  - openbabel
   - pip:
       - py3Dmol
