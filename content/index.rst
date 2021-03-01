@@ -16,7 +16,7 @@ Intro
    :caption: The lesson
    
    notebooks/intro
-   visualization
+   notebooks/visualization
 
 
 
@@ -26,7 +26,6 @@ Intro
 
    20 min ; :doc:`notebooks/intro`
    20 min ; :doc:`notebooks/visualization`
-   20 min ; :doc:`visualization`
 
 
 .. toctree::
