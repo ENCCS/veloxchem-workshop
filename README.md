@@ -2,6 +2,10 @@
 
 # VeloxChem
 
+Teaching material for ENCCS VeloxChem workshop.
+
+**Note** We use [Git LFS](https://git-lfs.github.com/) to store the notebooks.
+
 ## Credit and license
 
 - https://enccs.github.io/veloxchem-workshop/#credits
