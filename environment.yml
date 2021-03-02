@@ -8,7 +8,7 @@ dependencies:
   - veloxchem
   - pytest
   - nglview
-  - nodejs
+  #- nodejs
   - scipy
   - numpy
   - matplotlib
@@ -16,7 +16,7 @@ dependencies:
   - plotly
   - sympy
   - pandas
-  - jupyterlab_code_formatter
+  - python=3.8
   - qcelemental
   - openbabel
   - pip:
