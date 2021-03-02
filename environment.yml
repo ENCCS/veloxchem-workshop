@@ -8,7 +8,6 @@ dependencies:
   - veloxchem
   - pytest
   - nglview
-  #- nodejs
   - scipy
   - numpy
   - matplotlib
