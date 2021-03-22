@@ -23,10 +23,10 @@ VeloxChem
        on the :doc:`setup` page.
 
    Day 2
-       Access to a supercomputer.
-       Any questions on how to use a particular HPC resource should be directed
-       to the appropriate support desk. Detailed instructions can be found
-       on the :doc:`setup` page.
+       You will need access to a supercomputer.  Any questions on how to use a
+       particular HPC resource should be directed to the appropriate support
+       desk. Detailed instructions on how to set up the software stack can be
+       found on the :doc:`setup` page.
 
 
 .. toctree::
@@ -43,15 +43,25 @@ VeloxChem
    
    notebooks/intro
    notebooks/visualization
-
-
+   notebooks/rh-scf
+   notebooks/mp2
+   hpc-setup
+   x-ray-cpp
+   exciton
+   xTB-geomeTRIC
 
 .. csv-table::
    :widths: auto
    :delim: ;
 
-   20 min ; :doc:`notebooks/intro`
-   20 min ; :doc:`notebooks/visualization`
+   15 min ; :doc:`notebooks/intro`
+   15 min ; :doc:`notebooks/visualization`
+   60 min ; :doc:`notebooks/rh-scf`
+   60 min ; :doc:`notebooks/mp2`
+   30 min ; :doc:`hpc-setup`
+   40 min ; :doc:`x-ray-cpp`
+   40 min ; :doc:`exciton`
+   40 min ; :doc:`xTB-geomeTRIC`
 
 
 .. toctree::
@@ -82,13 +92,12 @@ About the course
 This lesson material is developed by the `EuroCC National Competence Center
 Sweden (ENCCS) <https://enccs.se/>`_ and taught in ENCCS workshops.
 
-It is aimed
-at researchers and developers who might have had some exposure to `CMake`_ and
-want to learn how to use it effectively. This lesson targets **CMake >=3.14**.
+.. todo::
+
+   It is aimed
 
 Each lesson episode has clearly defined learning objectives and includes
-multiple exercises along with solutions, and is therefore also useful for
-self-learning.
+exercises and solutions, and is therefore also useful for self-learning.
 The lesson material is licensed under `CC-BY-4.0
 <https://creativecommons.org/licenses/by/4.0/>`_ and can be reused in any form
 (with appropriate credit) in other courses and workshops.

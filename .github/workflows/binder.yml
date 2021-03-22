@@ -1,7 +1,12 @@
 name: Build Notebook Container
 
 on:
-  push
+  push:
+    paths:
+      - environment.yml
+      - apt.txt
+      - .github/workflows/binder.yml
+  workflow_dispatch:
 
 jobs:
   build:
