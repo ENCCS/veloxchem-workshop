@@ -1,10 +1,17 @@
-VeloxChem
-=========
+VeloxChem: from laptop to HPC
+=============================
 
-.. todo::
+Quantum molecular modeling of complex molecular systems is an indispensable and
+integrated component in advanced material design, as such simulations provide a
+microscopic insight into the underlying physical processes.
+In this workshop, you will learn how to use the `VeloxChem program package <https://veloxchem.org/>`_ to:
 
-   Write an intro!!!
-
+- Perform computational simulations of advanced spectroscopic processes.
+- Leverage the *aggregate resources* of modern HPC clusters to efficiently
+  tackle large molecular systems.
+- Use the Python application programming interface (API) to prototype new
+  methods.
+- Design interactive computational teaching materials in Python.
 
 
 .. prereq::
@@ -78,11 +85,21 @@ VeloxChem
 Who is the course for?
 ----------------------
 
+This lesson is for researchers and students already familiar with quantum
+chemistry that want to learn how to:
 
-.. todo::
+- Perform computational spectroscopy simulations on large systems and with
+  efficient use of HPC resources.
+- Use an interactive, computationally-oriented approach to teaching quantum
+  chemistry.
 
-   Write me!!!
+We assume that participants have:
 
+- A sufficiently thorough prior knowledge of self-consistent field theory, at
+  the level presented in the *Modern Quantum Chemistry* textbook by Szabo and
+  Ostlund :cite:`Szabo1996-vl`.
+- Worked previously with other quantum chemical software packages.
+- Some familiarity with the Python programming language. :ref:`We have listed <see-also>` some online resources to refresh your Python knowledge.
 
 
 About the course
@@ -91,10 +108,6 @@ About the course
 
 This lesson material is developed by the `EuroCC National Competence Center
 Sweden (ENCCS) <https://enccs.se/>`_ and taught in ENCCS workshops.
-
-.. todo::
-
-   It is aimed
 
 Each lesson episode has clearly defined learning objectives and includes
 exercises and solutions, and is therefore also useful for self-learning.
@@ -169,6 +182,8 @@ and modify the code cells within the webpage.
 The "Live code" option is powered by `sphinx-thebe <https://github.com/executablebooks/sphinx-thebe>`_ and, behind the scenes,
 MyBinder. Be aware that you will not be able to add new code cells in a live
 session.
+
+.. _see-also:
 
 See also
 --------

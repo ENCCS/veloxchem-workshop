@@ -22,12 +22,12 @@ First iteration
    :delim: ;
 
     9:00 -  9:10 ; Welcome and introduction to the training course
-    9:10 -  9:25 ; :ref:`notebooks/intro`
-    9:25 -  9:40 ; :ref:`notebooks/visualization`
+    9:10 -  9:25 ; :doc:`notebooks/intro`
+    9:25 -  9:40 ; :doc:`notebooks/visualization`
     9:40 -  9:50 ; Break
-    9:50 - 10:50 ; :ref:`notebooks/rh-scf`
+    9:50 - 10:50 ; :doc:`notebooks/rh-scf`
    10:50 - 11:00 ; Break
-   11:00 - 12:00 ; :ref:`notebooks/mp2`
+   11:00 - 12:00 ; :doc:`notebooks/mp2`
    12:00 - 12:10 ; Break
    12:10 - 12:30 ; Wrap-up
 
