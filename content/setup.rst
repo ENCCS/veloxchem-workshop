@@ -1,14 +1,16 @@
+.. _setup:
+
 Setting up your system
 ======================
 
 In order to follow this workshop, you will need access to VeloxChem.
 
-You can work on the content of Day 1 entirely online using `Binder
+You can work on the content of **Day 1** entirely online using `Binder
 <https://mybinder.org>`_ to run the Jupyter notebooks in the cloud.
 If you prefer to work locally, you will need to set up your Python environment correctly:
 we recommend using the `Conda package and enviroment manager
 <https://docs.conda.io/en/latest/>`_, as it provides a convenient way to install
-binary packages, including VeloxChem, in an isolated software environment.
+binary packages, including VeloxChem, in an isolated, reproducible software environment.
 
 .. todo::
 
@@ -33,7 +35,7 @@ For all platforms, make sure to select the **Python 3.8**, **64 bit** installer.
 
 .. note::
 
-   The VeloxChem binary package is currently only avaiable for the x86_64
+   The VeloxChem binary package is currently only avaiable for the `x86_64`
    architecture.
 
 
@@ -56,6 +58,9 @@ You then need to activate the new environment by::
 
 Now you should have VeloxChem, Python, JupyterLab and a few other packages
 installed!
+
+
+.. _compiling:
 
 Compiling VeloxChem from source
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

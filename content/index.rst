@@ -1,12 +1,13 @@
-VeloxChem: from laptop to HPC
-=============================
+VeloxChem: quantum chemistry from laptop to HPC
+===============================================
 
 Quantum molecular modeling of complex molecular systems is an indispensable and
 integrated component in advanced material design, as such simulations provide a
 microscopic insight into the underlying physical processes.
 In this workshop, you will learn how to use the `VeloxChem program package <https://veloxchem.org/>`_ to:
 
-- Perform computational simulations of advanced spectroscopic processes.
+- Perform quantum chemical simulations of *ground- and excited-state properties*
+  of large systems.
 - Leverage the *aggregate resources* of modern HPC clusters to efficiently
   tackle large molecular systems.
 - Use the Python application programming interface (API) to prototype new
@@ -23,17 +24,15 @@ In this workshop, you will learn how to use the `VeloxChem program package <http
        We will work within `Jupyter notebooks <https://jupyter.org/>`_. We have
        set up this lesson such that it can be run entirely within your browser,
        using cloud infrastructure.
-       You can also use your own computer, provided that it has
-       the necessary tools installed. If you do not already have these
-       installed, we recommend that you set up an isolated software environment
-       using ``conda``. Detailed instructions can be found
-       on the :doc:`setup` page.
+       You can also use your own computer, provided that it has the necessary
+       tools installed. If that is not the case, please follow these
+       :ref:`detailed instructions <setup>`.
 
    Day 2
        You will need access to a supercomputer.  Any questions on how to use a
        particular HPC resource should be directed to the appropriate support
-       desk. Detailed instructions on how to set up the software stack can be
-       found on the :doc:`setup` page.
+       desk.  Please follow these :ref:`detailed instructions <compiling>` on
+       how to set up the necessary software stack.
 
 
 .. toctree::
@@ -88,8 +87,8 @@ Who is the course for?
 This lesson is for researchers and students already familiar with quantum
 chemistry that want to learn how to:
 
-- Perform computational spectroscopy simulations on large systems and with
-  efficient use of HPC resources.
+- Perform quantum chemical simulations of ground- and excited-state properties
+  on large systems and with efficient use of HPC resources.
 - Use an interactive, computationally-oriented approach to teaching quantum
   chemistry.
 
