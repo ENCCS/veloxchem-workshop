@@ -8,3 +8,5 @@ sphinx-thebe
 #sphinx_rtd_theme
 #sphinx_rtd_theme_ext_color_contrast
 sphinxcontrib-bibtex
+matplotlib
+py3Dmol
