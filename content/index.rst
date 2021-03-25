@@ -106,7 +106,7 @@ About the course
 
 
 This lesson material is developed by the `EuroCC National Competence Center
-Sweden (ENCCS) <https://enccs.se/>`_ and taught in ENCCS workshops.
+Sweden (ENCCS) <https://enccs.se/>`_ and the `PDC Center for High Performance Computing <https://www.pdc.kth.se/>`_.
 
 Each lesson episode has clearly defined learning objectives and includes
 exercises and solutions, and is therefore also useful for self-learning.
@@ -120,7 +120,7 @@ Interacting with the notebooks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 `MyBinder <https://mybinder.org/>`_ offers a free, customizable cloud
-computing environment and powers the content of this lesson.
+computing environment and powers some of the contents of this lesson.
 You can run the exercises for Day 1 of this workshop entirely in the
 cloud.
 
@@ -215,7 +215,7 @@ most of their license text.
 Instructional Material
 ^^^^^^^^^^^^^^^^^^^^^^
 
-All ENCCS instructional material is made available under the `Creative Commons
+This instructional material is made available under the `Creative Commons
 Attribution license (CC-BY-4.0)
 <https://creativecommons.org/licenses/by/4.0/>`_. The following is a
 human-readable summary of (and not a substitute for) the `full legal text of the
@@ -250,5 +250,5 @@ Software
 ^^^^^^^^
 
 Except where otherwise noted, the example programs and other software provided
-by ENCCS are made available under the `OSI <http://opensource.org/>`_-approved
+with this repository are made available under the `OSI <http://opensource.org/>`_-approved
 `MIT license <http://opensource.org/licenses/mit-license.html>`_.
