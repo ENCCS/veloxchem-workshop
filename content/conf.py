@@ -12,7 +12,7 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 # -- Project information -----------------------------------------------------
-project = 'VeloxChem'
+project = 'VeloxChem: quantum chemistry from laptop to HPC'
 copyright = '2021, The contributors'
 author = 'The contributors'
 github_user = 'ENCCS'
@@ -57,9 +57,9 @@ exclude_patterns = [
 # a list of builtin themes.
 #
 html_theme = 'sphinx_book_theme'
-html_logo = "img/VeloxChem.png"
+html_logo = "img/ENCCS-PDC-logos.jpg"
 html_favicon = "img/favicon.ico"
-html_title = project
+html_title = ""  # project
 # sphinx-book-theme options
 html_theme_options = {
     "repository_url": f"https://github.com/{github_user}/{github_repo_name}",
