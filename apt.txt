@@ -1,3 +1,4 @@
 emacs-nox
+git-lfs
 nano
 vim-nox
