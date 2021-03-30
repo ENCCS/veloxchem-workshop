@@ -18,4 +18,5 @@ jobs:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         DOCKER_REGISTRY: ghcr.io
+        MYBINDERORG_CACHE: true
         PUBLIC_REGISTRY_CHECK: true
