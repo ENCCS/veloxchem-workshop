@@ -47,8 +47,8 @@ In this workshop, you will learn how to use the `VeloxChem program package <http
    :maxdepth: 1
    :caption: The lesson
    
-   notebooks/intro
-   notebooks/visualization
+   notebooks/first-steps
+   notebooks/next-steps
    notebooks/rh-scf
    notebooks/mp2
    hpc-setup
@@ -60,8 +60,8 @@ In this workshop, you will learn how to use the `VeloxChem program package <http
    :widths: auto
    :delim: ;
 
-   15 min ; :doc:`notebooks/intro`
-   15 min ; :doc:`notebooks/visualization`
+   15 min ; :doc:`notebooks/first-steps`
+   15 min ; :doc:`notebooks/next-steps`
    60 min ; :doc:`notebooks/rh-scf`
    60 min ; :doc:`notebooks/mp2`
    30 min ; :doc:`hpc-setup`
