@@ -96,8 +96,8 @@ First iteration
    :delim: ;
 
     9:00 -  9:10 ; Welcome and introduction to the training course
-    9:10 -  9:25 ; :doc:`notebooks/intro`
-    9:25 -  9:40 ; :doc:`notebooks/visualization`
+    9:10 -  9:25 ; :doc:`notebooks/first-steps`
+    9:25 -  9:40 ; :doc:`notebooks/next-steps`
     9:40 -  9:50 ; Break
     9:50 - 10:50 ; :doc:`notebooks/rh-scf`
    10:50 - 11:00 ; Break
