@@ -5,9 +5,8 @@ channels:
 dependencies:
   - libblas * *mkl
   - mpi * *openmpi
-  - veloxchem
+  - veloxchem * *1
   - pytest
-  - nglview
   - scipy
   - numpy
   - matplotlib
@@ -19,5 +18,7 @@ dependencies:
   - python=3.8
   - qcelemental
   - openbabel
+  - pip
   - pip:
+      - nglview>=3.0.1
       - py3Dmol
