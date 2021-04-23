@@ -34,10 +34,10 @@ import py3Dmol as p3d
 
 v = p3d.view(width=400, height=400)
 
-with open("inputs/porphyrin.xyz", "r") as fh:
-    porphyrin_xyz = fh.read()
+with open("inputs/base-stack.xyz", "r") as fh:
+    base_stack_xyz = fh.read()
 
-v.addModel(porphyrin_xyz, "xyz")
+v.addModel(base_stack_xyz, "xyz")
 v.setStyle({'stick':{}})
 v.zoomTo()
 v.show()

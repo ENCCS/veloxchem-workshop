@@ -1,5 +1,20 @@
-38
-Free-base porphyrin from https://doi.org/10.1039/C2CP40468K
+@jobs
+task: response
+@end
+
+@method settings
+basis: def2-svp
+@end
+
+@response
+property: absorption (cpp)
+frequencies: 10.8 - 11.0 (0.002)
+@end
+
+@molecule
+charge: 0
+multiplicity: 1
+xyz:
 H 3.209599995 3.172309777 0.000000000
 N 0.000000000 -2.113600613 0.000000000
 N 2.031813914 0.000000000 0.000000000
@@ -38,3 +53,4 @@ H -3.209599995 -3.172309777 0.000000000
 H -3.209599995 3.172309777 0.000000000
 H 0.000000000 -1.102285542 0.000000000
 H 0.000000000 1.102285542 0.000000000
+@end
