@@ -9,6 +9,8 @@ dependencies:
   - pytest
   - scipy
   - numpy
+  - ipywidgets
+  - ipympl
   - matplotlib
   - jupyterlab
   - altair
