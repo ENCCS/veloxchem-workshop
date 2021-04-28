@@ -9,8 +9,4 @@ sphinx-thebe
 #sphinx_rtd_theme_ext_color_contrast
 sphinxcontrib-bibtex
 matplotlib
-ipympl
-ipywidgets
-scipy
-numpy
 py3Dmol

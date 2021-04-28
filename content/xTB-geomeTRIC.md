@@ -26,7 +26,6 @@ $$
 \sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}
 $$
 
-
 ```{code-cell} ipython3
 :tags: [remove-input]
 
@@ -44,138 +43,95 @@ v.show()
 ```
 
 ```{code-cell} ipython3
-:tags: [remove-input]
+:tags: [hide-output, raises-exception]
 
 import re
-import codecs
-import ipywidgets
 
-class GeometryOptimizerUploader(ipywidgets.HBox):
-    
-    def __init__(self):
-        super().__init__()
-        self.geometries = []
-        self.energies = []
-        
-        # define widgets
-        uploader = ipywidgets.FileUpload(
-            accept=".xyz",  # Accepted file extension e.g. '.txt', '.pdf', 'image/*', 'image/*,.pdf'
-            multiple=False  # True to accept multiple files upload else False
-        )
-        uploader.observe(self.on_upload_change, names='_counter')
-        
-        self.children = [uploader]
-
-    def on_upload_change(self, change):
-        if not change.new:
-            return
-        up = change.owner
-        
-        regex = re.compile(br"Iteration (?P<iteration>\d+) Energy (?P<energy>-\d+.\d+)", re.MULTILINE)
-        for filename, data in up.value.items():
-            print(f'uploaded {filename}')
-            contents = data["content"]
-            matches = regex.finditer(contents)
-            self.energies = [float(m.group("energy")) for m in matches]
-            # number of lines in each XYZ structure
-            xyzs = codecs.decode(contents).splitlines()
-            natoms = contents[0]
-            lines_per_xyz = natoms + 2
-            for lines in range(0, len(xyzs), lines_per_xyz):
-                self.geometries.append("\n".join(xyzs[lines:lines+lines_per_xyz]))
-        up.value.clear()
-        up._counter = 0
-
-up = GeometryOptimizerUploader()
-display(up)
-```
-
-```{code-cell} ipython3
-:tags: [remove-input]
-
-import numpy as np
-from pathlib import Path
 import ipywidgets
 import py3Dmol as p3d
 
 %matplotlib widget
 from matplotlib import pyplot as plt
 
+# upload the file and change the name here
+fname = "???_optim.xyz"
 
-class GeometryOptimizationVisualizer(ipywidgets.HBox):
-     
-    def __init__(self, energies, geometries):
-        super().__init__()
-        self.energies = energies
-        self.geometries = geometries
+# this we know beforehand
+natoms = 178
 
-        # iteration vs energy plot
-        out_plot = ipywidgets.Output()
-        out_plot.clear_output(wait=True)
-        with out_plot:
-            self.fig, self.ax = plt.subplots(constrained_layout=True, figsize=(4, 2.5), num="Geometry optimization")
-        self.line, = self.ax.plot(self.energies)
-        self.ax.scatter(0, self.energies[0], s=20, c="red")
+# read the whole file in
+with open(fname, "r") as fh:
+    contents = fh.read()
 
-        # Labeling the axes
-        self.ax.set_xlabel("Iteration")
-        self.ax.set_ylabel("Energy (atomic units)")
-        self.fig.canvas.toolbar_position = 'bottom'
-        self.ax.grid(True)
-        
-        # molecular visualization
-        out_mol = ipywidgets.Output()
-        out_mol.clear_output(wait=True)
-        with out_mol:
-            view = p3d.view(width=400, height=400)
-            view.addModel(self.geometries[0], "xyz")
-            view.setStyle({"stick": {}})
-            view.zoomTo()
-            view.show()
-         
-        int_slider = ipywidgets.IntSlider(
-            value=0, 
-            min=0, 
-            max=len(self.energies)-1, 
-            step=1, 
-            description='Iteration',
-            continuous_update=True,
-        )
-        player = ipywidgets.Play(
-            min=0,
-            max=len(self.energies)-1,
-            interval=100,
-        )
- 
-        controls = ipywidgets.VBox([
-            int_slider,
-            player,
-        ])
-        #controls.layout = make_box_layout()
-         
-        out_box = ipywidgets.Box([out_plot, out_mol])
-        out_plot.layout = make_box_layout()
-        out_mol.layout = make_box_layout()
- 
-        # observe stuff
-        int_slider.observe(self.update, 'value')
-        # link player and slider
-        widgets.jslink((player, 'value'), (int_slider, 'value'))
- 
-        # add to children
-        self.children = [controls, out_plot, out_mol]
+# get a list of all energies
+regex = re.compile(r"Iteration (?P<iteration>\d+) Energy (?P<energy>-\d+.\d+)", re.MULTILINE)
+matches = regex.finditer(contents)
+energies = [float(m.group("energy")) for m in matches]
+
+# number of lines in each XYZ structure
+lines_per_xyz = natoms + 2
+
+contents = contents.splitlines()
+geometries = []
+for lines in range(0, len(contents), lines_per_xyz):
+    geometries.append("\n".join(contents[lines:lines+lines_per_xyz]))
     
-    def update(self, change):
-        """Draw line in plot"""
-        idx = change["new"]
-        self.ax.scatter(idx, self.energies[idx], s=20, c="red")
-        self.fig.canvas.draw()
-        
-        view = p3d.view(width=400, height=400)
-        view.addModel(self.geometries[idx], "xyz")
-        view.setStyle({"stick": {}})
-        view.zoomTo()
-        view.show()
-        
-GeometryOptimizationVisualizer(up.energies, up.geometries)
+# output widget with geometries
+out_geometries = ipywidgets.Output()
+out_geometries.clear_output(wait=True)
+
+# display first geometry
+with out_geometries:
+    v = p3d.view(width=300, height=300)
+    v.addModel(geometries[0], "xyz")
+    v.setStyle({"stick": {}})
+    v.zoomTo()
+    v.show()
+    
+@out_geometries.capture(clear_output=True, wait=True)
+def on_geometry_change(change):
+    idx = change["new"]
+    v = p3d.view(width=300, height=300)
+    v.addModel(geometries[idx], "xyz")
+    v.setStyle({"stick": {}})
+    v.zoomTo()
+    v.show()
+
+# output widget with energies
+out_energies = ipywidgets.Output()
+out_energies.clear_output(wait=True)
+
+# display full trajectory plot with point for first geometry
+with out_energies:
+    fig, ax = plt.subplots(constrained_layout=True, figsize=(4, 2.5), num="Geometry optimization")
+    line, = ax.plot(energies)
+    ax.scatter(0, energies[0], s=20, c="red")
+
+    # Labeling the axes
+    ax.set_xlabel("Iteration")
+    ax.set_ylabel("Energy (atomic units)")
+    fig.canvas.toolbar_position = 'bottom'
+    ax.grid(True)
+
+@out_energies.capture(clear_output=True, wait=True)
+def on_energy_change(change):
+    idx = change["new"]
+    ax.scatter(idx, energies[idx], s=20, c="red")
+    fig.canvas.draw()
+    
+# a slider widgets, to select geometry to display
+slider = ipywidgets.IntSlider(min=0, max=len(geometries)-1, step=1, continuous_update=True)
+# a player widget, to show the whole optimization trajectory
+player = ipywidgets.Play(min=0, interval=100)
+# put control widget in a vertical box widget
+controls = ipywidgets.VBox([slider, player])
+
+# link slider widget with geometry change
+slider.observe(on_geometry_change, 'value')
+# link slider widget with energy change
+slider.observe(on_energy_change, 'value')
+# link player and slider widgets
+ipywidgets.jslink((player, 'value'), (slider, 'value'))
+# put controls and output widget in horizontal box widget
+ipywidgets.HBox([controls, out_geometries, out_energies])
 ```
