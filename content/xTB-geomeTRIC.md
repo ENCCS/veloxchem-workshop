@@ -42,6 +42,9 @@ v.zoomTo()
 v.show()
 ```
 
+
+## Visualization of results
+
 ```{code-cell} ipython3
 :tags: [raises-exception]
 
