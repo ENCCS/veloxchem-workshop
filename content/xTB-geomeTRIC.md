@@ -43,7 +43,7 @@ v.show()
 ```
 
 ```{code-cell} ipython3
-:tags: [hide-output, raises-exception]
+:tags: [raises-exception]
 
 import re
 
