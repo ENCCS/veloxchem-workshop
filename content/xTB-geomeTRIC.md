@@ -42,13 +42,57 @@ v.zoomTo()
 v.show()
 ```
 
-
 ## Visualization of results
 
 ```{code-cell} ipython3
-:tags: [raises-exception]
-
+import codecs
 import re
+
+import ipywidgets
+
+
+class GeometryOptimizerUploader(ipywidgets.HBox):
+    
+    def __init__(self):
+        super().__init__()
+        self.geometries = []
+        self.energies = []
+        
+        # define widgets
+        uploader = ipywidgets.FileUpload(
+            accept=".xyz",
+            multiple=False
+        )
+        uploader.observe(self.on_upload_change, names='_counter')
+        
+        self.children = [uploader]
+
+    def on_upload_change(self, change):
+        if not change.new:
+            return
+        up = change.owner
+        
+        regex = re.compile(br"Iteration (?P<iteration>\d+) Energy (?P<energy>-\d+.\d+)", re.MULTILINE)
+        for filename, data in up.value.items():
+            print(f'uploaded {filename}')
+            contents = data["content"]
+            matches = regex.finditer(contents)
+            self.energies = [float(m.group("energy")) for m in matches]
+            # number of lines in each XYZ structure
+            xyzs = codecs.decode(contents).splitlines()
+            natoms = contents[0]
+            lines_per_xyz = natoms + 2
+            for lines in range(0, len(xyzs), lines_per_xyz):
+                self.geometries.append("\n".join(xyzs[lines:lines+lines_per_xyz]))
+        up.value.clear()
+        up._counter = 0
+
+up = GeometryOptimizerUploader()
+up
+```
+
+```{code-cell} ipython3
+:tags: [raises-exception]
 
 import ipywidgets
 import py3Dmol as p3d
@@ -56,29 +100,9 @@ import py3Dmol as p3d
 %matplotlib widget
 from matplotlib import pyplot as plt
 
-# upload the file and change the name here
-fname = "???_optim.xyz"
 
-# this we know beforehand
-natoms = 178
-
-# read the whole file in
-with open(fname, "r") as fh:
-    contents = fh.read()
-
-# get a list of all energies
-regex = re.compile(r"Iteration (?P<iteration>\d+) Energy (?P<energy>-\d+.\d+)", re.MULTILINE)
-matches = regex.finditer(contents)
-energies = [float(m.group("energy")) for m in matches]
-
-# number of lines in each XYZ structure
-lines_per_xyz = natoms + 2
-
-contents = contents.splitlines()
-geometries = []
-for lines in range(0, len(contents), lines_per_xyz):
-    geometries.append("\n".join(contents[lines:lines+lines_per_xyz]))
-    
+# get list of geometries from uploader widget
+geometries = up.geometries
 # output widget with geometries
 out_geometries = ipywidgets.Output()
 out_geometries.clear_output(wait=True)
@@ -100,6 +124,8 @@ def on_geometry_change(change):
     v.zoomTo()
     v.show()
 
+# get list of energies from uploader widget
+energies = up.energies
 # output widget with energies
 out_energies = ipywidgets.Output()
 out_energies.clear_output(wait=True)
