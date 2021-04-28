@@ -80,7 +80,7 @@ class GeometryOptimizerUploader(ipywidgets.HBox):
             self.energies = [float(m.group("energy")) for m in matches]
             # number of lines in each XYZ structure
             xyzs = codecs.decode(contents).splitlines()
-            natoms = contents[0]
+            natoms = int(xyzs[0])
             lines_per_xyz = natoms + 2
             for lines in range(0, len(xyzs), lines_per_xyz):
                 self.geometries.append("\n".join(xyzs[lines:lines+lines_per_xyz]))
