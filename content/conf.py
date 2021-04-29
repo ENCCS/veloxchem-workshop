@@ -137,5 +137,6 @@ rst_epilog = f"""
 
 
 def setup(app):
+    app.add_js_file("require.js")
     for obj in DIRECTIVES:
         app.add_directive(obj.cssname(), obj)
