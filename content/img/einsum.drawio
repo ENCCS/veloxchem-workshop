@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-04-29T11:48:14.128Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.72 Safari/537.36" etag="nVVr5590Lts1x3MeuSEE" version="14.6.5" type="github">
+<mxfile host="app.diagrams.net" modified="2021-04-29T11:48:22.684Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.72 Safari/537.36" etag="YL6gl2OKH6VvqH0Xctq-" version="14.6.5" type="github">
   <diagram id="5m4A7RbUZz885QYKjT4z" name="Page-1">
     <mxGraphModel dx="1008" dy="570" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="1" shadow="0">
       <root>
@@ -17,7 +17,7 @@
           <mxGeometry x="240" y="95" width="40" height="20" as="geometry" />
         </mxCell>
         <mxCell id="neVcjm1e3GpcRXbHF6lr-8" value="&lt;font style=&quot;font-size: 30px&quot; face=&quot;Courier New&quot;&gt;&lt;b&gt;&lt;font color=&quot;#97d077&quot;&gt;C&lt;/font&gt; = np.einsum(&quot;&lt;font color=&quot;#ea6b66&quot;&gt;ik&lt;/font&gt;,&lt;font color=&quot;#7ea6e0&quot;&gt;kj&lt;/font&gt;-&amp;gt;&lt;font color=&quot;#97d077&quot;&gt;ij&lt;/font&gt;&quot;, &lt;font color=&quot;#ea6b66&quot;&gt;A&lt;/font&gt;, &lt;font color=&quot;#7ea6e0&quot;&gt;B&lt;/font&gt;)&lt;/b&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="20" y="170" width="615" height="20" as="geometry" />
+          <mxGeometry x="10" y="180" width="615" height="20" as="geometry" />
         </mxCell>
         <mxCell id="neVcjm1e3GpcRXbHF6lr-10" value="&lt;font style=&quot;font-size: 30px&quot;&gt;`\sum_{k}`&lt;br&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="260" y="70" width="80" height="100" as="geometry" />
