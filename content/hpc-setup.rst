@@ -104,7 +104,7 @@ You can install VeloxChem on Tetralith via the following steps:
 
 - Install and test VeloxChem::
 
-    cd $HOME/software/
+    cd $HOME/software/veloxchem/
     salloc -N 1 -t 30 -A ... --reservation devel
     VLX_NUM_BUILD_JOBS=32 mpirun -n 1 python3 setup.py install
     OMP_NUM_THREADS=16 mpirun -n 2 pytest -v python_tests
@@ -184,7 +184,7 @@ You can install VeloxChem on Kebnekaise via the following steps:
 
     export OPENBLASROOT=$EBROOTOPENBLAS
 
-    cd $HOME/software/
+    cd $HOME/software/veloxchem/
     salloc -N 1 -t 30 -A ...
     VLX_NUM_BUILD_JOBS=28 mpirun -n 1 python3 setup.py install
     OMP_NUM_THREADS=14 mpirun -n 2 pytest -v python_tests
