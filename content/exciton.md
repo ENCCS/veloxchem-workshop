@@ -15,18 +15,18 @@ kernelspec:
 # Exciton calculation
 
 ```{objectives}
-- Learn how to run an $ab initio$ exciton model calculation.
+- Learn how to run an $ab$ $initio$ exciton model calculation.
 ```
 
 ```{keypoints}
-- Run an $ab initio$ exciton model calculation.
+- Run an $ab$ $initio$ exciton model calculation.
 - Plot the UV-Vis absorption and ECD spectra.
 - Analyze the character of the excitations.
 ```
 
 ## Introduction
 
-In this exercise we will use an $ab initio$ exciton model to compute
+In this exercise we will use an $ab$ $initio$ exciton model to compute
 the UV-Vis absorption and electronic ciruclar dichroism (ECD) of 
 stacked base-pairs.
 
@@ -34,7 +34,7 @@ The Frenkel exciton model describes the electronic structure of
 multi-chromophoric system by dividing the system into subgroups.
 It has been most successful in the weak-coupling limit where
 the excitons are localized on inidividual chromophores.
-The $ab initio$ exciton model expands the Frenkel exciton model by
+The $ab$ $initio$ exciton model expands the Frenkel exciton model by
 taking into account charge-transfer between the chromophores, and
 is therefore more useful for studies of singly excited states. 
 You may read more in [this paper](https://pubs.acs.org/doi/abs/10.1021/acs.jctc.7b00171).
@@ -72,10 +72,10 @@ v.show()
 
 ## Input file
 
-Below is the input file for $ab initio$ exciton model calculation of stacked
+Below is the input file for $ab$ $initio$ exciton model calculation of stacked
 base-pairs.
 
-```{literalinclude} stacked-base-pairs.inp
+```{literalinclude} inputs/stacked-base-pairs.inp
 ```
 
 ## Results
