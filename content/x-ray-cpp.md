@@ -36,7 +36,24 @@ of interest.
 
 
 $$
-\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}
+\begin{pmatrix}
+ E^{[2]} & -\omega S^{[2]}  & \gamma S^{[2]}  & 0 \\
+ -\omega S^{[2]} & E^{[2]} & 0 & \gamma S^{[2]} \\
+ \gamma S^{[2]} & 0 & -E^{[2]} &\omega S^{[2]} \\
+ 0 & \gamma S^{[2]}  & \omega S^{[2]} & -E^{[2]}
+\end{pmatrix}
+\begin{pmatrix}
+X^R_g\\
+X^R_u\\
+X^I_u\\
+X^I_g
+\end{pmatrix} =
+\begin{pmatrix}
+G^R_g\\
+G^R_u\\
+-G^I_u\\
+-G^I_g
+\end{pmatrix}
 $$
 
 
@@ -56,6 +73,7 @@ v.zoomTo()
 v.show()
 ```
 
-Here is the input file for running the CPP calculation
+Here is the input file for running the CPP calculation:
 
-.. include:: inputs/porphyrin.inp
+.. literalinclude:: inputs/porphyrin.inp
+    :language: bash
