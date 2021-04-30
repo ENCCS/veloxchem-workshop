@@ -19,10 +19,12 @@ kernelspec:
 ```
 
 ```{keypoints}
-- write me
+- Run a CPP calculation.
+- Plot and analyze the absorption spectrum.
+- Perform scalability test of the CPP calculation.
 ```
 
-In this section we will use an efficient implementation of the complex
+In this exercise we will use an efficient implementation of the complex
 polarization propagator approach (CPP) to compute the near-edge X-ray
 absorption fine-structure spectrum of free-base porphyrin.
 
@@ -34,6 +36,9 @@ perspective, removes the singularities of the response functions at resonance
 frequencies. The damped response theory can be applied to any frequency region
 of interest.
 
+The CPP solver in VeloxChem will solve multiple frequencies simultaneously. The
+complex response equations for a given frequency can be expressed in terms of a
+coupled set of linear equations for a real symmetric matrix
 
 $$
 \begin{pmatrix}
