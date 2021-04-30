@@ -34,7 +34,7 @@ import py3Dmol as p3d
 
 v = p3d.view(width=400, height=400)
 
-with open("inputs/stacked-base-pair.xyz", "r") as fh:
+with open("inputs/stacked-base-pairs.xyz", "r") as fh:
     base_stack_xyz = fh.read()
 
 v.addModel(base_stack_xyz, "xyz")
