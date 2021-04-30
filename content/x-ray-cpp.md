@@ -24,17 +24,19 @@ kernelspec:
 - Perform scalability test of the CPP calculation.
 ```
 
+## Introduction
+
 In this exercise we will use an efficient implementation of the complex
 polarization propagator approach (CPP) to compute the near-edge X-ray
 absorption fine-structure spectrum of free-base porphyrin.
 
 Conventional response theory solves a generalized eigenvalue problem and
-provides excitation energies starting from the lowest excited states, and is
+provides excitation energies starting from the lowest excited states. It is therefore
 impractical to study spectral regions with high density-of-states. The CPP
 approach introduces a damping term which, from a purely computational
 perspective, removes the singularities of the response functions at resonance
 frequencies. The damped response theory can be applied to any frequency region
-of interest.
+of interest. You may read more in [this paper](https://pubs.acs.org/doi/10.1021/ct500114m).
 
 The CPP solver in VeloxChem will solve multiple frequencies simultaneously. The
 complex response equations for a given frequency can be expressed in terms of a
@@ -61,6 +63,12 @@ G^R_u\\
 \end{pmatrix}
 $$
 
+Here, $\omega$ is the frequency, $\gamma$ is the damping parameter, $E^{[2]}$
+and $S^{[2]}$ are the Hessian and metric matrices, respectively, and $G$ is the
+gradient vector. The $R$/$I$ superscripts denote real/imagnary components,
+while the $g$/$u$ subscripts denote $gerade$/$ungerade$ symmetry.
+
+## The molecule: free-base porphyrin
 
 ```{code-cell} ipython3
 :tags: [remove-input]
@@ -77,6 +85,8 @@ v.setStyle({'stick':{}})
 v.zoomTo()
 v.show()
 ```
+
+## Input file
 
 Here is the input file for running the CPP calculation:
 
