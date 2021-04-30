@@ -45,6 +45,8 @@ v.show()
 ## Visualization of results
 
 ```{code-cell} ipython3
+:class: thebe, thebe-init
+
 import codecs
 import re
 
@@ -134,7 +136,7 @@ out_energies.clear_output(wait=True)
 with out_energies:
     fig, ax = plt.subplots(constrained_layout=True, figsize=(4, 2.5), num="Geometry optimization")
     line, = ax.plot(energies)
-    ax.scatter(0, energies[0], s=20, c="red")
+    ax.scatter(0, energies[0], s=10, c="red")
 
     # Labeling the axes
     ax.set_xlabel("Iteration")
@@ -145,13 +147,13 @@ with out_energies:
 @out_energies.capture(clear_output=True, wait=True)
 def on_energy_change(change):
     idx = change["new"]
-    ax.scatter(idx, energies[idx], s=20, c="red")
+    ax.scatter(idx, energies[idx], s=10, c="red")
     fig.canvas.draw()
     
 # a slider widgets, to select geometry to display
 slider = ipywidgets.IntSlider(min=0, max=len(geometries)-1, step=1, continuous_update=True)
 # a player widget, to show the whole optimization trajectory
-player = ipywidgets.Play(min=0, interval=100)
+player = ipywidgets.Play(min=0, interval=400)
 # put control widget in a vertical box widget
 controls = ipywidgets.VBox([slider, player])
 

@@ -69,6 +69,11 @@ html_theme = 'sphinx_book_theme'
 html_logo = "img/ENCCS-PDC-logos.jpg"
 html_favicon = "img/favicon.ico"
 html_title = ""  # project
+# sphinx-thebe configuration
+thebe_config = {
+    "repository_url": f"https://github.com/{github_user}/{github_repo_name}",
+    "repository_branch": "master",
+}
 # sphinx-book-theme options
 html_theme_options = {
     "repository_url": f"https://github.com/{github_user}/{github_repo_name}",
