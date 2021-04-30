@@ -80,4 +80,5 @@ v.show()
 
 Here is the input file for running the CPP calculation:
 
-.. literalinclude:: inputs/porphyrin.inp
+```{literalinclude} inputs/porphyrin.inp
+```
