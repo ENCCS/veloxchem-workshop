@@ -68,7 +68,7 @@ and $S^{[2]}$ are the Hessian and metric matrices, respectively, and $G$ is the
 gradient vector. The $R$/$I$ superscripts denote real/imagnary components,
 while the $g$/$u$ subscripts denote $gerade$/$ungerade$ symmetry.
 
-## The molecule: free-base porphyrin
+## Molecule: free-base porphyrin
 
 ```{code-cell} ipython3
 :tags: [remove-input]
@@ -88,7 +88,19 @@ v.show()
 
 ## Input file
 
-Here is the input file for running the CPP calculation:
+Below is the input file for CPP calculation of free-base porphyrin.
+You can find more about the VeloxChem input keywords in
+[this page](https://docs.veloxchem.org/inputs/keywords.html).
 
 ```{literalinclude} inputs/porphyrin.inp
 ```
+
+## Results
+
+The absorption spectrum will be printed at the end of the output file.
+Plot the spectrum and fit it to a sum of variable-width Gaussians.
+
+## Scalability test
+
+Run the CPP calculation on different number of nodes and plot the speedup
+with respect to the number of nodes.
