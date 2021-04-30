@@ -199,14 +199,14 @@ You can install VeloxChem on Kebnekaise via the following steps:
 
     #SBATCH --nodes=2
     #SBATCH --ntasks-per-node=1
-    #SBATCH --cpus-per-task=32
+    #SBATCH --cpus-per-task=28
 
     module load foss/2020b
     module load Python/3.8.6
     module load CMake/3.18.4
 
     source $HOME/software/veloxchem/venv/bin/activate
-    export OMP_NUM_THREADS=32
+    export OMP_NUM_THREADS=28
 
     job=porphyrin
     mpirun vlx ${job}.inp ${job}.out

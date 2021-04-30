@@ -22,6 +22,18 @@ kernelspec:
 - write me
 ```
 
+In this section we will use an efficient implementation of the complex
+polarization propagator approach (CPP) to compute the near-edge X-ray
+absorption fine-structure spectrum of free-base porphyrin.
+
+Conventional response theory solves a generalized eigenvalue problem and
+provides excitation energies starting from the lowest excited states, and is
+impractical to study spectral regions with high density-of-states. The CPP
+approach introduces a damping term which, from a purely computational
+perspective, removes the singularities of the response functions at resonance
+frequencies. The damped response theory can be applied to any frequency region
+of interest.
+
 
 $$
 \sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}
@@ -43,3 +55,7 @@ v.setStyle({'stick':{}})
 v.zoomTo()
 v.show()
 ```
+
+Here is the input file for running the CPP calculation
+
+.. include:: inputs/porphyrin.inp
