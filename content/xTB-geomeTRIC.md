@@ -15,16 +15,26 @@ kernelspec:
 # Geometry optimizations and semiempirical Hamiltonians
 
 ```{objectives}
-- Learn how to drive a semiempirical calculation with xTB from VeloxChem.
+- Learn how to run geometry optimization using the semiempirical xTB method.
 ```
 
 ```{keypoints}
-- write me
+- Run a geometry optimization calculation.
+- Plot the change of energy during optimization.
+- Try geometry optimization with a different coordinate system.
 ```
 
+## Introduction
+
+In this exercise we will use the semiempirical extended tight-binding (xTB)
+method, combined with the geomeTRIC optimization code, to optimize the geometry
+of zinc tetraphenylporphyrin dimer.
+
 $$
-\sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6}
+\Delta \mathbf{x} = \mathbf{B}^T \mathbf{G}^{-1} \Delta \mathbf{q}
 $$
+
+## System: zinc tetraphenylporphyrin dimer
 
 ```{code-cell} ipython3
 :tags: [remove-input]
