@@ -21,18 +21,48 @@ kernelspec:
 ```{keypoints}
 - Run a geometry optimization calculation.
 - Plot the change of energy during optimization.
-- Try geometry optimization with a different coordinate system.
+- Visualize the change of geometry during optimization.
+- (Optional) Try geometry optimization with a different coordinate system.
 ```
 
 ## Introduction
 
-In this exercise we will use the semiempirical extended tight-binding (xTB)
-method, combined with the geomeTRIC optimization code, to optimize the geometry
-of zinc tetraphenylporphyrin dimer.
+In this exercise we will use [the semiempirical extended tight-binding (xTB)
+method](https://onlinelibrary.wiley.com/doi/10.1002/wcms.1493),
+combined with [the geomeTRIC optimization code](https://aip.scitation.org/doi/10.1063/1.4952956),
+to optimize the geometry of zinc tetraphenylporphyrin dimer.
+
+Geometry optimization is the procedure to find local minimum on the potential 
+energy surface. A coordinate system is therefore necessary for describing the
+geometry of the system of interest. The Cartesian coordinate system is the 
+simplest; however, it is very inefficient due to the complexity of the potential
+energy surface. In practice, it is common to employ the so-called internal coordinates
+that describes the collective motion of atoms in a more efficient way. A displacement
+in the internal coordinate $\Delta \mathbf{q}$ is related to the displacement in
+Cartesian coordinates $\Delta \mathbf{x}$
 
 $$
 \Delta \mathbf{x} = \mathbf{B}^T \mathbf{G}^{-1} \Delta \mathbf{q}
 $$
+
+Here $\mathbf{B}$ is the Wilson B-matrix ($B_{ij} = \partial q_i / \partial x_j$)
+and $\mathbf{G} = \mathbf{B} \mathbf{B}^T$.
+
+In [the geomeTRIC optimization code](https://aip.scitation.org/doi/10.1063/1.4952956),
+the translation-rotation internal coordinates
+(TRIC) is employed. This coordinate system treats intra- and intermolecular 
+coordinates separately by introducing translation and rotation coordinates
+for the individual molecules in the system.
+
+Efficient geometry optimization demands good prediction of the next step in the 
+conformation space. This can be done based on a quadratic approximation for the local
+shape of the potential energy, where an apprximate evaluation of the Hessian can be
+provided by, for example, the Broyden-Fletcher-Goldfarb-Shanno (BFGS) method.
+
+The gradient, or the first derivative of energy with respect to nuclear displacements,
+is provided by [the semiempirical xTB method](https://onlinelibrary.wiley.com/doi/10.1002/wcms.1493),
+which is an efficient tight-binding model
+that covers almost the entire periodic table (Z $\le$ 86).
 
 ## System: zinc tetraphenylporphyrin dimer
 
@@ -51,6 +81,19 @@ v.setStyle({'stick':{}})
 v.zoomTo()
 v.show()
 ```
+
+## Input file
+
+Below is the input file for geometry optimization of zinc tetraphenylporphyrin dimer.
+
+```{literalinclude} inputs/zn-porphyrin-dimer.inp
+```
+
+## Results
+
+The change of energy during optimization is printed at the end of the output file.
+Plot the energy with respect optimization step and discuss why geometry optimization
+of this system can be tricky.
 
 ## Visualization of results
 
