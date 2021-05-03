@@ -5,7 +5,7 @@ channels:
 dependencies:
   - libblas * *mkl
   - mpi * *openmpi
-  - veloxchem * *1
+  - veloxchem
   - pytest
   - scipy
   - numpy
