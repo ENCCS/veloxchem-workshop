@@ -22,6 +22,9 @@ dependencies:
   - qcelemental
   - openbabel
   - pip
+  - markdown-it-py
+  - linkify-it-py
+  - mdit-py-plugins
   - pip:
       - nglview>=3.0.1
       - py3Dmol

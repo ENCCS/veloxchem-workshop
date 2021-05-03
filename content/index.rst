@@ -54,7 +54,7 @@ In this workshop, you will learn how to use the `VeloxChem program package <http
    hpc-setup
    x-ray-cpp
    exciton
-   xTB-geomeTRIC
+   notebooks/xTB-geomeTRIC
 
 .. csv-table::
    :widths: auto
@@ -67,7 +67,7 @@ In this workshop, you will learn how to use the `VeloxChem program package <http
    30 min ; :doc:`hpc-setup`
    40 min ; :doc:`x-ray-cpp`
    40 min ; :doc:`exciton`
-   40 min ; :doc:`xTB-geomeTRIC`
+   40 min ; :doc:`notebooks/xTB-geomeTRIC`
 
 
 .. toctree::
