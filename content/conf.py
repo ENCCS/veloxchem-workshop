@@ -69,11 +69,7 @@ html_theme = 'sphinx_book_theme'
 html_logo = "img/ENCCS-PDC-logos.jpg"
 html_favicon = "img/favicon.ico"
 html_title = ""  # project
-# sphinx-thebe configuration
-thebe_config = {
-    "repository_url": f"https://github.com/{github_user}/{github_repo_name}",
-    "repository_branch": "master",
-}
+html_js_files = ["https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"]
 # sphinx-book-theme options
 html_theme_options = {
     "repository_url": f"https://github.com/{github_user}/{github_repo_name}",
@@ -95,7 +91,7 @@ html_sidebars = {"**": ["sbt-sidebar-nav.html", "sbt-sidebar-footer.html"]}
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
-html_css_files = ["overrides.css"]
+#html_css_files = ["overrides.css"]
 # HTML context:
 from os.path import basename, dirname, realpath
 
@@ -116,32 +112,10 @@ html_context = {
 #    #'python': ('https://docs.python.org/3', None),
 #    #'sphinx': ('https://www.sphinx-doc.org/', None),
 #    }
-# Our own customisation
-from sphinx_lesson.directives import _BaseCRDirective
 
-
-class SignatureDirective(_BaseCRDirective):
-    extra_classes = ["toggle-shown", "dropdown"]
-
-
-class ParametersDirective(_BaseCRDirective):
-    extra_classes = ["dropdown"]
-
-
-class TypealongDirective(_BaseCRDirective):
-    extra_classes = ["toggle-shown", "dropdown"]
-
-
-DIRECTIVES = [SignatureDirective, ParametersDirective, TypealongDirective]
 # the epilog
 rst_epilog = f"""
 .. role:: red
 .. role:: blue
 .. _VeloxChem: https://veloxchem.org
 """
-
-
-def setup(app):
-    app.add_js_file("require.js")
-    for obj in DIRECTIVES:
-        app.add_directive(obj.cssname(), obj)
