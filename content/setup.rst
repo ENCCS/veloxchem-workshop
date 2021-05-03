@@ -65,4 +65,5 @@ installed!
 Compiling VeloxChem from source
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Please refer to the instructions for :ref:`Setting up VeloxChem on a HPC cluster <_hpc-setup>`.
+Please refer to the instructions for `Setting up VeloxChem on a HPC cluster
+<https://enccs.github.io/veloxchem-workshop/hpc-setup/>`_.
