@@ -98,7 +98,6 @@ You can find more about the VeloxChem input keywords in
 ## Results
 
 The absorption spectrum will be printed at the end of the output file.
-Plot the spectrum and fit it to a sum of variable-width Gaussians.
 
 ## Scalability test
 
