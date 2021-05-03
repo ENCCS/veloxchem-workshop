@@ -1,6 +1,6 @@
 myst-nb
-sphinx==3.5.2
-sphinx-book-theme
+sphinx
+sphinx-book-theme==0.0.41
 sphinx-lesson
 sphinx-thebe
 sphinxcontrib-bibtex
