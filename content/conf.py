@@ -73,7 +73,8 @@ html_logo = "img/ENCCS-PDC-logos.jpg"
 html_favicon = "img/favicon.ico"
 html_title = ""  # project
 html_js_files = [
-    "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"
+    "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js",
+    "https://3Dmol.org/build/3Dmol-min.js"
 ]
 # sphinx-book-theme options
 html_theme_options = {
@@ -97,7 +98,7 @@ html_sidebars = {
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-# html_static_path = ['_static']
+html_static_path = ["_static", "inputs"]
 # html_css_files = ["overrides.css"]
 # HTML context:
 from os.path import basename, dirname, realpath

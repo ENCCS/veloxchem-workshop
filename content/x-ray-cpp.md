@@ -36,7 +36,7 @@ impractical to study spectral regions with high density-of-states. The CPP
 approach introduces a damping term which, from a purely computational
 perspective, removes the singularities of the response functions at resonance
 frequencies. The damped response theory can be applied to any frequency region
-of interest. You may read more in [this paper](https://pubs.acs.org/doi/10.1021/ct500114m).
+of interest. You may read more in [this paper](https://pubs.acs.org/doi/10.1021/ct500114m) {cite}`Kauczor2014-vg`
 
 The CPP solver in VeloxChem will solve multiple frequencies simultaneously. The
 complex response equations for a given frequency can be expressed in terms of a
@@ -66,7 +66,7 @@ $$
 Here, $\omega$ is the frequency, $\gamma$ is the damping parameter, $E^{[2]}$
 and $S^{[2]}$ are the Hessian and metric matrices, respectively, and $G$ is the
 gradient vector. The $R$/$I$ superscripts denote real/imagnary components,
-while the $g$/$u$ subscripts denote $gerade$/$ungerade$ symmetry.
+while the $g$/$u$ subscripts denote *gerade*/*ungerade* symmetry.
 
 ## Molecule: free-base porphyrin
 
