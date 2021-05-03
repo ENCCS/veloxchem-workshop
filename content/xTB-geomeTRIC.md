@@ -92,8 +92,6 @@ Below is the input file for geometry optimization of zinc tetraphenylporphyrin d
 ## Results
 
 The change of energy during optimization is printed at the end of the output file.
-Plot the energy with respect optimization step and discuss why geometry optimization
-of this system can be tricky.
 
 ## Visualization of results
 
