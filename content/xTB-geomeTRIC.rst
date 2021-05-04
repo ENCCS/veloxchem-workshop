@@ -78,3 +78,7 @@ Results
 -------
 
 The change of energy during optimization is printed at the end of the output file.
+
+We can visualize the results of the optimization in a `Jupyter notebook on
+MyBinder
+<https://mybinder.org/v2/gh/ENCCS/veloxchem-workshop/master?urlpath=lab%2Ftree%2Fcontent%2Fnotebooks%2Fvisualization_xTB-geomeTRIC.ipynb>`_.

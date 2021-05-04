@@ -1,4 +1,4 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ENCCS/veloxchem-workshop/master?urlpath=lab%2Ftree%2Fcontent%2Fnotebooks%2Ffirst-steps.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ENCCS/veloxchem-workshop/master?urlpath=lab%2Ftree%2Fcontent%2Fnotebooks)
 
 # VeloxChem: quantum chemistry from laptop to HPC
 
