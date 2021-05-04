@@ -4,11 +4,11 @@
 Exciton calculation
 ===================
 
-.. questions::
+.. objectives::
 
    - Learn how to run an *ab initio* exciton model calculation.
 
-.. objectives::
+.. keypoints::
 
    - Run an *ab initio* exciton model calculation.
    - Plot the UV-Vis absorption and ECD spectra.

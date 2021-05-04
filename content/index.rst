@@ -53,7 +53,7 @@ In this workshop, you will learn how to use the `VeloxChem program package <http
    notebooks/mp2
    hpc-setup
    x-ray-cpp
-   exciton.rst
+   exciton
    notebooks/xTB-geomeTRIC
 
 .. csv-table::
