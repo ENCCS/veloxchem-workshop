@@ -61,6 +61,8 @@ exclude_patterns = [
     ".DS_Store",
     "jupyter_execute",
     "*venv*",
+    "notebooks/solutions/*.ipynb",
+    "notebooks/visualization_*.ipynb"
 ]
 
 # -- Options for HTML output -------------------------------------------------
