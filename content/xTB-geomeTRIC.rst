@@ -56,8 +56,7 @@ provided by, for example, the Broyden-Fletcher-Goldfarb-Shanno (BFGS) method.
 
 The gradient, or the first derivative of the energy with respect to nuclear
 displacements, is provided by the semiempirical xTB method, which is an
-efficient tight-binding model that covers almost the entire periodic table (Z
-$\le$ 86).
+efficient tight-binding model that covers almost the entire periodic table (:math:`Z \le 86`).
 
 System: zinc tetraphenylporphyrin dimer
 ---------------------------------------
