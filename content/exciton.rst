@@ -57,10 +57,11 @@ Input file
 ----------
 
 Below is the input file for *ab initio* exciton model calculation of stacked
-base-pairs.
+base-pairs. You can read more about the VeloxChem input keywords in
+`this page <https://docs.veloxchem.org/inputs/keywords.html>`_.
 
 .. literalinclude:: inputs/stacked-base-pairs.inp
-   :emphasize-lines: 10-16, 22-41
+   :emphasize-lines: 10-16
 
 Results
 -------

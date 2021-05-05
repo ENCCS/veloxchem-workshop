@@ -73,7 +73,7 @@ Input file
 ----------
 
 Below is the input file for a CPP calculation of free-base porphyrin.
-You can find more about the VeloxChem input keywords in
+You can read more about the VeloxChem input keywords in
 `this page <https://docs.veloxchem.org/inputs/keywords.html>`_.
 
 .. literalinclude:: inputs/porphyrin.inp

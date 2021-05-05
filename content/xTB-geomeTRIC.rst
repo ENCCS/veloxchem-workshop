@@ -70,6 +70,8 @@ Input file
 ----------
 
 Below is the input file for the geometry optimization of the zinc tetraphenylporphyrin dimer.
+You can read more about the VeloxChem input keywords in
+`this page <https://docs.veloxchem.org/inputs/keywords.html>`_.
 
 .. literalinclude:: inputs/zn-porphyrin-dimer.inp
    :emphasize-lines: 5-11
