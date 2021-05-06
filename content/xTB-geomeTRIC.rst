@@ -82,7 +82,7 @@ Results
 
     Runs the above example on **1** node.
     On Beskow this will take around 10 minutes so please make sure that you
-    specify a suitable wall time limit in the job script.
+    specify a proper walltime limit in the job script.
 
 - Visualize the result
 

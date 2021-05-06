@@ -86,7 +86,7 @@ Exercise
 
     Runs the above example on **16** nodes.
     On Beskow this will take around 9 minutes so please make sure that you
-    specify a suitable wall time limit in the job script.
+    specify a proper walltime limit in the job script.
 
 - Plot the spectrum
 

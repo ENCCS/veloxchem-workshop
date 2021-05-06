@@ -230,7 +230,6 @@ You can install VeloxChem on Kebnekaise via the following steps:
     >>> import h5py
     [1620306933.125286] [b-an01:921717:0]          ib_md.c:1140 UCX  WARN  IB: ibv_fork_init() was disabled or failed, yet a fork() has been issued.
     [1620306933.125305] [b-an01:921717:0]          ib_md.c:1141 UCX  WARN  IB: data corruption might occur when using registered memory.
-    >>>
 
   This warning is similar to that documented in `this link
   <https://github.com/h5py/h5py/issues/1079#issuecomment-516816031>`_, which
@@ -242,7 +241,6 @@ You can install VeloxChem on Kebnekaise via the following steps:
     Type "help", "copyright", "credits" or "license" for more information.
     >>> import h5py
     >>> from mpi4py import MPI
-    >>>
 
   In case of this rare problem a practical workaround for VeloxChem is to add
   ``import h5py`` in line 25 of ``src/pymodule/__init__.py`` and then rerun the
