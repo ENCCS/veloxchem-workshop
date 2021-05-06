@@ -83,3 +83,8 @@ Exercise
 
     The character of the excitations will also be printed at the end of the output
     file. Find out the characters of the important excitations.
+
+- Compare with full TDDFT-TDA result
+
+    Compare the spectra from exciton model and from full TDDFT-TDA calculation
+    (:download:`link to TDDFT-TDA output file<inputs/tddft-tda.out>`).
