@@ -11,9 +11,8 @@ Geometry optimizations and semiempirical Hamiltonians
 .. keypoints::
 
    - Run a geometry optimization calculation.
-   - Plot the change of energy during optimization.
    - Visualize the change of geometry during optimization.
-   - (Optional) Try geometry optimization with a different coordinate system
+   - (Optional) Try geometry optimization using a different coordinate system
 
 Introduction
 ------------
@@ -79,8 +78,21 @@ You can read more about the VeloxChem input keywords in
 Results
 -------
 
-The change of energy during optimization is printed at the end of the output file.
+- Submit a job
 
-We can visualize the results of the optimization in a `Jupyter notebook on
-MyBinder
-<https://mybinder.org/v2/gh/ENCCS/veloxchem-workshop/master?urlpath=lab%2Ftree%2Fcontent%2Fnotebooks%2Fvisualization_xTB-geomeTRIC.ipynb>`_.
+    Runs the above example on **1** node.
+    On Beskow this will take around 10 minutes so please make sure that you
+    specify a suitable wall time limit in the job script.
+
+- Visualize the result
+
+    The change of energy during optimization is printed at the end of the output file.
+
+    We can visualize the process of the optimization in a `Jupyter notebook on
+    MyBinder
+    <https://mybinder.org/v2/gh/ENCCS/veloxchem-workshop/master?urlpath=lab%2Ftree%2Fcontent%2Fnotebooks%2Fvisualization_xTB-geomeTRIC.ipynb>`_.
+
+- (Optional) Rerun the optimization using another coordinate system
+
+    You can find the input keyword for other coordinate systems in
+    `this page <https://docs.veloxchem.org/inputs/keywords.html>`_.

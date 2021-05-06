@@ -11,7 +11,7 @@ Complex polarization propagator in the X-ray region
 .. keypoints::
 
    - Run a CPP calculation.
-   - Plot and analyze the absorption spectrum.
+   - Plot the absorption spectrum.
    - Perform scalability test of the CPP calculation.
 
 Introduction
@@ -79,13 +79,20 @@ You can read more about the VeloxChem input keywords in
 .. literalinclude:: inputs/porphyrin.inp
    :emphasize-lines: 10-13
 
-Results
--------
+Exercise
+--------
 
-The absorption spectrum will be printed at the end of the output file.
+- Submit a job
 
-Scalability test
-----------------
+    Runs the above example on **16** nodes.
+    On Beskow this will take around 9 minutes so please make sure that you
+    specify a suitable wall time limit in the job script.
 
-Run the CPP calculation on different number of nodes and plot the speedup
-with respect to the number of nodes.
+- Plot the spectrum
+
+    The absorption spectrum will be printed at the end of the output file.
+
+- Run scalability test
+
+    Run the CPP calculation on fewer number of nodes and plot the speedup with
+    respect to the number of nodes.

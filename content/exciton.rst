@@ -63,11 +63,23 @@ base-pairs. You can read more about the VeloxChem input keywords in
 .. literalinclude:: inputs/stacked-base-pairs.inp
    :emphasize-lines: 10-16
 
-Results
--------
+Exercise
+--------
 
-The excitation energies, oscillator strengths, and rotatory strengths will be
-printed at the end of the output file. Plot the UV-Vis and ECD spectra.
+- Submit a job
 
-The character of the excitations will also be printed at the end of the output
-file. Find out the characters of the important excitations.
+    Runs the above example.
+    On Beskow this calculation can finish within 15 minutes on
+    2 nodes. You can choose to run on more nodes.
+
+- Plot the spectrum
+
+    The excitation energies, oscillator strengths, and rotatory strengths will be
+    printed at the end of the output file.
+    You can plot the UV-Vis and ECD spectra by line broadening using e.g.
+    `Gaussian function <https://en.wikipedia.org/wiki/Gaussian_function>`_.
+
+- Examine the character of the excitations
+
+    The character of the excitations will also be printed at the end of the output
+    file. Find out the characters of the important excitations.
