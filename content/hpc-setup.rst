@@ -87,7 +87,7 @@ You can install VeloxChem on Tetralith via the following steps:
 
     python3 -m pip install --upgrade pip setuptools
 
-    CC=icc CC=mpiicc python3 -m pip install mpi4py --no-binary=mpi4py
+    CC=icc MPICC=mpiicc python3 -m pip install mpi4py --no-binary=mpi4py
     python3 -m pip install numpy pybind11 h5py pytest
 
 - Install XTB::
