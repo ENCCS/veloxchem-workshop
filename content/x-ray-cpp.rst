@@ -88,10 +88,12 @@ Exercise
     On Beskow this will take around 9 minutes so please make sure that you
     specify a proper walltime limit in the job script.
 
-- Plot the spectrum
+- Plot and analyse the spectrum
 
-    The absorption spectrum will be printed at the end of the output file.
-
+    The absorption spectrum will be printed at the end of the output file. Compare this to the results provided in notebooks/cpp_analysis/cpp_vlx.ipynb,
+    where analysis of polarization dependence and the association of features to chemically unique atoms is also available. Results for a smaller system
+    (vinylfluoride) is also available.
+    
 - Run scalability test
 
     Run the CPP calculation on fewer number of nodes and plot the speedup with
