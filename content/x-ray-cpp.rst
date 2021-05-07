@@ -90,9 +90,12 @@ Exercise
 
 - Plot and analyse the spectrum
 
-    The absorption spectrum will be printed at the end of the output file. Compare this to the results provided in notebooks/cpp_analysis/cpp_vlx.ipynb,
-    where analysis of polarization dependence and the association of features to chemically unique atoms is also available. Results for a smaller system
-    (vinylfluoride) is also available.
+    The absorption spectrum will be printed at the end of the output file.
+    Compare this to the results provided in `this Jupyter notebook on MyBinder
+    <https://mybinder.org/v2/gh/ENCCS/veloxchem-workshop/master?urlpath=lab%2Ftree%2Fcontent%2Fnotebooks%2Fcpp_analysis%2Fvlx_cpp.ipynb>`_,
+    where analysis of polarization dependence and the association of features
+    to chemically unique atoms is also available. Results for a smaller system
+    (vinylfluoride) are also available.
     
 - Run scalability test
 
