@@ -1,9 +1,10 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ENCCS/veloxchem-workshop/master?urlpath=lab%2Ftree%2Fcontent%2Fnotebooks)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/MRChemSoft/vampyr-tutorial/vampyr)
 
-# VeloxChem: quantum chemistry from laptop to HPC
+# VAMPyR and MRChem tutorial
 
-Teaching material for ENCCS/PDC VeloxChem workshop.
+Teaching material for VAMPyR and MRChem
 
 ## Credit and license
 
+Based on a VeloxChem template from ENCCS:
 - https://enccs.github.io/veloxchem-workshop/#credits
