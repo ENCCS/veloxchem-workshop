@@ -4,7 +4,8 @@ Multiwavelet tutorial
 In this tutorial you will learn how to use the multiresolution analysis tools of
 the MRChem suite.
 
-Using the `VAMPyR <https://github.com/MRChemSoft/vampyr/>`_ Python package you will learn:
+Using the `VAMPyR <https://github.com/MRChemSoft/vampyr/>`_:cite:`vampyr-zenodo`
+Python package you will learn:
 
 - What a multiwavelet basis is and what it looks like.
 - How to use multiresolution analysis to represent functions and operators in
@@ -12,7 +13,8 @@ Using the `VAMPyR <https://github.com/MRChemSoft/vampyr/>`_ Python package you w
 - How to use the Python application programming interface (API) to prototype a
   small chemistry application.
 
-Using the `MRChem <https://github.com/MRChemSoft/mrchem/>`_ program you will learn:
+Using the `MRChem <https://github.com/MRChemSoft/mrchem/>`_:cite:`mrchem-zenodo`
+program you will learn:
 
 - How to run ground-state SCF calculations to high numerical precision.
 - How to run linear response calculations to obtain molecular properties like
