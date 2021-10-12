@@ -16,12 +16,12 @@
 
 
 # -- Project information -----------------------------------------------------
-project = "VeloxChem: quantum chemistry from laptop to HPC"
+project = "Multiwavelet tutorial"
 copyright = "2021, The contributors"
 author = "The contributors"
-github_user = "ENCCS"
-github_repo_name = "veloxchem-workshop"  # auto-detected from dirname if blank
-github_version = "master"
+github_user = "MRChemSoft"
+github_repo_name = "multiwavelet-tutorial"  # auto-detected from dirname if blank
+github_version = "multiwavelet"
 conf_py_path = "/content/"  # with leading and trailing slash
 # -- General configuration ---------------------------------------------------
 
@@ -71,7 +71,7 @@ exclude_patterns = [
 # a list of builtin themes.
 #
 html_theme = "sphinx_book_theme"
-html_logo = "img/ENCCS-PDC-logos.jpg"
+html_logo = "img/hylleraas-logo.png"
 html_favicon = "img/favicon.ico"
 html_title = ""  # project
 html_js_files = [
@@ -127,5 +127,5 @@ html_context = {
 rst_epilog = f"""
 .. role:: red
 .. role:: blue
-.. _VeloxChem: https://veloxchem.org
+.. _MRChemSoft: https://github.com/MRChemSoft
 """
