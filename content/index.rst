@@ -12,7 +12,7 @@ Using the `VAMPyR <https://github.com/MRChemSoft/vampyr/>`_ Python package you w
 - How to use the Python application programming interface (API) to prototype a
   small chemistry application.
 
-Using the `MRChem <https://github.com/MRChemSoft/vampyr/>`_ program you will learn:
+Using the `MRChem <https://github.com/MRChemSoft/mrchem/>`_ program you will learn:
 
 - How to run ground-state SCF calculations to high numerical precision.
 - How to run linear response calculations to obtain molecular properties like
@@ -54,34 +54,25 @@ Using the `MRChem <https://github.com/MRChemSoft/vampyr/>`_ program you will lea
    :maxdepth: 1
    :caption: The lesson
    
-   notebooks/first-steps
-   notebooks/next-steps
-   notebooks/rh-scf
-   notebooks/mp2
-   hpc-setup
-   x-ray-cpp
-   exciton
-   xTB-geomeTRIC
+   notebooks/vampyr-intro
+   notebooks/vampyr-scf
+   notebooks/mrchem-laptop
+   notebooks/mrchem-hpc
 
 .. csv-table::
    :widths: auto
    :delim: ;
 
-   15 min ; :doc:`notebooks/first-steps`
-   15 min ; :doc:`notebooks/next-steps`
-   60 min ; :doc:`notebooks/rh-scf`
-   60 min ; :doc:`notebooks/mp2`
-   30 min ; :doc:`hpc-setup`
-   40 min ; :doc:`x-ray-cpp`
-   40 min ; :doc:`exciton`
-   40 min ; :doc:`xTB-geomeTRIC`
+   15 min ; :doc:`notebooks/vampyr-intro`
+   30 min ; :doc:`notebooks/vampyr-scf`
+   30 min ; :doc:`notebooks/mrchem-laptop`
+   15 min ; :doc:`notebooks/mrchem-hpc`
 
 
 .. toctree::
    :maxdepth: 1
    :caption: Reference
 
-   quick-reference
    zbibliography
    guide
 
