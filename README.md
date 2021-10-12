@@ -2,7 +2,7 @@
 
 # Multiwavelet tutorial
 
-Teaching material for VAMPyR and MRChem
+Multiwavelet teaching material using VAMPyR and MRChem.
 
 ## Credit and license
 
