@@ -19,7 +19,7 @@ Python package you will learn:
   small chemistry application.
 
 .. figure:: img/mrchem-logo.png
-   :scale: 50%
+   :scale: 40%
    :alt: VAMPyR logo
    :align: center
 
