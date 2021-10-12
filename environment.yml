@@ -1,4 +1,4 @@
-name: tutorial
+name: mw-tutorial
 channels:
   - conda-forge
 dependencies:

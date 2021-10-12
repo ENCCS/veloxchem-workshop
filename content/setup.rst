@@ -3,21 +3,23 @@
 Setting up your system
 ======================
 
-In order to follow this workshop, you will need access to VeloxChem.
+In order to follow this workshop, you will need access to the VAMPyR python
+package and the MRChem program.
 
-You can work on the content of **Day 1** entirely online using `Binder
-<https://mybinder.org>`_ to run the Jupyter notebooks in the cloud.
+You can work on the VAMPyR content entirely online using `Binder <https://mybinder.org>`_
+to run the Jupyter notebooks in the cloud, but some of the MRChem exercises are best
+performed on a HPC cluster.
+
 If you prefer to work locally, you will need to set up your Python environment correctly:
 we recommend using the `Conda package and enviroment manager
 <https://docs.conda.io/en/latest/>`_, as it provides a convenient way to install
-binary packages, including VeloxChem, in an isolated, reproducible software environment.
+binary packages, including VAMPyR and MRChem, in an isolated, reproducible software
+environment.
 
-.. todo::
+Please refer to the respective GitHub repositories for different ways of installing:
 
-   * Mention that on PDC there is a module (or there will be)
-   * These instructions depend on the final release.
-
-   For the content of Day 2, you will have to compile VeloxChem on your cluster.
+- `VAMPyR <https://github.com/MRChemSoft/vampyr/blob/master/README.md>`_.
+- `MRChem <https://github.com/MRChemSoft/mrchem/blob/master/README.md>`_.
 
 
 Install Miniconda
@@ -53,17 +55,8 @@ and type::
 
 You then need to activate the new environment by::
 
-  $ conda activate workshop
+  $ conda activate mw-tutorial
 
 
-Now you should have VeloxChem, Python, JupyterLab and a few other packages
-installed!
+Now you should have VAMPyR, MRChem, Python, JupyterLab and a few other packages installed!
 
-
-.. _compiling:
-
-Compiling VeloxChem from source
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Please refer to the instructions for `Setting up VeloxChem on a HPC cluster
-<https://enccs.github.io/veloxchem-workshop/hpc-setup/>`_.
