@@ -1,38 +1,45 @@
-VeloxChem: quantum chemistry from laptop to HPC
-===============================================
+Multiwavelet tutorial
+=====================
 
-Quantum molecular modeling of complex molecular systems is an indispensable and
-integrated component in advanced material design, as such simulations provide a
-microscopic insight into the underlying physical processes.
-In this workshop, you will learn how to use the `VeloxChem program package <https://veloxchem.org/>`_ to:
+In this tutorial you will learn how to use the multiresolution analysis tools of
+the MRChem suite. Using the `VAMPyR <https://github.com/MRChemSoft/vampyr/>`_
+Python package you will learn:
 
-- Perform quantum chemical simulations of *ground- and excited-state properties*
-  of large systems.
-- Leverage the *aggregate resources* of modern HPC clusters to efficiently
-  tackle large molecular systems.
-- Use the Python application programming interface (API) to prototype new
-  methods.
-- Design interactive computational teaching materials in Python.
+- What a multiwavelet basis is and what it looks like.
+- How to use multiresolution analysis to represent functions and operators in
+  1D, 2D and 3D real space.
+- Use the Python application programming interface (API) to prototype a small
+  chemistry application.
 
+With the `MRChem <https://github.com/MRChemSoft/vampyr/>`_ program you will learn
+how to:
+
+- Run ground-state SCF calculations to high numerical precision.
+- Run linear response calculations to obtain molecular properties like
+  polarizability, magnetizability and NMR shielding tensors.
+- How to run large scale calculations using thousands of CPU cores on HPC clusters.
 
 .. prereq::
 
    Before attending this workshop, please make sure that you have the
    prerequisite software and hardware available.
 
-   Day 1
+   Exercise 1: Multiwavelets with VAMPyR
        We will work within `Jupyter notebooks <https://jupyter.org/>`_. We have
        set up this lesson such that it can be run entirely within your browser,
-       using cloud infrastructure.
-       You can also use your own computer, provided that it has the necessary
-       tools installed. If that is not the case, please follow these
-       :ref:`detailed instructions <setup>`.
+       using cloud infrastructure. You can also use your own computer, provided
+       that it has the necessary tools installed. If that is not the case, please
+       follow these :ref:`detailed instructions <setup>`.
 
-   Day 2
-       You will need access to a supercomputer.  Any questions on how to use a
-       particular HPC resource should be directed to the appropriate support
-       desk.  Please follow these :ref:`detailed instructions <compiling>` on
-       how to set up the necessary software stack.
+   Exercise 2: Molecular properties with MRChem
+       We will work in a terminal environment using a traditional computational
+       chemistry workflow: writing input files, running program, parsing output
+       files. You _can_ run this exercise in a terminal window in the provided
+       browser environment, but in order to get full benefit you will need access
+       to a supercomputer. Any questions on how to use a particular HPC resource
+       should be directed to the appropriate support desk. Please follow these
+       :ref:`detailed instructions <compiling>` on how to set up the necessary
+       software stack.
 
 
 .. toctree::
@@ -84,13 +91,13 @@ In this workshop, you will learn how to use the `VeloxChem program package <http
 Who is the course for?
 ----------------------
 
-This lesson is for researchers and students already familiar with quantum
-chemistry that want to learn how to:
+This lesson is for researchers and students that are already familiar with traditional
+quantum chemistry methods using atom-centered basis functions like Gaussians,
+that want to learn more about:
 
-- Perform quantum chemical simulations of ground- and excited-state properties
-  on large systems and with efficient use of HPC resources.
-- Use an interactive, computationally-oriented approach to teaching quantum
-  chemistry.
+- What are multiresolution analysis (MRA) and multiwavelets?
+- How can (and why should) MRA be applied to quantum chemical problems?
+- How to use MRA to approach complete basis set limit molecular properties on real-world molecular systems.
 
 We assume that participants have:
 
@@ -105,8 +112,8 @@ About the course
 ----------------
 
 
-This lesson material is developed by the `EuroCC National Competence Center
-Sweden (ENCCS) <https://enccs.se/>`_ and the `PDC Center for High Performance Computing <https://www.pdc.kth.se/>`_.
+This lesson material is developed by the MRChem group at the `Hylleraas Center for Quantum
+Molecular Sciences <https://www.mn.uio.no/hylleraas/english/>`_.
 
 Each lesson episode has clearly defined learning objectives and includes
 exercises and solutions, and is therefore also useful for self-learning.
@@ -121,8 +128,8 @@ Interacting with the notebooks
 
 `MyBinder <https://mybinder.org/>`_ offers a free, customizable cloud
 computing environment and powers some of the contents of this lesson.
-You can run the exercises for Day 1 of this workshop entirely in the
-cloud.
+You can run the entirety of Exercise 1 and most of Exercise 2 of this
+tutorial in the cloud.
 
 The MyBinder web interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -206,8 +213,11 @@ For reference material on quantum chemistry:
 Credits
 -------
 
-The lesson file structure and browsing layout is inspired by and derived from
-`work <https://github.com/coderefinery/sphinx-lesson>`_ by `CodeRefinery
+The lesson file structure and layout is heavily inspired by
+the `VeloxChem workshop <https://enccs.github.io/veloxchem-workshop/>`_ developed by
+`EuroCC National Competence Center Sweden (ENCCS) <https://enccs.se/>`_ and the
+`PDC Center for High Performance Computing <https://www.pdc.kth.se/>`_, which in turn
+is derived from `work <https://github.com/coderefinery/sphinx-lesson>`_ by `CodeRefinery
 <https://coderefinery.org/>`_ licensed under the `MIT license
 <http://opensource.org/licenses/mit-license.html>`_. We have copied and adapted
 most of their license text.
