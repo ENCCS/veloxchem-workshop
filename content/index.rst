@@ -5,7 +5,7 @@ In this tutorial you will learn how to use the multiresolution analysis tools of
 the MRChem suite.
 
 .. figure:: img/vampyr-logo.png
-   :scale: 50%
+   :scale: 40%
    :alt: VAMPyR logo
    :align: center
 
@@ -19,7 +19,7 @@ Python package you will learn:
   small chemistry application.
 
 .. figure:: img/mrchem-logo.png
-   :scale: 40%
+   :scale: 30%
    :alt: VAMPyR logo
    :align: center
 
