@@ -1,6 +1,6 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/MRChemSoft/multiwavelet-tutorial/multiwavelet)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/MRChemSoft/multiwavelet-tutorial/master)
 
-# VAMPyR and MRChem tutorial
+# Multiwavelet tutorial
 
 Teaching material for VAMPyR and MRChem
 

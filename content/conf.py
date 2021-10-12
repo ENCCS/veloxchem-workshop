@@ -21,7 +21,7 @@ copyright = "2021, The contributors"
 author = "The contributors"
 github_user = "MRChemSoft"
 github_repo_name = "multiwavelet-tutorial"  # auto-detected from dirname if blank
-github_version = "multiwavelet"
+github_version = "master"
 conf_py_path = "/content/"  # with leading and trailing slash
 # -- General configuration ---------------------------------------------------
 
