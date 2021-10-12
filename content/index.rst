@@ -74,7 +74,6 @@ Using the `MRChem <https://github.com/MRChemSoft/mrchem/>`_ program you will lea
    :caption: Reference
 
    zbibliography
-   guide
 
 
 .. _learner-personas:
