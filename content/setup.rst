@@ -18,8 +18,8 @@ environment.
 
 Please refer to the respective GitHub repositories for different ways of installing:
 
-- `VAMPyR <https://github.com/MRChemSoft/vampyr/blob/master/README.md>`_.
-- `MRChem <https://github.com/MRChemSoft/mrchem/blob/master/README.md>`_.
+- `VAMPyR <https://github.com/MRChemSoft/vampyr/blob/master/README.md>`_
+- `MRChem <https://github.com/MRChemSoft/mrchem/blob/master/README.md>`_
 
 
 Install Miniconda
@@ -34,11 +34,6 @@ for your platform:
 - For Windows see https://docs.conda.io/en/latest/miniconda.html#windows-installers
 
 For all platforms, make sure to select the **Python 3.8**, **64 bit** installer.
-
-.. note::
-
-   The VeloxChem binary package is currently only avaiable for the `x86_64`
-   architecture.
 
 
 Creating an environment and installing packages
