@@ -4,6 +4,11 @@ Multiwavelet tutorial
 In this tutorial you will learn how to use the multiresolution analysis tools of
 the MRChem suite.
 
+.. figure:: img/vampyr-logo.png
+   :scale: 70%
+   :alt: VAMPyR logo
+   :align: center
+
 Using the `VAMPyR <https://github.com/MRChemSoft/vampyr/>`_:cite:`vampyr-zenodo`
 Python package you will learn:
 
@@ -12,6 +17,11 @@ Python package you will learn:
   1D, 2D and 3D real space.
 - How to use the Python application programming interface (API) to prototype a
   small chemistry application.
+
+.. figure:: img/mrchem-logo.png
+   :scale: 70%
+   :alt: VAMPyR logo
+   :align: center
 
 Using the `MRChem <https://github.com/MRChemSoft/mrchem/>`_:cite:`mrchem-zenodo`
 program you will learn:
