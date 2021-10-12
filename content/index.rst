@@ -9,8 +9,7 @@ the MRChem suite.
    :alt: VAMPyR logo
    :align: center
 
-Using the `VAMPyR <https://github.com/MRChemSoft/vampyr/>`_:cite:`vampyr-zenodo`
-Python package you will learn:
+Using the `VAMPyR <https://github.com/MRChemSoft/vampyr/>`_ Python package you will learn:
 
 - What a multiwavelet basis is and what it looks like.
 - How to use multiresolution analysis to represent functions and operators in
@@ -23,8 +22,7 @@ Python package you will learn:
    :alt: VAMPyR logo
    :align: center
 
-Using the `MRChem <https://github.com/MRChemSoft/mrchem/>`_:cite:`mrchem-zenodo`
-program you will learn:
+Using the `MRChem <https://github.com/MRChemSoft/mrchem/>`_ program you will learn:
 
 - How to run ground-state SCF calculations to high numerical precision.
 - How to run linear response calculations to obtain molecular properties like
@@ -64,12 +62,16 @@ program you will learn:
 .. toctree::
    :hidden:
    :maxdepth: 1
-   :caption: The lesson
+   :caption: Exercises
    
    notebooks/vampyr-intro
    notebooks/vampyr-scf
    notebooks/mrchem-laptop
    notebooks/mrchem-hpc
+
+
+Course material
+---------------
 
 .. csv-table::
    :widths: auto
@@ -80,12 +82,6 @@ program you will learn:
    30 min ; :doc:`notebooks/mrchem-laptop`
    15 min ; :doc:`notebooks/mrchem-hpc`
 
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Reference
-
-   zbibliography
 
 
 .. _learner-personas:
@@ -105,7 +101,7 @@ We assume that participants have:
 
 - A sufficiently thorough prior knowledge of self-consistent field theory, at
   the level presented in the *Modern Quantum Chemistry* textbook by Szabo and
-  Ostlund :cite:`Szabo1996-vl`.
+  Ostlund.
 - Worked previously with other quantum chemical software packages.
 - Some familiarity with the Python programming language. :ref:`We have listed <see-also>` some online resources to refresh your Python knowledge.
 
@@ -199,8 +195,8 @@ There are many free resources online regarding Python and Jupyter:
 
 For reference material on quantum chemistry:
 
-- Helgaker, T.; Jørgensen, P.; Olsen, J. *Molecular Electronic-Structure Theory* :cite:`Helgaker2000-yb`
-- Szabo, A.; Ostlund, N. S. *Modern Quantum Chemistry: Introduction to Advanced Electronic Structure Theory* :cite:`Szabo1996-vl`
+- Helgaker, T.; Jørgensen, P.; Olsen, J. *Molecular Electronic-Structure Theory*
+- Szabo, A.; Ostlund, N. S. *Modern Quantum Chemistry: Introduction to Advanced Electronic Structure Theory*
 
 
 Credits
