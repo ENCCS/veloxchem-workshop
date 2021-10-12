@@ -1,4 +1,5 @@
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/MRChemSoft/multiwavelet-tutorial/master)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/MRChemSoft/multiwavelet-tutorial/master?urlpath=lab%2Ftree%2Fcontent%2Fnotebooks)
+
 
 # Multiwavelet tutorial
 

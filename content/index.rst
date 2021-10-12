@@ -2,20 +2,20 @@ Multiwavelet tutorial
 =====================
 
 In this tutorial you will learn how to use the multiresolution analysis tools of
-the MRChem suite. Using the `VAMPyR <https://github.com/MRChemSoft/vampyr/>`_
-Python package you will learn:
+the MRChem suite.
+
+Using the `VAMPyR <https://github.com/MRChemSoft/vampyr/>`_ Python package you will learn:
 
 - What a multiwavelet basis is and what it looks like.
 - How to use multiresolution analysis to represent functions and operators in
   1D, 2D and 3D real space.
-- Use the Python application programming interface (API) to prototype a small
-  chemistry application.
+- How to use the Python application programming interface (API) to prototype a
+  small chemistry application.
 
-With the `MRChem <https://github.com/MRChemSoft/vampyr/>`_ program you will learn
-how to:
+Using the `MRChem <https://github.com/MRChemSoft/vampyr/>`_ program you will learn:
 
-- Run ground-state SCF calculations to high numerical precision.
-- Run linear response calculations to obtain molecular properties like
+- How to run ground-state SCF calculations to high numerical precision.
+- How to run linear response calculations to obtain molecular properties like
   polarizability, magnetizability and NMR shielding tensors.
 - How to run large scale calculations using thousands of CPU cores on HPC clusters.
 
@@ -34,7 +34,7 @@ how to:
    Exercise 2: Molecular properties with MRChem
        We will work in a terminal environment using a traditional computational
        chemistry workflow: writing input files, running program, parsing output
-       files. You _can_ run this exercise in a terminal window in the provided
+       files. You *can* run this exercise in a terminal window in the provided
        browser environment, but in order to get full benefit you will need access
        to a supercomputer. Any questions on how to use a particular HPC resource
        should be directed to the appropriate support desk. Please follow these
@@ -120,8 +120,6 @@ exercises and solutions, and is therefore also useful for self-learning.
 The lesson material is licensed under `CC-BY-4.0
 <https://creativecommons.org/licenses/by/4.0/>`_ and can be reused in any form
 (with appropriate credit) in other courses and workshops.
-Instructors who wish to teach this lesson can refer to the :doc:`guide` for
-practical advice.
 
 Interacting with the notebooks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -136,7 +134,7 @@ The MyBinder web interface
 
 You can access the JupyterLab instance for this workshop by clicking the "launch
 binder" button at the top of the ``README`` file displayed at
-https://github.com/ENCCS/veloxchem-workshop
+https://github.com/MRChemSoft/multiwavelet-tutorial
 
 .. figure:: img/launch_binder_button.png
    :scale: 70%
@@ -144,19 +142,12 @@ https://github.com/ENCCS/veloxchem-workshop
    :align: center
 
 This will bring you to the loading page for the binder, which might
-take a few minutes to start up. Don't despair!
-
-.. figure:: img/binder_loading.png
-   :scale: 50%
-   :alt: The binder is loading
-   :align: center
-
-Once loaded, you will see the introductory notebook already open:
-
-.. figure:: img/jupyterlab_landing.png
-   :scale: 50%
-   :alt: The Jupyter Lab landing page
-   :align: center
+take a few minutes to start up. Once loaded you will end up in a
+Jupyter-Lab environment with all necessary software packages installed.
+Bevare that the cloud instance runs on limited computational resources,
+so don't expect awesome performance. Also, launching full-fledged MRChem
+calculations on molecules containing more than a few atoms is probably a
+bad idea.
 
 Accessing a terminal
 ++++++++++++++++++++
