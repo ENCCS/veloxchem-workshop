@@ -7,5 +7,5 @@ Multiwavelet teaching material using VAMPyR and MRChem.
 
 ## Credit and license
 
-Based on a VeloxChem template from ENCCS:
+Based on a template from ENCCS:
 - https://enccs.github.io/veloxchem-workshop/#credits
