@@ -4,7 +4,7 @@ channels:
 dependencies:
   - mrcpp=1.4.0
   - mrchem=1.0.2
-  - vampyr=0.2rc0
+  - vampyr=0.2rc0=*_1
   - pytest
   - scipy
   - numpy
