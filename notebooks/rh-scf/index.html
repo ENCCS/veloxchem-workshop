@@ -1,0 +1,862 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Roothaan-Hall self-consistent field procedure</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/minipres.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Møller-Plesset perturbation theory to second order" href="../mp2/" />
+    <link rel="prev" title="More advanced usage of the VeloxChem API" href="../next-steps/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/ENCCS-PDC-logos.jpg" class="logo" alt="logo">
+      
+      
+    </a>
+</div><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../">
+   VeloxChem: quantum chemistry from laptop to HPC
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../setup/">
+   Setting up your system
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  The lesson
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../first-steps/">
+   First steps with VeloxChem
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../next-steps/">
+   More advanced usage of the VeloxChem API
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   The Roothaan-Hall self-consistent field procedure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mp2/">
+   Møller-Plesset perturbation theory to second order
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../hpc-setup/">
+   Setting up VeloxChem on a HPC cluster
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../x-ray-cpp/">
+   Complex polarization propagator in the X-ray region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../exciton/">
+   Exciton calculation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../xTB-geomeTRIC/">
+   Geometry optimizations and semiempirical Hamiltonians
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../quick-reference/">
+   Quick Reference
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../zbibliography/">
+   Bibliography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../guide/">
+   Instructor’s guide
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notebooks/rh-scf.ipynb.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ENCCS/veloxchem-workshop"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ENCCS/veloxchem-workshop/issues/new?title=Issue%20on%20page%20%2Fnotebooks/rh-scf.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/ENCCS/veloxchem-workshop/edit/master/content/notebooks/rh-scf.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ENCCS/veloxchem-workshop/master?urlpath=lab/tree/content/notebooks/rh-scf.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#theory-refresher">
+   Theory refresher
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#atomic-orbital-basis-expansion">
+     Atomic orbital basis expansion
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variational-optimization">
+     Variational optimization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-roothaan-hall-algorithm">
+   The Roothaan-Hall algorithm
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matrix-and-tensor-operations-with-numpy">
+     Matrix and tensor operations with NumPy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#orthogonalization-of-the-ao-basis">
+   Orthogonalization of the AO basis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#initial-guess">
+   Initial guess
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-iterative-procedure">
+   The iterative procedure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#testing-our-implementation">
+   Testing our implementation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>The Roothaan-Hall self-consistent field procedure</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#theory-refresher">
+   Theory refresher
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#atomic-orbital-basis-expansion">
+     Atomic orbital basis expansion
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variational-optimization">
+     Variational optimization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-roothaan-hall-algorithm">
+   The Roothaan-Hall algorithm
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matrix-and-tensor-operations-with-numpy">
+     Matrix and tensor operations with NumPy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#orthogonalization-of-the-ao-basis">
+   Orthogonalization of the AO basis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#initial-guess">
+   Initial guess
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-iterative-procedure">
+   The iterative procedure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#testing-our-implementation">
+   Testing our implementation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="the-roothaan-hall-self-consistent-field-procedure">
+<h1>The Roothaan-Hall self-consistent field procedure<a class="headerlink" href="#the-roothaan-hall-self-consistent-field-procedure" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="theory-refresher">
+<h2>Theory refresher<a class="headerlink" href="#theory-refresher" title="Permalink to this headline">¶</a></h2>
+<p>In Hartree-Fock (HF) theory, we approximate the molecular electronic wavefunction as a single Slater determinant:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+| \Phi \rangle  = 
+| \phi_{1} \cdots \phi_{N} \rangle  = 
+  \frac{1}{\sqrt{N!}} \det
+  \begin{pmatrix}
+  \phi_{1}(x_1) &amp; \cdots &amp; \phi_{N}(x_1) \\
+      \vdots    &amp; \ddots &amp; \vdots \\
+  \phi_{1}(x_N) &amp; \cdots &amp; \phi_{N}(x_N) \\
+  \end{pmatrix},
+\end{split}\]</div>
+<p>with <span class="math notranslate nohighlight">\(N = N_{\alpha} + N_{\beta}\)</span> is the number of electrons and <span class="math notranslate nohighlight">\(\phi_{p}\)</span> the <em>molecular spin-orbitals</em> (MOs). From the Slater-Condon rules, the HF energy is:</p>
+<div class="math notranslate nohighlight">
+\[
+E_{\mathrm{HF}} = 
+\sum_{i=1} \langle \phi_{i} | -\frac{1}{2}\nabla^{2} + V_{\mathrm{Ne}} | \phi_{i} \rangle + 
+\frac{1}{2} \sum_{ij} (\langle \phi_{i}\phi_{j}| \phi_{i}\phi_{j} \rangle - \langle \phi_{i}\phi_{j}| \phi_{j}\phi_{i} \rangle) = 
+\sum_{i}h_{ii} + 
+\frac{1}{2} \sum_{ij} \langle ij | ij \rangle - \langle ij | ji \rangle.
+\]</div>
+<div class="section" id="atomic-orbital-basis-expansion">
+<h3>Atomic orbital basis expansion<a class="headerlink" href="#atomic-orbital-basis-expansion" title="Permalink to this headline">¶</a></h3>
+<p>The MOs will be expanded in a fixed, localized, <em>nonorthogonal</em> atomic orbital (AO) basis:</p>
+<div class="math notranslate nohighlight">
+\[
+\phi^{\sigma}_{p} = \sum_{\mu}^{N_{\mathrm{AO}}} \chi_{\mu}C^{\sigma}_{\mu p} 
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\sigma\)</span> is the spin of the MO: either <span class="math notranslate nohighlight">\(\alpha\)</span> or <span class="math notranslate nohighlight">\(\beta\)</span>. The energy expression becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+E_{\mathrm{HF}}  = 
+\sum_{\mu \nu} D_{\mu\nu} h_{\mu\nu} + 
+\frac{1}{2}
+\sum_{\mu\nu\kappa\lambda} 
+D_{\mu\nu}D_{\kappa\lambda}(\mu\nu|\kappa\lambda) - 
+\frac{a}{2}\sum_{\mu\nu\kappa\lambda} 
+\left[ D^{\alpha}_{\mu\kappa}D^{\alpha}_{\nu\lambda} + D^{\beta}_{\mu\kappa}D^{\beta}_{\nu\lambda} \right] (\mu\nu|\kappa\lambda)
+\]</div>
+<p>with the AO density matrices defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+ D^{\sigma}_{\mu\nu} = \sum_{i=1}^{N_{\sigma}} C_{\mu i}^{\sigma} C_{\nu i}^{\sigma}, \quad D_{\mu\nu} = D^{\alpha}_{\mu\nu} + D^{\beta}_{\mu\nu}.
+\]</div>
+<p>We will develop our HF code for <em>closed-shell molecules</em>, <span class="math notranslate nohighlight">\(N_{\alpha} = N_{\beta} = \frac{N}{2}\)</span>, and adopt a <em>spin-restricted formulation</em>, where <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> spin-orbitals share the same spatial part:</p>
+<div class="math notranslate nohighlight">
+\[
+D^{\alpha}_{\mu\nu} = D^{\beta}_{\mu\nu} = \frac{1}{2} D_{\mu\nu} = \sum_{i=1}^{N/2} C_{\mu i} C_{\nu i}
+\]</div>
+</div>
+<div class="section" id="variational-optimization">
+<h3>Variational optimization<a class="headerlink" href="#variational-optimization" title="Permalink to this headline">¶</a></h3>
+<p>In order to obtain the best possible single-determinant representation in the given AO basis, we optimize the expansion coefficients to obtain a stationary point of the restricted Hatree-Fock energy under the constraint that the MOs remain orthonormal.
+We set up a <em>Lagrangian</em>:</p>
+<div class="math notranslate nohighlight">
+\[
+L_{\mathrm{RHF}} = E_{\mathrm{RHF}} - \sum_{ij}\varepsilon_{ij}[\langle i | j \rangle - \delta_{ij} ],
+\]</div>
+<p>and seek one of its stationary states:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial L_{\mathrm{RHF}}}{\partial C_{\theta p}} = 0.
+\]</div>
+<p>Through some algebra and remembering that the orbitals are <em>invariant</em> to unitary transformation <em>within</em> the occupied and virtual spaces, this is equivalent to the generalized eigenvalue problem:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{F}\mathbf{C} = \mathbf{S}\mathbf{C}\mathbf{\varepsilon},
+\]</div>
+<p>with  <span class="math notranslate nohighlight">\(\mathbf{F}\)</span> the <em>Fock matrix</em>:</p>
+<div class="math notranslate nohighlight">
+\[
+F_{\mu\nu} = 
+h_{\mu\nu} + 
+\sum_{\kappa\lambda} \left[ 2(\mu\nu|\kappa\lambda) - (\mu\kappa|\nu\lambda) \right]D_{\lambda\kappa} =
+h_{\mu\nu} +  2J_{\mu\nu} - K_{\mu\nu}.
+\]</div>
+<p>The eigenvalue problem is <em>nonlinear</em>: the Fock matrix depends on its eigenvectors through the density matrix.</p>
+</div>
+</div>
+<div class="section" id="the-roothaan-hall-algorithm">
+<h2>The Roothaan-Hall algorithm<a class="headerlink" href="#the-roothaan-hall-algorithm" title="Permalink to this headline">¶</a></h2>
+<p>At a glance, the algorithm for solving the <strong>Roothaan-Hall equations</strong> is as follows:</p>
+<p><img alt="Roothaan-Hall self-consistent field iterations" src="../../_images/rh-scf.svg" /></p>
+<p>We will start our implementation by creating a molecule and assigning it a basis set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">veloxchem</span> <span class="k">as</span> <span class="nn">vlx</span>
+
+<span class="n">h2o_xyz</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;3</span>
+<span class="s2">water                                                                                                                          </span>
+<span class="s2">O    0.000000000000        0.000000000000        0.000000000000                         </span>
+<span class="s2">H    0.000000000000        0.740848095288        0.582094932012                         </span>
+<span class="s2">H    0.000000000000       -0.740848095288        0.582094932012</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">mol</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">from_xyz_string</span><span class="p">(</span><span class="n">h2o_xyz</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mol</span><span class="o">.</span><span class="n">get_string</span><span class="p">())</span>
+
+<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="s2">&quot;sto-3g&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">basis</span><span class="o">.</span><span class="n">get_string</span><span class="p">(</span><span class="n">mol</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we generate all necessary one-electron integrals: overlap, kinetic, and nuclear potential. Note that we <em>immediately</em> convert all the integrals to NumPy arrays using the <code class="docutils literal notranslate"><span class="pre">to_numpy</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ovldrv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">OverlapIntegralsDriver</span><span class="p">()</span>
+<span class="n">ovl</span> <span class="o">=</span> <span class="n">ovldrv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">ovl</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kindrv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">KineticEnergyIntegralsDriver</span><span class="p">()</span>
+<span class="n">kin</span> <span class="o">=</span> <span class="n">kindrv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">kin</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">naidrv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">NuclearPotentialIntegralsDriver</span><span class="p">()</span>
+<span class="n">nai</span> <span class="o">=</span> <span class="n">naidrv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+<span class="n">V</span> <span class="o">=</span> <span class="o">-</span><span class="n">nai</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, we generate the ERI 4-index tensor. When using the <code class="docutils literal notranslate"><span class="pre">compute_in_mem</span></code> method, VeloxChem will return a NumPy array directly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eridrv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ElectronRepulsionIntegralsDriver</span><span class="p">()</span>
+<span class="n">eri</span> <span class="o">=</span> <span class="n">eridrv</span><span class="o">.</span><span class="n">compute_in_mem</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="matrix-and-tensor-operations-with-numpy">
+<h3>Matrix and tensor operations with NumPy<a class="headerlink" href="#matrix-and-tensor-operations-with-numpy" title="Permalink to this headline">¶</a></h3>
+<p>We will leverage the <a class="reference external" href="https://numpy.org/">NumPy library</a> for all our linear algebra needs. Before moving on to the implementation of the actual algorithm, we will review the functions that we will use.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For matrix multiplications and, in general, tensor contractions, it is very convenient to use <a class="reference external" href="https://numpy.org/devdocs/reference/generated/numpy.einsum.html">np.einsum</a>. This function accepts a string, definining the operation to perform and a variadic pack of operands. The string uses the <a class="reference external" href="https://en.wikipedia.org/wiki/Einstein_notation">Einstein summation convention</a>.
+For example, the matrix-matrix multiplication:</p>
+<div class="math notranslate nohighlight">
+\[
+C_{ij} = \sum_{k}A_{ik}B_{kj}
+\]</div>
+<p>is performed with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;ik,kj-&gt;ij&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>NumPy includes functions for linear algebra, such as decompositions and direct linear solvers. These are in the <code class="docutils literal notranslate"><span class="pre">linalg</span></code> submodule. For example, <code class="docutils literal notranslate"><span class="pre">np.linalg.eigh</span></code> performs the full diagonalization of a Hermitian matrix and return its eigenvalues <em>and</em> its eigenvectors:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">v</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We will also need to take <em>slices</em> of matrices and tensors and <a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.indexing.html">advanced indexing</a> in NumPy will help with this task. For example, to select the columns between indices <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> in a matrix:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">slice</span> <span class="o">=</span> <span class="n">U</span><span class="p">[:,</span> <span class="n">i</span><span class="p">:</span><span class="n">j</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>the single <code class="docutils literal notranslate"><span class="pre">:</span></code> means to select all rows.</p>
+</div>
+</div>
+<div class="section" id="orthogonalization-of-the-ao-basis">
+<h2>Orthogonalization of the AO basis<a class="headerlink" href="#orthogonalization-of-the-ao-basis" title="Permalink to this headline">¶</a></h2>
+<p>The Roothaan-Hall equations are a generalized eigenvalue problem, due to the nonorthogonality of the AO basis. In order to use the <code class="docutils literal notranslate"><span class="pre">np.linalg.eigh</span></code> function from NumPy, we first need to obtain the <em>orthogonal</em> AO (OAO) basis, that is, find a transformation matrix <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> such that:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{X}^{t} \mathbf{S} \mathbf{X} = \mathbf{1}
+\]</div>
+<p>In the absence of linear dependencies in the AO basis, the overlap matrix is symmetric (and positive-definite) It is thus diagonalizable in a basis of its eigenvectors:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{S} = \mathbf{U}\mathbf{\sigma}\mathbf{U}^{t}
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(\mathbf{\sigma} = \mathrm{diag}(\sigma_{0}, \cdots, \sigma_{n})\)</span> the diagonal matrix of eigenvalues and <span class="math notranslate nohighlight">\(\mathbf{U}\)</span> its eigenvectors. Any function of the overlap matrix can be defined in terms of its eigenvalues and eigenvectors. This gives us two choices for the orthogonalization:</p>
+<ul class="simple">
+<li><p><strong>Symmetric (Löwdin)</strong>, with <span class="math notranslate nohighlight">\(\mathbf{X} = \mathbf{U}\mathbf{\sigma}^{-\frac{1}{2}}\mathbf{U}^{t}\)</span>.</p></li>
+<li><p><strong>Canonical</strong>, with <span class="math notranslate nohighlight">\(\mathbf{X} = \mathbf{U}\mathbf{\sigma}^{-\frac{1}{2}}\)</span>.</p></li>
+</ul>
+<p>In both cases, we achieve a factorization of the overlap matrix as <span class="math notranslate nohighlight">\(\mathbf{S} = \left(\mathbf{X}^{t}\mathbf{X}\right)^{-1}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">sigma</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+
+<span class="c1"># TODO form the X matrix for *symmetric* orthogonalization</span>
+<span class="n">X</span> <span class="o">=</span> 
+
+<span class="c1"># check that the orthogonalizer is correct</span>
+<span class="c1"># TODO re-form S from the orthogonalizer matrix</span>
+<span class="n">test_S</span> <span class="o">=</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">test_S</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="initial-guess">
+<h2>Initial guess<a class="headerlink" href="#initial-guess" title="Permalink to this headline">¶</a></h2>
+<p>We use the very simple core guess: the initial MO coefficients are the eigenvectors of the core Hamiltonian: <span class="math notranslate nohighlight">\(h = T + V\)</span>. The algoritm goes as follows:</p>
+<ol class="simple">
+<li><p>Transform the core Hamiltonian <span class="math notranslate nohighlight">\(h\)</span> to OAO basis.</p></li>
+<li><p>Diagonalize it.</p></li>
+<li><p>Backtransform the coefficients to AO basis.</p></li>
+<li><p>Form the density matrix using <span class="math notranslate nohighlight">\(D_{\mu\nu} = \sum_{i=1}^{N/2} C_{\mu i} C_{\nu i}\)</span>.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N_O</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">number_of_electrons</span><span class="p">()</span> <span class="o">//</span> <span class="mi">2</span>
+
+<span class="c1"># TODO form the core Hamiltonian</span>
+<span class="n">h</span> <span class="o">=</span>
+<span class="c1"># TODO transform to orthogonal AO basis using the orthogonalizer X</span>
+<span class="n">h_OAO</span> <span class="o">=</span>
+<span class="c1"># TODO diagonalize</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">C_OAO</span> <span class="o">=</span>
+<span class="c1"># TODO backtransform coefficients from OAO basis to AO basis</span>
+<span class="n">C</span> <span class="o">=</span> 
+<span class="c1"># TODO form  density matrix from occupied slice of coefficients in AO basis</span>
+<span class="n">D</span> <span class="o">=</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can check that the density matrix so produced is idempotent:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{D}\mathbf{S}\mathbf{D} = \mathbf{D}
+\]</div>
+<p>and normalized to the number of electrons:</p>
+<div class="math notranslate nohighlight">
+\[
+N = 2\,\mathrm{tr} \, \mathbf{D}\mathbf{S} = 2 \sum_{\mu\nu}D_{\mu\nu}S_{\nu\mu}
+\]</div>
+<p>These checks will ensure that our implementation produces sane density matrices!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TODO check that the density matrix is normalized to the number of electrons
+np.testing.assert_allclose(???, mol.number_of_electrons(), atol=1e-10)
+# TODO check that the density matrix is idempotent
+np.testing.assert_allclose(???, D, atol=1e-10)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The initial energy is:</p>
+<div class="math notranslate nohighlight">
+\[
+E^{[0]} = E_{\mathrm{NN}} + \mathrm{tr}\,\mathbf{h}\mathbf{D}^{[0]}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">E_NN</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">nuclear_repulsion_energy</span><span class="p">()</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;pq,qp-&gt;&quot;</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span> <span class="o">+</span> <span class="n">E_NN</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Initial SCF energy: </span><span class="si">{</span><span class="n">E</span><span class="si">:</span><span class="s2">20.12f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="the-iterative-procedure">
+<h2>The iterative procedure<a class="headerlink" href="#the-iterative-procedure" title="Permalink to this headline">¶</a></h2>
+<p>With a guess density at hand, we can start the Roothaan-Hall self-consistent iterations. We will run until a convergence criterion is met, <code class="docutils literal notranslate"><span class="pre">conv_thresh</span></code>, or until we exceed the maximum number of iterations, <code class="docutils literal notranslate"><span class="pre">max_iter</span></code>.
+We choose the <em>norm of the difference between two successive density matrices</em>, <span class="math notranslate nohighlight">\(\| \mathbf{D}^{[n+1]} - \mathbf{D}^{[n]} \|\)</span>,  as convergence criterion.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_iter</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">conv_thresh</span> <span class="o">=</span> <span class="mf">1e-6</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>At each iteration, we form the <em>Coulomb</em>, <span class="math notranslate nohighlight">\(J\)</span>, and <em>exchange</em>, <span class="math notranslate nohighlight">\(K\)</span>, matrices from a contraction of the density matrix and the pre-computed ERI tensor:</p>
+<div class="math notranslate nohighlight">
+\[
+  J^{[n]}_{\mu\nu} = \sum_{\kappa\lambda}(\mu\nu|\kappa\lambda)D_{\lambda\kappa}^{[n]}
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+  K^{[n]}_{\mu\nu} = \sum_{\kappa\lambda}(\mu\kappa|\nu\lambda)D_{\lambda\kappa}^{[n]}
+\]</div>
+<p>Finally, the energy is:</p>
+<div class="math notranslate nohighlight">
+\[
+E^{[n]} = E_{\mathrm{NN}} + 
+ \mathrm{tr}\,(\mathbf{h} + \mathbf{F}^{[n]})\mathbf{D}^{[n]}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;# it.    SCF energy (E_h)    |Delta_E|       Delta_D&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  0  </span><span class="si">{</span><span class="n">E</span><span class="si">:</span><span class="s2">20.12f</span><span class="si">}</span><span class="s2">        N/A            N/A&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># TODO build Fock matrix in AO basis</span>
+    <span class="n">F</span> <span class="o">=</span> 
+    
+    <span class="c1"># TODO transform Fock matrix to OAO basis using the orthogonalizer X</span>
+    <span class="n">F_OAO</span> <span class="o">=</span> 
+    
+    <span class="c1"># TODO diagonalize F_OAO</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">C_OAO</span> <span class="o">=</span> 
+    
+    <span class="c1"># TODO backtransform coefficients to AO basis</span>
+    <span class="n">C</span> <span class="o">=</span>
+    
+    <span class="c1"># TODO form density matrix from occupied slice of coefficients</span>
+    <span class="n">D_</span> <span class="o">=</span>
+    
+    <span class="c1"># evaluate energy</span>
+    <span class="n">E_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;pq,qp-&gt;&quot;</span><span class="p">,</span> <span class="n">h</span><span class="o">+</span><span class="n">F</span><span class="p">,</span> <span class="n">D_</span><span class="p">)</span> <span class="o">+</span> <span class="n">E_NN</span>
+    
+    <span class="c1"># TODO compute convergence metric</span>
+    <span class="n">Delta_D</span> <span class="o">=</span>
+    
+    <span class="c1"># print iteration stats</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">it</span><span class="si">:</span><span class="s2">&gt;2d</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">E_</span><span class="si">:</span><span class="s2">20.12f</span><span class="si">}</span><span class="s2">   </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">E_</span> <span class="o">-</span> <span class="n">E</span><span class="p">)</span><span class="si">:</span><span class="s2">7.5e</span><span class="si">}</span><span class="s2">    </span><span class="si">{</span><span class="n">Delta_D</span><span class="si">:</span><span class="s2">7.5e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># update current density and current energy</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">D_</span>
+    <span class="n">E</span> <span class="o">=</span> <span class="n">E_</span>
+    
+    <span class="c1"># TODO check if convergence threshold was met</span>
+    
+    <span class="c1"># TODO fail if maximum number of iterations was exceeded without achieving convergence</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="testing-our-implementation">
+<h2>Testing our implementation<a class="headerlink" href="#testing-our-implementation" title="Permalink to this headline">¶</a></h2>
+<p>Let’s compare the result of our own SCF with that obtainable from VeloxChem.</p>
+<div class="cell tag_hide_output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scfdrv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
+<span class="n">scfdrv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+<span class="n">ref_E</span> <span class="o">=</span> <span class="n">scfdrv</span><span class="o">.</span><span class="n">get_scf_energy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Difference with reference result: </span><span class="si">{</span><span class="n">E</span><span class="o">-</span><span class="n">ref_E</span><span class="si">:</span><span class="s2">5.8e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Lehtola, S.; Blockhuys, F.; Van Alsenoy, C. An Overview of Self-Consistent Field Calculations Within Finite Basis Sets. Molecules 2020, 25 (5). https://doi.org/10.3390/molecules25051218.</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ENCCS/veloxchem-workshop",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../next-steps/" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">More advanced usage of the VeloxChem API</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../mp2/" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Møller-Plesset perturbation theory to second order</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The contributors<br/>
+    
+        &copy; Copyright 2021, The contributors.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,584 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exciton calculation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/minipres.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Geometry optimizations and semiempirical Hamiltonians" href="../xTB-geomeTRIC/" />
+    <link rel="prev" title="Complex polarization propagator in the X-ray region" href="../x-ray-cpp/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/ENCCS-PDC-logos.jpg" class="logo" alt="logo">
+      
+      
+    </a>
+</div><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../">
+   VeloxChem: quantum chemistry from laptop to HPC
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../setup/">
+   Setting up your system
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  The lesson
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/first-steps/">
+   First steps with VeloxChem
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/next-steps/">
+   More advanced usage of the VeloxChem API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/rh-scf/">
+   The Roothaan-Hall self-consistent field procedure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/mp2/">
+   Møller-Plesset perturbation theory to second order
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../hpc-setup/">
+   Setting up VeloxChem on a HPC cluster
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../x-ray-cpp/">
+   Complex polarization propagator in the X-ray region
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Exciton calculation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../xTB-geomeTRIC/">
+   Geometry optimizations and semiempirical Hamiltonians
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../quick-reference/">
+   Quick Reference
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../zbibliography/">
+   Bibliography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guide/">
+   Instructor’s guide
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/exciton.rst.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ENCCS/veloxchem-workshop"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ENCCS/veloxchem-workshop/issues/new?title=Issue%20on%20page%20%2Fexciton.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/ENCCS/veloxchem-workshop/edit/master/content/exciton.rst"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-stacked-base-pairs">
+   System: stacked base-pairs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#input-file">
+   Input file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Exciton calculation</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-stacked-base-pairs">
+   System: stacked base-pairs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#input-file">
+   Input file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="exciton-calculation">
+<span id="exciton"></span><h1>Exciton calculation<a class="headerlink" href="#exciton-calculation" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Learn how to run an <em>ab initio</em> exciton model calculation.</p></li>
+</ul>
+</div>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>Run an <em>ab initio</em> exciton model calculation.</p></li>
+<li><p>Plot the UV-Vis absorption and ECD spectra.</p></li>
+<li><p>Analyze the character of the excitations.</p></li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise we will use an <em>ab initio</em> exciton model to compute
+the UV-Vis absorption and electronic ciruclar dichroism (ECD) of
+stacked base-pairs.</p>
+<p>The Frenkel exciton model describes the electronic structure of
+multi-chromophoric system by dividing the system into subgroups.
+It has been most successful in the weak-coupling limit where
+the excitons are localized on inidividual chromophores.
+The <em>ab initio</em> exciton model expands the Frenkel exciton model by
+taking into account charge-transfer between the chromophores, and
+is therefore more useful for studies of singly excited states.
+You may read more in <a class="reference external" href="https://pubs.acs.org/doi/abs/10.1021/acs.jctc.7b00171">this paper</a>
+<span id="id1">[<a class="reference internal" href="../zbibliography/#id6" title="Xin Li, Robert M Parrish, Fang Liu, Sara I L Kokkila Schumacher, and Todd J Martínez. An Ab Initio Exciton Model Including Charge-Transfer Excited States. J. Chem. Theory Comput., 13(8):3493–3504, August 2017. URL: http://dx.doi.org/10.1021/acs.jctc.7b00171, doi:10.1021/acs.jctc.7b00171.">LPL+17</a>]</span></p>
+<p>In the exciton model, the Hamiltonian adopts the following matrix form</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{H} =
+\sum_I^N E_I |\phi_I\rangle \langle \phi_I| +
+\sum_{I \ne J}^N V_{IJ} |\phi_I\rangle \langle \phi_J|\]</div>
+<p>where <span class="math notranslate nohighlight">\(N\)</span> is the total number of excited states, <span class="math notranslate nohighlight">\(\phi_I\)</span> is
+the <span class="math notranslate nohighlight">\(I\)</span>-th excitonic basis function, and <span class="math notranslate nohighlight">\(E\)</span> and <span class="math notranslate nohighlight">\(V\)</span> are the
+excitation energies and couplings, respectively.
+Diagonalization of the Hamiltonian gives the eigenvalues and
+eigenvectors for the excited states.</p>
+</div>
+<div class="section" id="system-stacked-base-pairs">
+<h2>System: stacked base-pairs<a class="headerlink" href="#system-stacked-base-pairs" title="Permalink to this headline">¶</a></h2>
+<div style="height: 400px; width: 600px; position: relative;" class='viewer_3Dmoljs' data-href='../_static/stacked-base-pairs.xyz' data-type='xyz' data-backgroundcolor='0xffffff' data-style='stick'></div></div>
+<div class="section" id="input-file">
+<h2>Input file<a class="headerlink" href="#input-file" title="Permalink to this headline">¶</a></h2>
+<p>Below is the input file for <em>ab initio</em> exciton model calculation of stacked
+base-pairs. You can read more about the VeloxChem input keywords in
+<a class="reference external" href="https://docs.veloxchem.org/inputs/keywords.html">this page</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@jobs
+task: exciton
+@end
+
+@method settings
+xcfun: b3lyp
+basis: cc-pvdz
+@end
+
+<span class="hll">@exciton
+</span><span class="hll">fragments: 4
+</span><span class="hll">atoms_per_fragment: 18
+</span><span class="hll">nstates: 5
+</span><span class="hll">ct_nocc: 1
+</span><span class="hll">ct_nvir: 1
+</span><span class="hll">@end
+</span>
+@molecule
+charge: 0
+multiplicity: 1
+xyz:
+!
+ C        -6.660852       -0.537882        1.153909
+ N        -5.464736       -1.279376        0.755959
+ C        -5.401171       -2.560318        0.247397
+ N        -4.174046       -3.023620        0.133321
+ C        -3.381917       -1.986143        0.602941
+ C        -1.992881       -1.833262        0.772320
+ N        -1.082150       -2.773804        0.430539
+ N        -1.561016       -0.663937        1.284758
+ C        -2.433159        0.310896        1.615380
+ N        -3.755877        0.269284        1.515634
+ C        -4.169954       -0.898312        1.003955
+ H        -6.251667        0.367975        1.602217
+ H        -6.307739       -3.093503        0.000510
+ H        -0.105552       -2.647436        0.711625
+ H        -1.428402       -3.703654        0.256126
+ H        -1.977553        1.222109        1.990935
+ H        -7.232028       -0.272547        0.264277
+ H        -7.198697       -1.104105        1.914241
+!
+ C         2.851050        2.995046        2.599348
+ N         2.527756        1.602753        2.308882
+ C         3.532227        0.664719        2.312269
+ C         3.334055       -0.650927        2.042128
+ C         4.427868       -1.675290        2.122996
+ C         1.991369       -1.073522        1.662818
+ O         1.695829       -2.225702        1.304567
+ N         1.033632       -0.081482        1.723397
+ C         1.202795        1.237840        2.079265
+ O         0.267775        2.020999        2.194386
+ H         2.038764        3.665857        2.318009
+ H         4.514450        1.063598        2.536881
+ H         4.468845       -2.269173        1.208202
+ H         5.402713       -1.203674        2.275485
+ H         4.243922       -2.374298        2.949162
+ H         0.028442       -0.344669        1.510910
+ H         3.059650        3.104482        3.663610
+ H         3.756601        3.276716        2.061996
+!
+ C        -4.314093        3.585540       -0.745962
+ N        -3.776236        2.345248       -1.222725
+ C        -4.429311        1.234574       -1.724072
+ N        -3.619950        0.263430       -2.082104
+ C        -2.355203        0.754373       -1.794323
+ C        -1.062681        0.209500       -1.941029
+ N        -0.829700       -1.011471       -2.484749
+ N        -0.016323        0.966928       -1.550945
+ C        -0.232699        2.193134       -1.027881
+ N        -1.398793        2.802091       -0.844023
+ C        -2.426789        2.040798       -1.247281
+ H        -3.476672        4.252611       -0.541847
+ H        -5.507670        1.210043       -1.788692
+ H         0.097505       -1.414764       -2.327103
+ H        -1.616525       -1.643972       -2.460000
+ H         0.667576        2.728356       -0.738854
+ H        -4.949051        4.025189       -1.515114
+ H        -4.870540        3.409636        0.174609
+!
+ C         5.998154        1.457635       -0.884522
+ N         4.880476        0.546557       -1.110671
+ C         5.131080       -0.800139       -1.218262
+ C         4.175422       -1.720603       -1.495703
+ C         4.420389       -3.200491       -1.511467
+ C         2.819732       -1.249071       -1.750005
+ O         1.900417       -1.986038       -2.139201
+ N         2.619774        0.100602       -1.531205
+ C         3.575740        1.051488       -1.217952
+ O         3.304363        2.231635       -1.062168
+ H         5.639472        2.486207       -0.926066
+ H         6.167047       -1.075919       -1.059977
+ H         4.077679       -3.645564       -2.450382
+ H         5.481281       -3.429544       -1.370436
+ H         3.845849       -3.678198       -0.708469
+ H         1.625787        0.452603       -1.593169
+ H         6.431836        1.263647        0.096542
+ H         6.752907        1.304911       -1.655985
+@end
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Submit a job</p>
+<blockquote>
+<div><p>Runs the above example.
+On Beskow this calculation can finish within 15 minutes on
+2 nodes. You can choose to run on more nodes.</p>
+</div></blockquote>
+</li>
+<li><p>Plot the spectrum</p>
+<blockquote>
+<div><p>The excitation energies, oscillator strengths, and rotatory strengths will be
+printed at the end of the output file.
+You can plot the UV-Vis and ECD spectra by line broadening using e.g.
+<a class="reference external" href="https://en.wikipedia.org/wiki/Gaussian_function">Gaussian function</a>.</p>
+</div></blockquote>
+</li>
+<li><p>Examine the character of the excitations</p>
+<blockquote>
+<div><p>The character of the excitations will also be printed at the end of the output
+file. Find out the characters of the important excitations.</p>
+</div></blockquote>
+</li>
+<li><p>Compare with full TDDFT-TDA result</p>
+<blockquote>
+<div><p>Compare the spectra from exciton model and from full TDDFT-TDA calculation
+(<a class="reference download internal" download="" href="../_downloads/ffb1045975f5c5b5851c03fbe4a8389a/tddft-tda.out"><code class="xref download docutils literal notranslate"><span class="pre">link</span> <span class="pre">to</span> <span class="pre">TDDFT-TDA</span> <span class="pre">output</span> <span class="pre">file</span></code></a>).</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ENCCS/veloxchem-workshop",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../x-ray-cpp/" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Complex polarization propagator in the X-ray region</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../xTB-geomeTRIC/" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Geometry optimizations and semiempirical Hamiltonians</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The contributors<br/>
+    
+        &copy; Copyright 2021, The contributors.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

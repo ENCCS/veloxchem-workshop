@@ -1,0 +1,1164 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Møller-Plesset perturbation theory to second order</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/minipres.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="Setting up VeloxChem on a HPC cluster" href="../../hpc-setup/" />
+    <link rel="prev" title="The Roothaan-Hall self-consistent field procedure" href="../rh-scf/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/ENCCS-PDC-logos.jpg" class="logo" alt="logo">
+      
+      
+    </a>
+</div><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../">
+   VeloxChem: quantum chemistry from laptop to HPC
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../setup/">
+   Setting up your system
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  The lesson
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../first-steps/">
+   First steps with VeloxChem
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../next-steps/">
+   More advanced usage of the VeloxChem API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../rh-scf/">
+   The Roothaan-Hall self-consistent field procedure
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Møller-Plesset perturbation theory to second order
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../hpc-setup/">
+   Setting up VeloxChem on a HPC cluster
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../x-ray-cpp/">
+   Complex polarization propagator in the X-ray region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../exciton/">
+   Exciton calculation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../xTB-geomeTRIC/">
+   Geometry optimizations and semiempirical Hamiltonians
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../quick-reference/">
+   Quick Reference
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../zbibliography/">
+   Bibliography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../guide/">
+   Instructor’s guide
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notebooks/mp2.ipynb.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ENCCS/veloxchem-workshop"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ENCCS/veloxchem-workshop/issues/new?title=Issue%20on%20page%20%2Fnotebooks/mp2.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/ENCCS/veloxchem-workshop/edit/master/content/notebooks/mp2.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ENCCS/veloxchem-workshop/master?urlpath=lab/tree/content/notebooks/mp2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#theory-refresher">
+   Theory refresher
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#formal-rayleigh-schrodinger-perturbation-theory">
+     Formal Rayleigh-Schrödinger perturbation theory
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#moller-plesset-partitioning-and-second-order-energy">
+     Møller-Plesset partitioning and second order energy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation">
+   Implementation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-integral-transformation">
+   The Integral transformation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-mp2-energy-correction">
+   The MP2 energy correction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#an-alternative-implmentation-using-np-einsum">
+   An alternative implmentation using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     np.einsum
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus-the-mp2-one-particle-density-matrix">
+   Bonus: the MP2 one-particle density matrix
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lagrangian-amplitudes-and-multipliers">
+     Lagrangian, amplitudes, and multipliers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-unrelaxed-mp2-density-matrix">
+     The
+     <em>
+      unrelaxed
+     </em>
+     MP2 density matrix
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#natural-occupations-and-natural-orbitals">
+     Natural occupations and natural orbitals
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Møller-Plesset perturbation theory to second order</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#theory-refresher">
+   Theory refresher
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#formal-rayleigh-schrodinger-perturbation-theory">
+     Formal Rayleigh-Schrödinger perturbation theory
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#moller-plesset-partitioning-and-second-order-energy">
+     Møller-Plesset partitioning and second order energy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation">
+   Implementation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-integral-transformation">
+   The Integral transformation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-mp2-energy-correction">
+   The MP2 energy correction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#an-alternative-implmentation-using-np-einsum">
+   An alternative implmentation using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     np.einsum
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus-the-mp2-one-particle-density-matrix">
+   Bonus: the MP2 one-particle density matrix
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lagrangian-amplitudes-and-multipliers">
+     Lagrangian, amplitudes, and multipliers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-unrelaxed-mp2-density-matrix">
+     The
+     <em>
+      unrelaxed
+     </em>
+     MP2 density matrix
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#natural-occupations-and-natural-orbitals">
+     Natural occupations and natural orbitals
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="moller-plesset-perturbation-theory-to-second-order">
+<h1>Møller-Plesset perturbation theory to second order<a class="headerlink" href="#moller-plesset-perturbation-theory-to-second-order" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="theory-refresher">
+<h2>Theory refresher<a class="headerlink" href="#theory-refresher" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="formal-rayleigh-schrodinger-perturbation-theory">
+<h3>Formal Rayleigh-Schrödinger perturbation theory<a class="headerlink" href="#formal-rayleigh-schrodinger-perturbation-theory" title="Permalink to this headline">¶</a></h3>
+<p>We want to solve the time-independent Schrödinger equation:</p>
+<div class="math notranslate nohighlight">
+\[
+H \Psi = E \Psi
+\]</div>
+<p>In perturbation theory, the Hamiltonian is partitioned into <em>zeroth-order</em> and <em>perturbation</em> terms:</p>
+<div class="math notranslate nohighlight">
+\[
+(H_0 + \lambda V) \Psi = E \Psi
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(\lambda\)</span> the coupling strength of the perturbation. We assume that the complete spectrum of the zeroth-order Hamiltonian is known:</p>
+<div class="math notranslate nohighlight">
+\[
+H_0 \Psi^{(0)}_{n} = E_{n}^{(0)} \Psi^{(0)}_{n}
+\]</div>
+<p>The energy and wavefunction are expanded in a formal power series in <span class="math notranslate nohighlight">\(\lambda\)</span> and terms to the same order are collected on the left- and right-hand sides:</p>
+<div class="math notranslate nohighlight">
+\[
+(H_0 + \lambda V) \left( \sum_{k} \lambda^{k} \Psi_{n}^{(k)} \right) = \left( \sum_{k} \lambda^{k} E_{n}^{(k)} \right)  \left(\sum_{j} \lambda^{j} \Psi_{n}^{(j)}\right).
+\]</div>
+<p>Thus:</p>
+<div class="math notranslate nohighlight">
+\[
+(E_{n}^{(0)} - H_{0})\Psi_{n}^{(m)} = V\Psi_{n}^{(m-1)} - \sum_{l = 0}^{m-1} E_{n}^{(m-l)}\Psi_{n}^{(l)}.
+\]</div>
+<p>Energy corrections and perturbative expansion coefficients, <span class="math notranslate nohighlight">\(a_{kn}^{(m)} \equiv \langle \Psi_{k}^{(0)} | \Psi_{n}^{(m)} \rangle\)</span> , for the wavefunction are obtained by projection onto the set of known zeroth-order eigenfunctions:</p>
+<div class="math notranslate nohighlight">
+\[
+E_{n}^{(m)} = \left\langle \Psi_{n}^{(0)} \left| V \right| \Psi_{n}^{(m-1)} \right\rangle,
+\]</div>
+<p>and:</p>
+<div class="math notranslate nohighlight">
+\[
+[E_{n}^{(0)} - E_{n}^{(0)}]a_{kn}^{(m)} = 
+\sum_{j} \langle \Psi_{k}^{(0)} | V | \Psi_{j}^{(0)} \rangle a_{jn}^{(m-1)} - 
+\sum_{l = 0}^{m-1} E_{n}^{(m-l)} a_{kn}^{(l)},\quad 
+a_{kn}^{(0)} = \delta_{kn},\,\,a_{nn}^{(m)} = \delta_{m0}
+\]</div>
+</div>
+<div class="section" id="moller-plesset-partitioning-and-second-order-energy">
+<h3>Møller-Plesset partitioning and second order energy<a class="headerlink" href="#moller-plesset-partitioning-and-second-order-energy" title="Permalink to this headline">¶</a></h3>
+<p>In general, the partitioning of the Hamiltonian can be achieved in a number of ways. In molecular electronic structure theory, <span class="math notranslate nohighlight">\(H\)</span> is the Born-Oppenheimer, many-body, molecular electronic Hamiltonian. The Møller-Plesset partitioning is probably the most common, since it follows quite naturally when first approximating the desired ground state in terms of a <em>single reference determinant</em>. The Hamiltonian is in fact rewritten as:</p>
+<div class="math notranslate nohighlight">
+\[
+H = F + \Phi
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(F\)</span> is the Fock operator and <span class="math notranslate nohighlight">\(\Phi\)</span> is the so-called <em>fluctuation potential</em>. <span class="math notranslate nohighlight">\(F\)</span> is a one-body operator whose spectrum consists of all determinants that can be built from excitation of the reference <span class="math notranslate nohighlight">\(| 0 \rangle\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+F | 0 \rangle  = E_{0}^{(0)}| 0 \rangle, \quad
+F\left|_{ij\ldots} ^{ab\ldots} \right\rangle =
+\left(E_{0}^{(0)} + \varepsilon^{ab\cdots}_{ij\cdots}  \right)
+\left|_{ij\ldots} ^{ab\ldots} \right\rangle,
+\]</div>
+<p>where the <em>zeroth-order energy</em> and the <em>orbital energy denominators</em> are:</p>
+<div class="math notranslate nohighlight">
+\[
+E_{0}^{(0)} = \sum_{i} \varepsilon_{i},\quad
+\varepsilon^{ab\cdots}_{ij\cdots} = \varepsilon_{a} + \varepsilon_{b} + \cdots - \varepsilon_{i} - \varepsilon_{j} - \cdots
+\]</div>
+<p>The fluctuation potential is a two-body operator. With this partinioning, the zeroth-order energy is the sum of orbital energies. The first-order correction is:</p>
+<div class="math notranslate nohighlight">
+\[
+E_0^{(1)} = \left\langle 0 \left| \Phi \right| 0 \right\rangle = -\frac{1}{2} \sum_{ij} \langle ij \| ij \rangle
+\]</div>
+<p>that is, the energy of the reference single determinant is <em>correct</em> throught first order in the perturbative series: <span class="math notranslate nohighlight">\(E_{\mathrm{ref}} = E_{0}^{(0)} + E_0^{(1)}\)</span>.</p>
+<p>The first-order wavefunction is obtained from the general RSPT expression. In a basis of molecular spin-orbitals:</p>
+<div class="math notranslate nohighlight">
+\[
+| \Psi^{(1)} \rangle = -\frac{1}{4}\sum_{ij}^{N_{\mathrm{O}}} \sum_{ab}^{N_{\mathrm{V}}} 
+\frac{\langle ab \| ij \rangle}{\varepsilon_{ij}^{ab}} |_{ij}^{ab}\rangle,
+\]</div>
+<p>where the <em>orbital energy denominator</em> is: <span class="math notranslate nohighlight">\(\varepsilon_{ij}^{ab} = \varepsilon_{i} + \varepsilon_{j} -\varepsilon_{a} - \varepsilon_{b} \)</span>. The second order energy correction follows:</p>
+<div class="math notranslate nohighlight">
+\[
+E_{0}^{(2)} \equiv 
+E_{\mathrm{MP2}} = -
+\frac{1}{4} 
+\sum_{ij}^{N_{\mathrm{O}}} \sum_{ab}^{N_{\mathrm{V}}} 
+\frac{\langle ij \| ab \rangle \langle ab \| ij \rangle}{\varepsilon_{ij}^{ab}}.
+\]</div>
+<p>For a closed-shell, restricted reference using real MOs:</p>
+<div class="math notranslate nohighlight">
+\[
+E_{\mathrm{MP2}} = -
+\sum_{ij}^{N_{\mathrm{O}}} \sum_{ab}^{N_{\mathrm{V}}} 
+\frac{\langle ij | ab \rangle}{\varepsilon_{ij}^{ab}}
+[ 2 \langle ij | ab \rangle - \langle ij | ba \rangle ],
+\]</div>
+<p>which we can further rearrange into to two terms, <em>opposite-spin</em> and <em>same-spin</em>:</p>
+<div class="math notranslate nohighlight">
+\[
+E_{\mathrm{MP2}} = -
+\sum_{ij}^{N_{\mathrm{O}}} \sum_{ab}^{N_{\mathrm{V}}} 
+\frac{\langle ij | ab \rangle\langle ij | ab \rangle}{\varepsilon_{ij}^{ab}} -
+\sum_{ij}^{N_{\mathrm{O}}} \sum_{ab}^{N_{\mathrm{V}}} 
+\frac{\langle ij | ab \rangle[ \langle ij | ab \rangle - \langle ij | ba \rangle ]}{\varepsilon_{ij}^{ab}} = 
+E_{\mathrm{MP2}}^{\mathrm{OS}} + E_{\mathrm{MP2}}^{\mathrm{SS}}.
+\]</div>
+</div>
+</div>
+<div class="section" id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<p>To compute <span class="math notranslate nohighlight">\(E_{\mathrm{MP2}}\)</span> we need to:</p>
+<ol class="simple">
+<li><p>Obtain the reference closed-shell determinant from a Hartree-Fock calculation.</p></li>
+<li><p>Transform the AO basis ERI tensor to MO basis.</p></li>
+<li><p>Assemble the energy denominators.</p></li>
+<li><p>Combine the results of steps 2 and 3 to form the perturbative correction.</p></li>
+</ol>
+<p><img alt="Obtaining the MP2 energy correction" src="../../_images/mp2.svg" /></p>
+<p>We start with the declaration of the usual water molecule and its basis set. We also perform the SCF calculation with the <code class="docutils literal notranslate"><span class="pre">ScfRestrictedDriver</span></code>.</p>
+<div class="cell tag_hide_output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">veloxchem</span> <span class="k">as</span> <span class="nn">vlx</span>
+
+<span class="n">h2o_xyz</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;3</span>
+<span class="s2">water                                                                                                                          </span>
+<span class="s2">O    0.000000000000        0.000000000000        0.000000000000                         </span>
+<span class="s2">H    0.000000000000        0.740848095288        0.582094932012                         </span>
+<span class="s2">H    0.000000000000       -0.740848095288        0.582094932012</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">mol</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">from_xyz_string</span><span class="p">(</span><span class="n">h2o_xyz</span><span class="p">)</span>
+
+<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="s2">&quot;cc-pvdz&quot;</span><span class="p">)</span>
+
+<span class="n">scfdrv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
+<span class="n">scfdrv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Warning * Environment variable OMP_NUM_THREADS not set.
+* Warning * Setting OMP_NUM_THREADS to 8.
+                                                                                                                          
+                                            Self Consistent Field Driver Setup                                            
+                                           ====================================                                           
+                                                                                                                          
+                   Wave Function Model             : Spin-Restricted Hartree-Fock                                         
+                   Initial Guess Model             : Superposition of Atomic Densities                                    
+                   Convergence Accelerator         : Two Level Direct Inversion of Iterative Subspace                     
+                   Max. Number of Iterations       : 50                                                                   
+                   Max. Number of Error Vectors    : 10                                                                   
+                   Convergence Threshold           : 1.0e-06                                                              
+                   ERI Screening Scheme            : Cauchy Schwarz + Density                                             
+                   ERI Screening Mode              : Dynamic                                                              
+                   ERI Screening Threshold         : 1.0e-12                                                              
+                   Linear Dependence Threshold     : 1.0e-06                                                              
+                                                                                                                          
+* Info * Nuclear repulsion energy: 9.3436381580 au                                                                        
+                                                                                                                          
+* Info * Overlap matrix computed in 0.05 sec.                                                                             
+                                                                                                                          
+* Info * Kinetic energy matrix computed in 0.03 sec.                                                                      
+                                                                                                                          
+* Info * Nuclear potential matrix computed in 0.01 sec.                                                                   
+                                                                                                                          
+* Info * Orthogonalization matrix computed in 0.10 sec.                                                                   
+                                                                                                                          
+* Info * SAD initial guess computed in 0.06 sec.                                                                          
+                                                                                                                          
+* Info * Starting Reduced Basis SCF calculation...                                                                        
+* Info * ...done. SCF energy in reduced basis set: -75.979046359568 au. Time: 1.66 sec.                                   
+                                                                                                                          
+* Info * Overlap matrix computed in 0.08 sec.                                                                             
+                                                                                                                          
+* Info * Kinetic energy matrix computed in 0.00 sec.                                                                      
+                                                                                                                          
+* Info * Nuclear potential matrix computed in 0.01 sec.                                                                   
+                                                                                                                          
+* Info * Orthogonalization matrix computed in 0.00 sec.                                                                   
+                                                                                                                          
+                                                                                                                          
+               Iter. | Hartree-Fock Energy | Energy Change | Gradient Norm | Max. Gradient | Density Change               
+               --------------------------------------------------------------------------------------------               
+                  1       -76.025869744699    0.0000000000      0.09892066      0.01121867      0.00000000                
+                  2       -76.026932827150   -0.0010630825      0.01920269      0.00294570      0.02594960                
+                  3       -76.026981056596   -0.0000482294      0.00412658      0.00076652      0.00507499                
+                  4       -76.026983601528   -0.0000025449      0.00247905      0.00043111      0.00166621                
+                  5       -76.026984175646   -0.0000005741      0.00021766      0.00003639      0.00052311                
+                  6       -76.026984187023   -0.0000000114      0.00003206      0.00000540      0.00012084                
+                  7       -76.026984187254   -0.0000000002      0.00000208      0.00000029      0.00001663                
+                  8       -76.026984187255   -0.0000000000      0.00000053      0.00000008      0.00000087                
+                                                                                                                          
+               *** SCF converged in 8 iterations. Time: 4.48 sec.                                                         
+                                                                                                                          
+               Spin-Restricted Hartree-Fock:                                                                              
+               -----------------------------                                                                              
+               Total Energy                       :      -76.0269841873 au                                                
+               Electronic Energy                  :      -85.3706223452 au                                                
+               Nuclear Repulsion Energy           :        9.3436381580 au                                                
+               ------------------------------------                                                                       
+               Gradient Norm                      :        0.0000005316 au                                                
+                                                                                                                          
+                                                                                                                          
+               Ground State Information                                                                                   
+               ------------------------                                                                                   
+               Charge of Molecule            :  0.0                                                                       
+               Multiplicity (2S+1)           :  1.0                                                                       
+               Magnetic Quantum Number (M_S) :  0.0                                                                       
+                                                                                                                          
+                                                                                                                          
+                                                 Spin Restricted Orbitals                                                 
+                                                 ------------------------                                                 
+                                                                                                                          
+               Molecular Orbital No.   1:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 2.0 Energy:  -20.54819 au                                                                      
+               (   1 O   1s  :     1.00)                                                                                  
+                                                                                                                          
+               Molecular Orbital No.   2:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 2.0 Energy:   -1.34520 au                                                                      
+               (   1 O   2s  :    -0.44) (   1 O   3s  :    -0.36) (   2 H   1s  :    -0.20)                              
+               (   3 H   1s  :    -0.20)                                                                                  
+                                                                                                                          
+               Molecular Orbital No.   3:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 2.0 Energy:   -0.70585 au                                                                      
+               (   1 O   1p-1:    -0.49) (   1 O   2p-1:    -0.22) (   2 H   1s  :    -0.33)                              
+               (   3 H   1s  :     0.33)                                                                                  
+                                                                                                                          
+               Molecular Orbital No.   4:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 2.0 Energy:   -0.57109 au                                                                      
+               (   1 O   2s  :     0.15) (   1 O   3s  :     0.36) (   1 O   1p0 :    -0.55)                              
+               (   1 O   2p0 :    -0.36) (   2 H   1s  :    -0.21) (   3 H   1s  :    -0.21)                              
+                                                                                                                          
+               Molecular Orbital No.   5:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 2.0 Energy:   -0.49457 au                                                                      
+               (   1 O   1p+1:    -0.63) (   1 O   2p+1:    -0.49)                                                        
+                                                                                                                          
+               Molecular Orbital No.   6:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 0.0 Energy:    0.18787 au                                                                      
+               (   1 O   3s  :     1.02) (   1 O   1p0 :     0.19) (   1 O   2p0 :     0.33)                              
+               (   2 H   2s  :    -0.83) (   3 H   2s  :    -0.83)                                                        
+                                                                                                                          
+               Molecular Orbital No.   7:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 0.0 Energy:    0.25852 au                                                                      
+               (   1 O   1p-1:    -0.28) (   1 O   2p-1:    -0.67) (   2 H   2s  :     1.48)                              
+               (   3 H   2s  :    -1.48)                                                                                  
+                                                                                                                          
+               Molecular Orbital No.   8:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 0.0 Energy:    0.79749 au                                                                      
+               (   1 O   1p-1:     0.26) (   1 O   2p-1:     0.49) (   2 H   1s  :    -0.95)                              
+               (   2 H   2s  :     0.66) (   2 H   1p0 :    -0.16) (   3 H   1s  :     0.95)                              
+               (   3 H   2s  :    -0.66) (   3 H   1p0 :     0.16)                                                        
+                                                                                                                          
+               Molecular Orbital No.   9:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 0.0 Energy:    0.87271 au                                                                      
+               (   1 O   2s  :     0.25) (   1 O   3s  :    -0.34) (   1 O   1p0 :     0.34)                              
+               (   2 H   1s  :    -0.77) (   2 H   2s  :     0.54) (   2 H   1p-1:    -0.31)                              
+               (   3 H   1s  :    -0.77) (   3 H   2s  :     0.54) (   3 H   1p-1:     0.31)                              
+                                                                                                                          
+               Molecular Orbital No.  10:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 0.0 Energy:    1.16315 au                                                                      
+               (   1 O   3s  :    -0.78) (   1 O   1p0 :     0.74) (   1 O   2p0 :    -1.31)                              
+               (   2 H   1s  :     0.59) (   2 H   1p0 :    -0.24) (   3 H   1s  :     0.59)                              
+               (   3 H   1p0 :    -0.24)                                                                                  
+                                                                                                                          
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now access orbital energies and MO coefficients from the driver:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epsilon</span> <span class="o">=</span> <span class="n">scfdrv</span><span class="o">.</span><span class="n">scf_tensors</span><span class="p">[</span><span class="s2">&quot;E&quot;</span><span class="p">]</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">scfdrv</span><span class="o">.</span><span class="n">scf_tensors</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="the-integral-transformation">
+<h2>The Integral transformation<a class="headerlink" href="#the-integral-transformation" title="Permalink to this headline">¶</a></h2>
+<p>We compute the MP2 energy correction with the ERI expressed in MO basis: we need to transform the ERI tensor from AO basis.
+The transformation reads:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle pq | rs \rangle = \sum_{\mu\nu\kappa\lambda} C_{\mu p}C_{\nu r} (\mu\nu|\kappa\lambda) C_{\kappa q} C_{\lambda s},
+\]</div>
+<p>with the MO integrals in <a class="reference external" href="http://vergil.chemistry.gatech.edu/notes/permsymm/permsymm.html"><strong>physicists’ notation</strong></a>. The transformation requires <span class="math notranslate nohighlight">\(O(N^{8})\)</span> operation count.
+However, we can perform it more efficiently as a stepwise contraction:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle pq | rs \rangle = \sum_{\mu} C_{\mu p}  \left(\sum_{\nu} C_{\nu r}  \left (\sum_{\kappa} \left(\sum_{\lambda} (\mu\nu|\kappa\lambda) C_{\lambda s} \right) C_{\kappa q} \right)\right).
+\]</div>
+<p>We should also note that we do <strong>not</strong> need the full ERI tensor in MO basis, but rather the <em>OOVV</em> class of integrals, which involve two occupied and two virtual MO indices:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle ij | ab \rangle = 
+\sum_{\mu} C_{\mu i}  
+\left(\sum_{\nu} C_{\nu j}  
+\left(\sum_{\kappa} 
+\left(\sum_{\lambda} (\mu\kappa|\nu\lambda) C_{\lambda b} \right)
+C_{\kappa a}\right)\right).
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eridrv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ElectronRepulsionIntegralsDriver</span><span class="p">()</span>
+<span class="n">mknl</span> <span class="o">=</span> <span class="n">eridrv</span><span class="o">.</span><span class="n">compute_in_mem</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">N_O</span> <span class="o">=</span> <span class="n">mol</span><span class="o">.</span><span class="n">number_of_electrons</span><span class="p">()</span> <span class="o">//</span> <span class="mi">2</span>
+<span class="n">N_V</span> <span class="o">=</span> <span class="n">scfdrv</span><span class="o">.</span><span class="n">mol_orbs</span><span class="o">.</span><span class="n">number_mos</span><span class="p">()</span> <span class="o">-</span> <span class="n">N_O</span>
+
+<span class="c1"># lambda -&gt; b transformation</span>
+<span class="n">mknb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;mknl,lB-&gt;mknB&quot;</span><span class="p">,</span> <span class="n">mknl</span><span class="p">,</span> <span class="n">C</span><span class="p">[:,</span> <span class="n">N_O</span><span class="p">:])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mknb</span><span class="o">.</span><span class="n">shape</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># TODO kappa -&gt; a transformation</span>
+<span class="n">mnab</span> <span class="o">=</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mnab</span><span class="o">.</span><span class="n">shape</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># TODO nu -&gt; j transformation</span>
+<span class="n">mjab</span> <span class="o">=</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mjab</span><span class="o">.</span><span class="n">shape</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># TODO mu -&gt; i transformation</span>
+<span class="n">ijab</span> <span class="o">=</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ijab</span><span class="o">.</span><span class="n">shape</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s compare our <em>OOVV</em> ERI tensor with the one computed by using VeloxChem’s own <code class="docutils literal notranslate"><span class="pre">MOIntegralsDriver</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">moeridrv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MOIntegralsDriver</span><span class="p">()</span>
+<span class="n">moeri</span> <span class="o">=</span> <span class="n">moeridrv</span><span class="o">.</span><span class="n">compute_in_mem</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">mol_orbs</span><span class="o">=</span><span class="n">scfdrv</span><span class="o">.</span><span class="n">mol_orbs</span><span class="p">,</span> <span class="n">mints_type</span><span class="o">=</span><span class="s2">&quot;OOVV&quot;</span><span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">ijab</span><span class="p">,</span> <span class="n">moeri</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1.e-10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="the-mp2-energy-correction">
+<h2>The MP2 energy correction<a class="headerlink" href="#the-mp2-energy-correction" title="Permalink to this headline">¶</a></h2>
+<p>We now have all the ingrediente to compute the <em>opposite-spin</em> and <em>same-spin</em> components of the MP2 energy correction:</p>
+<div class="math notranslate nohighlight">
+\[
+E_{\mathrm{MP2}} = -
+\sum_{ij}^{N_{\mathrm{O}}} \sum_{ab}^{N_{\mathrm{V}}} 
+\frac{\langle ij | ab \rangle\langle ij | ab \rangle}{\varepsilon_{ij}^{ab}} - 
+\sum_{ij}^{N_{\mathrm{O}}} \sum_{ab}^{N_{\mathrm{V}}} 
+\frac{\langle ij | ab \rangle[ \langle ij | ab \rangle - \langle ij | ba \rangle ]}{\varepsilon_{ij}^{ab}} = 
+E_{\mathrm{MP2}}^{\mathrm{OS}} + E_{\mathrm{MP2}}^{\mathrm{SS}}.
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e_mp2_ss</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">e_mp2_os</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<span class="c1"># TODO extract the occupied subset of the orbital energies using NumPy slicing</span>
+<span class="n">e_ij</span> <span class="o">=</span>
+<span class="c1"># TODO extract the virtual subset of the orbital energies using NumPy slicing</span>
+<span class="n">e_ab</span> <span class="o">=</span>
+
+<span class="c1"># loop over occupied orbitals</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_O</span><span class="p">):</span>
+    <span class="c1"># loop over occupied orbitals</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_O</span><span class="p">):</span>
+        <span class="c1"># loop over virtual orbitals</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_V</span><span class="p">):</span>
+            <span class="c1"># loop over virtual orbitals</span>
+            <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_V</span><span class="p">):</span>
+                <span class="c1"># TODO form enegy denominator for given i, j, a, b quadruplet of indices</span>
+                <span class="n">e_ijab</span> <span class="o">=</span>
+                
+                <span class="c1"># TODO update opposite-spin component of the energy</span>
+                <span class="n">e_mp2_os</span> <span class="o">-=</span>
+                
+                <span class="c1"># TODO update same-spin component of the energy</span>
+                <span class="n">e_mp2_ss</span> <span class="o">-=</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Opposite-spin MP2 energy: </span><span class="si">{</span><span class="n">e_mp2_os</span><span class="si">:</span><span class="s2">20.12f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Same-spin MP2 energy:     </span><span class="si">{</span><span class="n">e_mp2_ss</span><span class="si">:</span><span class="s2">20.12f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MP2 energy:               </span><span class="si">{</span><span class="n">e_mp2_os</span> <span class="o">+</span> <span class="n">e_mp2_ss</span><span class="si">:</span><span class="s2">20.12f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>VeloxChem has its own implementation of the MP2 energy correction. We can check our result against it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mp2drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Mp2Driver</span><span class="p">()</span>
+<span class="n">mp2drv</span><span class="o">.</span><span class="n">compute_conventional</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">scfdrv</span><span class="o">.</span><span class="n">mol_orbs</span><span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">e_mp2_os</span> <span class="o">+</span> <span class="n">e_mp2_ss</span><span class="p">,</span> <span class="n">mp2drv</span><span class="o">.</span><span class="n">e_mp2</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="an-alternative-implmentation-using-np-einsum">
+<h2>An alternative implmentation using <code class="docutils literal notranslate"><span class="pre">np.einsum</span></code><a class="headerlink" href="#an-alternative-implmentation-using-np-einsum" title="Permalink to this headline">¶</a></h2>
+<p>We can compute the MP2 energy terms using <code class="docutils literal notranslate"><span class="pre">np.einsum</span></code> to handle the tensor contractions. First, we need to define the energy denominators as a 4-index tensor with <code class="docutils literal notranslate"><span class="pre">np.reshape</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e_ijab</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">e_ab</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N_V</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="o">+</span> <span class="n">e_ab</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N_V</span><span class="p">)</span> <span class="o">-</span> <span class="n">e_ij</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">N_O</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">e_ij</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N_O</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The same-spin and opposite-spin are the contraction of the ERI and denominators tensors:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mp2_os</span> <span class="o">=</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;ijab,ijab,ijab-&gt;&quot;</span><span class="p">,</span> <span class="n">ijab</span><span class="p">,</span> <span class="n">ijab</span><span class="p">,</span> <span class="n">e_ijab</span><span class="p">)</span>
+<span class="n">mp2_ss</span> <span class="o">=</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s2">&quot;ijab,ijab,ijab-&gt;&quot;</span><span class="p">,</span> <span class="n">ijab</span><span class="p">,</span> <span class="n">ijab</span> <span class="o">-</span> <span class="n">ijab</span><span class="o">.</span><span class="n">swapaxes</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">e_ijab</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The results are unchanged with respect to the quadruple-loop approach:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Opposite-spin MP2 energy: </span><span class="si">{</span><span class="n">mp2_os</span><span class="si">:</span><span class="s2">20.12f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Same-spin MP2 energy:     </span><span class="si">{</span><span class="n">mp2_ss</span><span class="si">:</span><span class="s2">20.12f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MP2 energy:               </span><span class="si">{</span><span class="n">mp2_os</span> <span class="o">+</span> <span class="n">mp2_ss</span><span class="si">:</span><span class="s2">20.12f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># compare with MP2 energy components computed with a quadruple loop</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">mp2_os</span><span class="p">,</span> <span class="n">e_mp2_os</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">mp2_ss</span><span class="p">,</span> <span class="n">e_mp2_ss</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">)</span>
+<span class="c1"># compare with MP2 energy computed by VeloxChem</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">mp2_os</span> <span class="o">+</span> <span class="n">mp2_ss</span><span class="p">,</span> <span class="n">mp2drv</span><span class="o">.</span><span class="n">e_mp2</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="bonus-the-mp2-one-particle-density-matrix">
+<h2>Bonus: the MP2 one-particle density matrix<a class="headerlink" href="#bonus-the-mp2-one-particle-density-matrix" title="Permalink to this headline">¶</a></h2>
+<p>The computation of expectation values of one-electron observables, such as the electric dipole moment, requires the one-particle density matrix (OPDM). In restricted Hartree-Fock theory, the MO basis OPDM is quite simple:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{D}_{\mathrm{RHF}}^{\mathrm{MO}} = 
+\left(
+\begin{array}{c | c} 
+  \begin{array}{c c c} 
+     2       &amp; 0       &amp; 0      \\ 
+     0       &amp; \ddots  &amp; 0      \\ 
+     0       &amp; 0       &amp; 2 
+  \end{array} &amp; \mathbf{0} \\ 
+  \hline 
+  \mathbf{0} &amp; \mathbf{0}
+ \end{array} 
+ \right)
+\end{split}\]</div>
+<p>Let us compute the electronic component of the electric dipole moment. First, we obtain the necessary integrals in AO basis and transform them to MO basis. Note that the dipole moment has a 3 Cartesian components: the <code class="docutils literal notranslate"><span class="pre">ElectricDipoleIntegralsDriver</span></code> will compute all of them and the <code class="docutils literal notranslate"><span class="pre">to_numpy</span></code> method thus returns a <em>list</em> of AO basis integral matrices.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mudrv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ElectricDipoleIntegralsDriver</span><span class="p">()</span>
+<span class="n">mu_ao</span> <span class="o">=</span> <span class="n">mudrv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="c1"># TODO obtain the MO basis electric dipole moment integrals</span>
+<span class="n">mu_mo</span> <span class="o">=</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we construct the RHF density matrix and compute the dipole moment.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO form the OPDM of the RHF reference determinant</span>
+<span class="n">Dpq</span> <span class="o">=</span> 
+
+<span class="c1"># TODO compute the RHF electronic component of the electric dipole moment</span>
+<span class="n">mu_rhf</span> <span class="o">=</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mu_rhf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="lagrangian-amplitudes-and-multipliers">
+<h3>Lagrangian, amplitudes, and multipliers<a class="headerlink" href="#lagrangian-amplitudes-and-multipliers" title="Permalink to this headline">¶</a></h3>
+<p>Computing the MP2 correction to the density matrix requires not only the MP1 <em>amplitudes</em> (wavefunction parameters), but also the MP2 <em>multipliers</em>. The MP2 Lagrangian is:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}^{(2)} =
+\sum_{ijab} \varepsilon_{ij}^{ab} t_{ij}^{ab\,(1)}\lambda^{ij\,(1)}_{ab} + 
+\sum_{ijab} t_{ij}^{ab\,(1)} \langle 0 | \Phi | _{ij} ^{ab} \rangle + 
+\sum_{ijab} \lambda^{ij\,(1)}_{ab} \langle _{ij} ^{ab} | \Phi | 0 \rangle
+\]</div>
+<p>At its stationary points, the Lagrangian is the MP2 energy. The amplitudes and multipliers that make the Lagrangian stationary <em>are</em>
+the MP1 amplitudes, <span class="math notranslate nohighlight">\(t_{ij}^{ab\,(1)}\)</span>, and multipliers, <span class="math notranslate nohighlight">\(\lambda^{ij\,(1)}_{ab}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \mathcal{L}^{(2)}}{\partial \lambda^{ij\,(1)}_{ab}} = 0  \Longleftrightarrow 
+t_{ij}^{ab\,(1)} = - \frac{\langle _{ij} ^{ab} | \Phi | 0 \rangle}{\varepsilon_{ij}^{ab}},\quad
+\frac{\partial \mathcal{L}^{(2)}}{\partial t_{ij}^{ab\,(1)}} = 0  \Longleftrightarrow 
+\lambda^{ij\,(1)}_{ab} = -  \frac{\langle 0 | \Phi | _{ij} ^{ab} \rangle}{\varepsilon_{ij}^{ab}}
+\]</div>
+<p>For a closed-shell system, the amplitudes and multipliers are explicitly given as:</p>
+<div class="math notranslate nohighlight">
+\[
+t_{ij}^{ab\,(1)} = - \frac{\langle ab | ij \rangle}{\varepsilon_{ij}^{ab}},\quad
+\lambda^{ij\,(1)}_{ab} = -  2\frac{[2\langle ij | ab \rangle - \langle ij | ba \rangle]}{\varepsilon_{ij}^{ab}}
+\]</div>
+</div>
+<div class="section" id="the-unrelaxed-mp2-density-matrix">
+<h3>The <em>unrelaxed</em> MP2 density matrix<a class="headerlink" href="#the-unrelaxed-mp2-density-matrix" title="Permalink to this headline">¶</a></h3>
+<p>The expectation value of a one-electron operator <span class="math notranslate nohighlight">\(X\)</span> is then:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle X \rangle = \langle 0 | X | 0 \rangle +
+\sum_{ijab}\sum_{klcd} \lambda^{ij\,(1)}_{ab} t_{kl}^{cd\,(1)}
+\langle 0 | [X, \tau_{kl}^{cd}] | 0 \rangle = 
+\langle 0 | X | 0 \rangle + 
+\sum_{ij} X_{ij} D^{(2)}_{ji} + \sum_{ab} X_{ab} D^{(2)}_{ba} 
+\]</div>
+<p>where we identifyied, after some algebra, the MP2 density matrix as:</p>
+<div class="math notranslate nohighlight">
+\[
+D^{(2)}_{ij} = - \frac{1}{2} \sum_{abk} \lambda^{ki\,(1)}_{ab} t_{kj}^{ab\,(1)},\quad
+D^{(2)}_{ab} =   \frac{1}{2} \sum_{ijc} \lambda^{ij\,(1)}_{bc} t_{ij}^{ac\,(1)}
+\]</div>
+<p>Note that:</p>
+<ol class="simple">
+<li><p>These expressions are <em>not manifestly symmetric</em>. In practice, we will symmetrize the MP2 density matrix before computing expectation values.</p></li>
+<li><p>This is the so-called <em>unrelaxed</em> density matrix. We are using <em>fixed</em> molecular orbitals, unaffected by electron correlation.</p></li>
+</ol>
+<p>Let us use <code class="docutils literal notranslate"><span class="pre">np.einsum</span></code> to form all these quantities and compute the <em>unrelaxed</em> MP2 electronic component of the electric dipole moment.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO form the doubles amplitudes, i.e. the MP1 wavefunction coefficients, from the ERI and denominator tensors</span>
+<span class="n">t2</span> <span class="o">=</span>
+                
+<span class="c1"># TODO form the doubles multiplitiers, from the ERI and denominator tensors</span>
+<span class="n">l2</span> <span class="o">=</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now form the OO and VV blocks of the MP2 OPDM, following the equations above, and update the reference MO density matrix with these contributions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO form the OO block of the MP2 OPDM, don&#39;t forget to symmetrize it!</span>
+<span class="n">Dij</span> <span class="o">=</span>
+
+<span class="c1"># TODO form VV block of the MP2 OPDM, don&#39;t forget to symmetrize it!</span>
+<span class="n">Dab</span> <span class="o">=</span>
+
+<span class="c1"># add the MP2 contributions to the OO and VV blocks</span>
+<span class="n">Dpq</span><span class="p">[:</span><span class="n">N_O</span><span class="p">,</span> <span class="p">:</span><span class="n">N_O</span><span class="p">]</span> <span class="o">+=</span> <span class="n">Dij</span>
+<span class="n">Dpq</span><span class="p">[</span><span class="n">N_O</span><span class="p">:,</span> <span class="n">N_O</span><span class="p">:]</span> <span class="o">+=</span> <span class="n">Dab</span>
+
+<span class="c1"># test that the total density matrix is symmetric</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">Dpq</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">Dpq</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, the dipole moment:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO compute the MP2 unrelaxed electronic component of the electric dipole moment</span>
+<span class="n">mu_mp2</span> <span class="o">=</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mu_mp2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="natural-occupations-and-natural-orbitals">
+<h3>Natural occupations and natural orbitals<a class="headerlink" href="#natural-occupations-and-natural-orbitals" title="Permalink to this headline">¶</a></h3>
+<p>The eigenvectors and eigenvalues of the one-particle density matrix provide the <em>natural orbitals</em> and the <em>natural-orbital occupation numbers</em>. These are useful, for example, in setting up the active space in multireference calculations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO diagonalize the density matrix</span>
+<span class="n">omega</span><span class="p">,</span> <span class="n">NOs</span> <span class="o">=</span>
+
+<span class="c1"># eigenvalues and eigenvectors are in *ascending* order, so we resort them in *descending* order</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">omega</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>   
+<span class="n">omega</span> <span class="o">=</span> <span class="n">omega</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+<span class="n">NOs</span> <span class="o">=</span> <span class="n">NOs</span><span class="p">[:,</span><span class="n">idx</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>One way to check that our MP2 unrelaxed OPDM is correct is to sum the natural occupation numbers: this should give us the number of electrons in the system.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">omega</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also double-check against reference values for the occupations from another code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reference natural orbital occupation numbers from DALTON</span>
+<span class="n">ref_omega</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="mf">1.99990540</span><span class="p">,</span> <span class="mf">1.98720752</span><span class="p">,</span> <span class="mf">1.97426785</span><span class="p">,</span> <span class="mf">1.97108868</span><span class="p">,</span> <span class="mf">1.96924405</span><span class="p">,</span>
+    <span class="mf">0.02241866</span><span class="p">,</span> <span class="mf">0.02020351</span><span class="p">,</span> <span class="mf">0.01713431</span><span class="p">,</span> <span class="mf">0.01024357</span><span class="p">,</span> <span class="mf">0.00551830</span><span class="p">,</span>
+    <span class="mf">0.00517755</span><span class="p">,</span> <span class="mf">0.00472951</span><span class="p">,</span> <span class="mf">0.00414944</span><span class="p">,</span> <span class="mf">0.00404548</span><span class="p">,</span> <span class="mf">0.00090056</span><span class="p">,</span>
+    <span class="mf">0.00086293</span><span class="p">,</span> <span class="mf">0.00060545</span><span class="p">,</span> <span class="mf">0.00051955</span><span class="p">,</span> <span class="mf">0.00046726</span><span class="p">,</span> <span class="mf">0.00045319</span><span class="p">,</span>
+    <span class="mf">0.00039740</span><span class="p">,</span> <span class="mf">0.00037924</span><span class="p">,</span> <span class="mf">0.00004262</span><span class="p">,</span> <span class="mf">0.00003795</span>   
+<span class="p">])</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">omega</span><span class="p">,</span> <span class="n">ref_omega</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Shavitt, I.; Bartlett, R. J. <em>Many-Body Methods in Chemistry and Physics: MBPT and Coupled-Cluster Theory</em> Cambridge Molecular Science; Cambridge University Press, 2009.</p></li>
+<li><p>Helgaker, T.; Jørgensen, P.; Olsen, J. <em>Molecular Electronic-Structure Theory</em> Wiley, 2000.</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ENCCS/veloxchem-workshop",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../rh-scf/" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">The Roothaan-Hall self-consistent field procedure</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../../hpc-setup/" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Setting up VeloxChem on a HPC cluster</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The contributors<br/>
+    
+        &copy; Copyright 2021, The contributors.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

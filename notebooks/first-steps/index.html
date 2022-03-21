@@ -1,0 +1,1248 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>First steps with VeloxChem</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx_lesson.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/minipres.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="More advanced usage of the VeloxChem API" href="../next-steps/" />
+    <link rel="prev" title="Setting up your system" href="../../setup/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/ENCCS-PDC-logos.jpg" class="logo" alt="logo">
+      
+      
+    </a>
+</div><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../">
+   VeloxChem: quantum chemistry from laptop to HPC
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../setup/">
+   Setting up your system
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  The lesson
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   First steps with VeloxChem
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../next-steps/">
+   More advanced usage of the VeloxChem API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../rh-scf/">
+   The Roothaan-Hall self-consistent field procedure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mp2/">
+   Møller-Plesset perturbation theory to second order
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../hpc-setup/">
+   Setting up VeloxChem on a HPC cluster
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../x-ray-cpp/">
+   Complex polarization propagator in the X-ray region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../exciton/">
+   Exciton calculation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../xTB-geomeTRIC/">
+   Geometry optimizations and semiempirical Hamiltonians
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../quick-reference/">
+   Quick Reference
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../zbibliography/">
+   Bibliography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../guide/">
+   Instructor’s guide
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notebooks/first-steps.ipynb.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ENCCS/veloxchem-workshop"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ENCCS/veloxchem-workshop/issues/new?title=Issue%20on%20page%20%2Fnotebooks/first-steps.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/ENCCS/veloxchem-workshop/edit/master/content/notebooks/first-steps.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ENCCS/veloxchem-workshop/master?urlpath=lab/tree/content/notebooks/first-steps.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-with-an-input-file">
+   Running with an input file
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-command-line-interface">
+     The command-line interface
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-output-file">
+     The output file
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-with-a-python-script">
+   Running with a Python script
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-molecule-object">
+     The
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Molecule
+      </span>
+     </code>
+     object
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gaussian-molecular-basis-sets">
+     Gaussian molecular basis sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#self-consistent-field-calculation-drivers">
+     Self-consistent field calculation drivers
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>First steps with VeloxChem</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-with-an-input-file">
+   Running with an input file
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-command-line-interface">
+     The command-line interface
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-output-file">
+     The output file
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-with-a-python-script">
+   Running with a Python script
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-molecule-object">
+     The
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Molecule
+      </span>
+     </code>
+     object
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gaussian-molecular-basis-sets">
+     Gaussian molecular basis sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#self-consistent-field-calculation-drivers">
+     Self-consistent field calculation drivers
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="first-steps-with-veloxchem">
+<h1>First steps with VeloxChem<a class="headerlink" href="#first-steps-with-veloxchem" title="Permalink to this headline">¶</a></h1>
+<p>We want to run a restricted Hartree-Fock test calculation on a water molecule. We will use the following structure.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">py3Dmol</span> <span class="k">as</span> <span class="nn">p3d</span>
+
+<span class="n">h2o_xyz</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;3</span>
+<span class="s2">water                                                                                                                          </span>
+<span class="s2">O    0.000000000000        0.000000000000        0.000000000000                         </span>
+<span class="s2">H    0.000000000000        0.740848095288        0.582094932012                         </span>
+<span class="s2">H    0.000000000000       -0.740848095288        0.582094932012</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">v</span> <span class="o">=</span> <span class="n">p3d</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="n">v</span><span class="o">.</span><span class="n">addModel</span><span class="p">(</span><span class="n">h2o_xyz</span><span class="p">,</span> <span class="s2">&quot;xyz&quot;</span><span class="p">)</span>
+<span class="n">v</span><span class="o">.</span><span class="n">setStyle</span><span class="p">({</span><span class="s1">&#39;stick&#39;</span><span class="p">:{}})</span>
+<span class="n">v</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="3dmolviewer_161961513254428"  style="position: relative; width: 200px; height: 200px">
+        <p id="3dmolwarning_161961513254428" style="background-color:#ffcccc;color:black">You appear to be running in JupyterLab (or JavaScript failed to load for some other reason).  You need to install the 3dmol extension: <br>
+        <tt>jupyter labextension install jupyterlab_3dmol</tt></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    var tag = document.createElement('script');
+    tag.src = uri;
+    tag.async = true;
+    tag.onload = () => {
+      resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+});
+};
+
+if(typeof $3Dmolpromise === 'undefined') {
+$3Dmolpromise = null;
+  $3Dmolpromise = loadScriptAsync('https://3dmol.org/build/3Dmol.js');
+}
+
+var viewer_161961513254428 = null;
+var warn = document.getElementById("3dmolwarning_161961513254428");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+$3Dmolpromise.then(function() {
+viewer_161961513254428 = $3Dmol.createViewer($("#3dmolviewer_161961513254428"),{backgroundColor:"white"});
+viewer_161961513254428.zoomTo();
+	viewer_161961513254428.addModel("3\nwater                                                                                                                          \nO    0.000000000000        0.000000000000        0.000000000000                         \nH    0.000000000000        0.740848095288        0.582094932012                         \nH    0.000000000000       -0.740848095288        0.582094932012\n","xyz");
+	viewer_161961513254428.setStyle({"stick": {}});
+viewer_161961513254428.render();
+});
+</script></div></div>
+</div>
+<div class="section" id="running-with-an-input-file">
+<h2>Running with an input file<a class="headerlink" href="#running-with-an-input-file" title="Permalink to this headline">¶</a></h2>
+<p>Let us save the following as <code class="docutils literal notranslate"><span class="pre">water.inp</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">scf</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">aug</span><span class="o">-</span><span class="n">cc</span><span class="o">-</span><span class="n">pvdz</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">xyz</span><span class="p">:</span>  
+<span class="n">O</span>    <span class="mf">0.000000000000</span>        <span class="mf">0.000000000000</span>        <span class="mf">0.000000000000</span>                         
+<span class="n">H</span>    <span class="mf">0.000000000000</span>        <span class="mf">0.740848095288</span>        <span class="mf">0.582094932012</span>                         
+<span class="n">H</span>    <span class="mf">0.000000000000</span>       <span class="o">-</span><span class="mf">0.740848095288</span>        <span class="mf">0.582094932012</span>
+<span class="nd">@end</span> 
+</pre></div>
+</div>
+<p>A VeloxChem input file has:</p>
+<ul class="simple">
+<li><p><em>sections</em>. Each section starts with<code class="docutils literal notranslate"><span class="pre">&#64;&lt;section-name&gt;</span></code> and is closed with <code class="docutils literal notranslate"><span class="pre">&#64;end</span></code>,</p></li>
+<li><p><em>keywords</em>. You specify them with <code class="docutils literal notranslate"><span class="pre">&lt;keyword-name&gt;:</span> <span class="pre">&lt;keyword-value&gt;</span></code>.</p></li>
+</ul>
+<p>Documentation for all input options is available at: https://docs.veloxchem.org/inputs/keywords.html</p>
+<div class="section" id="the-command-line-interface">
+<h3>The command-line interface<a class="headerlink" href="#the-command-line-interface" title="Permalink to this headline">¶</a></h3>
+<p>Possibly the most common way of running a quantum chemistry code is by using a command-line interface (CLI). You can access the VeloxChem CLI with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ vlx --help
+</pre></div>
+</div>
+<p>this will print the following help text:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> 
+<span class="o">=================</span>   <span class="n">VeloxChem</span>   <span class="o">=================</span>
+
+<span class="n">vlx</span> <span class="n">input_file</span> <span class="p">[</span><span class="n">output_file</span><span class="p">]</span>
+
+<span class="ow">or</span>
+
+<span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">veloxchem</span> <span class="n">input_file</span> <span class="p">[</span><span class="n">output_file</span><span class="p">]</span>
+    
+
+<span class="n">positional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="n">input_file</span>     <span class="n">Input</span> <span class="n">file</span>
+  <span class="n">output_file</span>    <span class="n">Output</span> <span class="n">file</span> <span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">STDOUT</span><span class="p">)</span>
+
+<span class="n">optional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>     <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="o">--</span><span class="n">version</span>  <span class="n">show</span> <span class="n">program</span><span class="s1">&#39;s version number and exit</span>
+</pre></div>
+</div>
+<p>Let’s run our water calculation with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ vlx water.inp water.out
+</pre></div>
+</div>
+<p>such that the output will be saved to the plain-text file <code class="docutils literal notranslate"><span class="pre">water.out</span></code>. Congratulations! You have completed your first quantum chemical calculation with VeloxChem!</p>
+</div>
+<div class="section" id="the-output-file">
+<h3>The output file<a class="headerlink" href="#the-output-file" title="Permalink to this headline">¶</a></h3>
+<p>Let us look now at the information contained in the output file. VeloxChem logs in the output stream the operations performed during a calculation. You will notice:</p>
+<ul class="simple">
+<li><p>The molecular geometry</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                                              <span class="n">Molecular</span> <span class="n">Geometry</span> <span class="p">(</span><span class="n">Angstroms</span><span class="p">)</span>
+                                             <span class="o">================================</span>
+
+                          <span class="n">Atom</span>         <span class="n">Coordinate</span> <span class="n">X</span>          <span class="n">Coordinate</span> <span class="n">Y</span>          <span class="n">Coordinate</span> <span class="n">Z</span>
+
+                           <span class="n">O</span>           <span class="mf">0.000000000000</span>        <span class="mf">0.000000000000</span>        <span class="mf">0.000000000000</span>
+                           <span class="n">H</span>           <span class="mf">0.000000000000</span>        <span class="mf">0.740848095288</span>        <span class="mf">0.582094932012</span>
+                           <span class="n">H</span>           <span class="mf">0.000000000000</span>       <span class="o">-</span><span class="mf">0.740848095288</span>        <span class="mf">0.582094932012</span>
+
+                          <span class="n">Molecular</span> <span class="n">charge</span>            <span class="p">:</span> <span class="mi">0</span>
+                          <span class="n">Spin</span> <span class="n">multiplicity</span>           <span class="p">:</span> <span class="mi">1</span>
+                          <span class="n">Number</span> <span class="n">of</span> <span class="n">atoms</span>             <span class="p">:</span> <span class="mi">3</span>
+                          <span class="n">Number</span> <span class="n">of</span> <span class="n">alpha</span> <span class="n">electrons</span>   <span class="p">:</span> <span class="mi">5</span>
+                          <span class="n">Number</span> <span class="n">of</span> <span class="n">beta</span>  <span class="n">electrons</span>   <span class="p">:</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The molecular basis and self-consistent field setup</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                                              <span class="n">Molecular</span> <span class="n">Basis</span> <span class="p">(</span><span class="n">Atomic</span> <span class="n">Basis</span><span class="p">)</span>
+                                             <span class="o">================================</span>
+
+                                  <span class="n">Basis</span><span class="p">:</span> <span class="n">AUG</span><span class="o">-</span><span class="n">CC</span><span class="o">-</span><span class="n">PVDZ</span>
+
+                                  <span class="n">Atom</span> <span class="n">Contracted</span> <span class="n">GTOs</span>          <span class="n">Primitive</span> <span class="n">GTOs</span>
+
+                                   <span class="n">H</span>   <span class="p">(</span><span class="mi">3</span><span class="n">S</span><span class="p">,</span><span class="mi">2</span><span class="n">P</span><span class="p">)</span>                  <span class="p">(</span><span class="mi">5</span><span class="n">S</span><span class="p">,</span><span class="mi">2</span><span class="n">P</span><span class="p">)</span>
+                                   <span class="n">O</span>   <span class="p">(</span><span class="mi">4</span><span class="n">S</span><span class="p">,</span><span class="mi">3</span><span class="n">P</span><span class="p">,</span><span class="mi">2</span><span class="n">D</span><span class="p">)</span>               <span class="p">(</span><span class="mi">18</span><span class="n">S</span><span class="p">,</span><span class="mi">5</span><span class="n">P</span><span class="p">,</span><span class="mi">2</span><span class="n">D</span><span class="p">)</span>
+
+                                  <span class="n">Contracted</span> <span class="n">Basis</span> <span class="n">Functions</span> <span class="p">:</span> <span class="mi">41</span>
+                                  <span class="n">Primitive</span> <span class="n">Basis</span> <span class="n">Functions</span>  <span class="p">:</span> <span class="mi">65</span>
+
+
+                                            <span class="n">Self</span> <span class="n">Consistent</span> <span class="n">Field</span> <span class="n">Driver</span> <span class="n">Setup</span>
+                                           <span class="o">====================================</span>
+
+                   <span class="n">Wave</span> <span class="n">Function</span> <span class="n">Model</span>             <span class="p">:</span> <span class="n">Spin</span><span class="o">-</span><span class="n">Restricted</span> <span class="n">Hartree</span><span class="o">-</span><span class="n">Fock</span>
+                   <span class="n">Initial</span> <span class="n">Guess</span> <span class="n">Model</span>             <span class="p">:</span> <span class="n">Superposition</span> <span class="n">of</span> <span class="n">Atomic</span> <span class="n">Densities</span>
+                   <span class="n">Convergence</span> <span class="n">Accelerator</span>         <span class="p">:</span> <span class="n">Two</span> <span class="n">Level</span> <span class="n">Direct</span> <span class="n">Inversion</span> <span class="n">of</span> <span class="n">Iterative</span> <span class="n">Subspace</span>
+                   <span class="n">Max</span><span class="o">.</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">Iterations</span>       <span class="p">:</span> <span class="mi">50</span>
+                   <span class="n">Max</span><span class="o">.</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">Error</span> <span class="n">Vectors</span>    <span class="p">:</span> <span class="mi">10</span>
+                   <span class="n">Convergence</span> <span class="n">Threshold</span>           <span class="p">:</span> <span class="mf">1.0e-06</span>
+                   <span class="n">ERI</span> <span class="n">Screening</span> <span class="n">Scheme</span>            <span class="p">:</span> <span class="n">Cauchy</span> <span class="n">Schwarz</span> <span class="o">+</span> <span class="n">Density</span>
+                   <span class="n">ERI</span> <span class="n">Screening</span> <span class="n">Mode</span>              <span class="p">:</span> <span class="n">Dynamic</span>
+                   <span class="n">ERI</span> <span class="n">Screening</span> <span class="n">Threshold</span>         <span class="p">:</span> <span class="mf">1.0e-12</span>
+                   <span class="n">Linear</span> <span class="n">Dependence</span> <span class="n">Threshold</span>     <span class="p">:</span> <span class="mf">1.0e-06</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The report on the iterative SCF procedure</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>               <span class="n">Iter</span><span class="o">.</span> <span class="o">|</span> <span class="n">Hartree</span><span class="o">-</span><span class="n">Fock</span> <span class="n">Energy</span> <span class="o">|</span> <span class="n">Energy</span> <span class="n">Change</span> <span class="o">|</span> <span class="n">Gradient</span> <span class="n">Norm</span> <span class="o">|</span> <span class="n">Max</span><span class="o">.</span> <span class="n">Gradient</span> <span class="o">|</span> <span class="n">Density</span> <span class="n">Change</span>
+               <span class="o">--------------------------------------------------------------------------------------------</span>
+                  <span class="mi">1</span>       <span class="o">-</span><span class="mf">76.040225772729</span>    <span class="mf">0.0000000000</span>      <span class="mf">0.10527360</span>      <span class="mf">0.01410687</span>      <span class="mf">0.00000000</span>
+                  <span class="mi">2</span>       <span class="o">-</span><span class="mf">76.041581009463</span>   <span class="o">-</span><span class="mf">0.0013552367</span>      <span class="mf">0.02396700</span>      <span class="mf">0.00364108</span>      <span class="mf">0.03764551</span>
+                  <span class="mi">3</span>       <span class="o">-</span><span class="mf">76.041683167061</span>   <span class="o">-</span><span class="mf">0.0001021576</span>      <span class="mf">0.00872358</span>      <span class="mf">0.00122472</span>      <span class="mf">0.00801861</span>
+                  <span class="mi">4</span>       <span class="o">-</span><span class="mf">76.041694355980</span>   <span class="o">-</span><span class="mf">0.0000111889</span>      <span class="mf">0.00512350</span>      <span class="mf">0.00094645</span>      <span class="mf">0.00386334</span>
+                  <span class="mi">5</span>       <span class="o">-</span><span class="mf">76.041697479316</span>   <span class="o">-</span><span class="mf">0.0000031233</span>      <span class="mf">0.00046249</span>      <span class="mf">0.00008300</span>      <span class="mf">0.00125597</span>
+                  <span class="mi">6</span>       <span class="o">-</span><span class="mf">76.041697547982</span>   <span class="o">-</span><span class="mf">0.0000000687</span>      <span class="mf">0.00007707</span>      <span class="mf">0.00001089</span>      <span class="mf">0.00028877</span>
+                  <span class="mi">7</span>       <span class="o">-</span><span class="mf">76.041697549783</span>   <span class="o">-</span><span class="mf">0.0000000018</span>      <span class="mf">0.00000995</span>      <span class="mf">0.00000158</span>      <span class="mf">0.00004453</span>
+                  <span class="mi">8</span>       <span class="o">-</span><span class="mf">76.041697549817</span>   <span class="o">-</span><span class="mf">0.0000000000</span>      <span class="mf">0.00000212</span>      <span class="mf">0.00000032</span>      <span class="mf">0.00000530</span>
+                  <span class="mi">9</span>       <span class="o">-</span><span class="mf">76.041697549819</span>   <span class="o">-</span><span class="mf">0.0000000000</span>      <span class="mf">0.00000039</span>      <span class="mf">0.00000005</span>      <span class="mf">0.00000148</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The final summary of SCF energies</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>               <span class="n">Spin</span><span class="o">-</span><span class="n">Restricted</span> <span class="n">Hartree</span><span class="o">-</span><span class="n">Fock</span><span class="p">:</span>
+               <span class="o">-----------------------------</span>
+               <span class="n">Total</span> <span class="n">Energy</span>                       <span class="p">:</span>      <span class="o">-</span><span class="mf">76.0416975498</span> <span class="n">au</span>
+               <span class="n">Electronic</span> <span class="n">Energy</span>                  <span class="p">:</span>      <span class="o">-</span><span class="mf">85.3853357078</span> <span class="n">au</span>
+               <span class="n">Nuclear</span> <span class="n">Repulsion</span> <span class="n">Energy</span>           <span class="p">:</span>        <span class="mf">9.3436381580</span> <span class="n">au</span>
+               <span class="o">------------------------------------</span>
+               <span class="n">Gradient</span> <span class="n">Norm</span>                      <span class="p">:</span>        <span class="mf">0.0000003901</span> <span class="n">au</span>
+
+
+               <span class="n">Ground</span> <span class="n">State</span> <span class="n">Information</span>
+               <span class="o">------------------------</span>
+               <span class="n">Charge</span> <span class="n">of</span> <span class="n">Molecule</span>            <span class="p">:</span>  <span class="mf">0.0</span>
+               <span class="n">Multiplicity</span> <span class="p">(</span><span class="mi">2</span><span class="n">S</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>           <span class="p">:</span>  <span class="mf">1.0</span>
+               <span class="n">Magnetic</span> <span class="n">Quantum</span> <span class="n">Number</span> <span class="p">(</span><span class="n">M_S</span><span class="p">)</span> <span class="p">:</span>  <span class="mf">0.0</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The molecular orbitals and the electric dipole moment</p></li>
+<li><p>Last, but not least, the preferred citation for  VeloxChem</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!========================================================================================================================!
+!                     Rinkevicius, Z.; Li, X.; Vahtras, O.; Ahmadzadeh, K.; Brand, M.; Ringholm, M.;                     !
+!                              List, N. H.; Scheurer, M.; Scott, M.; Dreuw, A.; Norman, P.                               !
+!                     VeloxChem: A Python-driven Density-functional Theory Program for Spectroscopy                      !
+!                                Simulations in High-performance Computing Environments.                                 !
+!                                       WIREs Comput Mol Sci 2020, 10 (5), e1457.                                        !
+!========================================================================================================================!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="running-with-a-python-script">
+<h2>Running with a Python script<a class="headerlink" href="#running-with-a-python-script" title="Permalink to this headline">¶</a></h2>
+<p>Extracting information from a plain-text output file is not always desirable, for a number of reasons:</p>
+<ol class="simple">
+<li><p>The format of the output is not guaranteed to stay the same between different versions of the code. Data-harvesting scripts might fail unexpectedly.</p></li>
+<li><p>Reading floating-point numbers from their text representation might introduce subtle round-off errors.</p></li>
+</ol>
+<p>VeloxChem offers a powerful Python application programming interface (API) to <em>programmatically</em> access computed data, for example, SCF ground state electric dipole moments, <strong>and</strong> computational primitives, such as AO basis integrals. Let’s see how we can write a Python script to perform a calculation on the water molecule without using plain-text input and output files. First and foremost, we import the VeloxChem API:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">veloxchem</span> <span class="k">as</span> <span class="nn">vlx</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Warning * Environment variable OMP_NUM_THREADS not set.
+* Warning * Setting OMP_NUM_THREADS to 8.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="the-molecule-object">
+<h3>The <code class="docutils literal notranslate"><span class="pre">Molecule</span></code> object<a class="headerlink" href="#the-molecule-object" title="Permalink to this headline">¶</a></h3>
+<p>The next task is to create a <code class="docutils literal notranslate"><span class="pre">Molecule</span></code> object. We can use the <code class="docutils literal notranslate"><span class="pre">h2o_xyz</span></code> string defined above directly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h2o</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">from_xyz_string</span><span class="p">(</span><span class="n">h2o_xyz</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">h2o</span><span class="o">.</span><span class="n">get_string</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Molecular Geometry (Angstroms)
+================================
+
+  Atom         Coordinate X          Coordinate Y          Coordinate Z  
+
+  O           0.000000000000        0.000000000000        0.000000000000
+  H           0.000000000000        0.740848095288        0.582094932012
+  H           0.000000000000       -0.740848095288        0.582094932012
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">help</span></code> native method of Python works as well and we can explore the VeloxChem API easily. For example, <code class="docutils literal notranslate"><span class="pre">h2o.get_coordinates()</span></code> will return the molecular structure as a <a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.html">NumPy array</a>.</p>
+<div class="cell tag_hide_output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="p">)</span>
+
+<span class="n">h2o</span><span class="o">.</span><span class="n">get_coordinates</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on class Molecule in module veloxchem.veloxchemlib:
+
+class Molecule(pybind11_builtins.pybind11_object)
+ |  Method resolution order:
+ |      Molecule
+ |      pybind11_builtins.pybind11_object
+ |      builtins.object
+ |  
+ |  Methods defined here:
+ |  
+ |  __eq__(...)
+ |      __eq__(self: veloxchem.veloxchemlib.Molecule, arg0: veloxchem.veloxchemlib.Molecule) -&gt; bool
+ |  
+ |  __init__(...)
+ |      __init__(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. __init__(self: veloxchem.veloxchemlib.Molecule) -&gt; None
+ |      
+ |      2. __init__(self: veloxchem.veloxchemlib.Molecule, arg0: veloxchem.veloxchemlib.Molecule) -&gt; None
+ |      
+ |      3. __init__(self: veloxchem.veloxchemlib.Molecule, arg0: veloxchem.veloxchemlib.Molecule, arg1: veloxchem.veloxchemlib.Molecule) -&gt; None
+ |      
+ |      4. __init__(self: veloxchem.veloxchemlib.Molecule, symbols: List[str], coordinates: numpy.ndarray[numpy.float64], units: str = &#39;angstrom&#39;) -&gt; None
+ |      
+ |      5. __init__(self: veloxchem.veloxchemlib.Molecule, Zs: List[int], coordinates: numpy.ndarray[numpy.float64], units: str = &#39;angstrom&#39;) -&gt; None
+ |  
+ |  broadcast(...)
+ |      broadcast(self: veloxchem.veloxchemlib.Molecule, arg0: int, arg1: object) -&gt; None
+ |  
+ |  center_of_mass = _Molecule_center_of_mass(self)
+ |      Computes center of mass of a molecule.
+ |      
+ |      :return:
+ |          The center of mass.
+ |  
+ |  check_multiplicity(...)
+ |      check_multiplicity(self: veloxchem.veloxchemlib.Molecule) -&gt; None
+ |  
+ |  check_proximity(...)
+ |      check_proximity(self: veloxchem.veloxchemlib.Molecule, arg0: float) -&gt; None
+ |  
+ |  coordination_numbers(...)
+ |      coordination_numbers(self: veloxchem.veloxchemlib.Molecule) -&gt; numpy.ndarray[numpy.float64]
+ |  
+ |  elem_ids_to_numpy(...)
+ |      elem_ids_to_numpy(self: veloxchem.veloxchemlib.Molecule) -&gt; numpy.ndarray[numpy.int32]
+ |  
+ |  get_charge(...)
+ |      get_charge(self: veloxchem.veloxchemlib.Molecule) -&gt; float
+ |  
+ |  get_coordinates = _Molecule_get_coordinates(self)
+ |      Returns atom coordinates in atomic units.
+ |      
+ |      :return:
+ |          A numpy array of atom coordinates (nx3) in atomic units.
+ |  
+ |  get_elemental_composition(...)
+ |      get_elemental_composition(self: veloxchem.veloxchemlib.Molecule) -&gt; list
+ |  
+ |  get_ic_rmsd = _Molecule_get_ic_rmsd(self, ref_mol)
+ |      Gets statistical deviation of bonds, angles and dihedral angles between
+ |      self and reference geometry.
+ |      
+ |      :param ref_mol:
+ |          The reference molecule (or xyz filename).
+ |  
+ |  get_labels = _Molecule_get_labels(self)
+ |      Returns atom labels.
+ |      
+ |      :return:
+ |          A list of atom labels.
+ |  
+ |  get_multiplicity(...)
+ |      get_multiplicity(self: veloxchem.veloxchemlib.Molecule) -&gt; int
+ |  
+ |  get_string(...)
+ |      get_string(self: veloxchem.veloxchemlib.Molecule) -&gt; str
+ |  
+ |  get_sub_molecule(...)
+ |      get_sub_molecule(self: veloxchem.veloxchemlib.Molecule, arg0: int, arg1: int) -&gt; veloxchem.veloxchemlib.Molecule
+ |  
+ |  masses_to_numpy(...)
+ |      masses_to_numpy(self: veloxchem.veloxchemlib.Molecule) -&gt; numpy.ndarray[numpy.float64]
+ |  
+ |  more_info = _Molecule_more_info(self)
+ |      Returns more information about the molecule.
+ |      
+ |      :return:
+ |          Molecular information in plain text.
+ |  
+ |  nuclear_repulsion_energy(...)
+ |      nuclear_repulsion_energy(self: veloxchem.veloxchemlib.Molecule) -&gt; float
+ |  
+ |  number_of_alpha_electrons(...)
+ |      number_of_alpha_electrons(self: veloxchem.veloxchemlib.Molecule) -&gt; int
+ |  
+ |  number_of_atoms(...)
+ |      number_of_atoms(*args, **kwargs)
+ |      Overloaded function.
+ |      
+ |      1. number_of_atoms(self: veloxchem.veloxchemlib.Molecule) -&gt; int
+ |      
+ |      2. number_of_atoms(self: veloxchem.veloxchemlib.Molecule, idElemental: int) -&gt; int
+ |      
+ |      3. number_of_atoms(self: veloxchem.veloxchemlib.Molecule, iatom: int, natoms: int, idElemental: int) -&gt; int
+ |  
+ |  number_of_beta_electrons(...)
+ |      number_of_beta_electrons(self: veloxchem.veloxchemlib.Molecule) -&gt; int
+ |  
+ |  number_of_electrons(...)
+ |      number_of_electrons(self: veloxchem.veloxchemlib.Molecule) -&gt; int
+ |  
+ |  partial_charges(...)
+ |      partial_charges(self: veloxchem.veloxchemlib.Molecule) -&gt; numpy.ndarray[numpy.float64]
+ |  
+ |  set_charge(...)
+ |      set_charge(self: veloxchem.veloxchemlib.Molecule, arg0: float) -&gt; None
+ |  
+ |  set_multiplicity(...)
+ |      set_multiplicity(self: veloxchem.veloxchemlib.Molecule, arg0: int) -&gt; None
+ |  
+ |  vdw_radii_to_numpy(...)
+ |      vdw_radii_to_numpy(self: veloxchem.veloxchemlib.Molecule) -&gt; numpy.ndarray[numpy.float64]
+ |  
+ |  write_xyz = _Molecule_write_xyz(self, xyz_filename)
+ |      Writes molecular geometry to xyz file.
+ |      
+ |      :param xyz_filename:
+ |          The name of the xyz file.
+ |  
+ |  x_to_numpy(...)
+ |      x_to_numpy(self: veloxchem.veloxchemlib.Molecule) -&gt; numpy.ndarray[numpy.float64]
+ |  
+ |  y_to_numpy(...)
+ |      y_to_numpy(self: veloxchem.veloxchemlib.Molecule) -&gt; numpy.ndarray[numpy.float64]
+ |  
+ |  z_to_numpy(...)
+ |      z_to_numpy(self: veloxchem.veloxchemlib.Molecule) -&gt; numpy.ndarray[numpy.float64]
+ |  
+ |  ----------------------------------------------------------------------
+ |  Static methods defined here:
+ |  
+ |  from_dict = _Molecule_from_dict(mol_dict)
+ |      Reads molecule from a dictionary.
+ |      
+ |      :param mol_dict:
+ |          The molecule dictionary.
+ |      
+ |      :return:
+ |          The molecule.
+ |  
+ |  from_xyz_string = _Molecule_from_xyz_string(xyz)
+ |      Generate molecule from string in XYZ format.
+ |      
+ |      :param xyz:
+ |          String with XYZ structure.
+ |      
+ |      :return:
+ |          The molecule.
+ |  
+ |  read_str = _Molecule_read_str(xyzstr, units=&#39;angstrom&#39;)
+ |      Reads molecule from xyz string.
+ |      
+ |      :param xyzstr:
+ |          The xyz string.
+ |      :param units:
+ |          The unit of coordinates.
+ |      
+ |      :return:
+ |          The molecule.
+ |  
+ |  read_xyz = _Molecule_read_xyz(xyzfile)
+ |      Reads molecule from file in XYZ format.
+ |      
+ |      :param xyzfile:
+ |          File with molecular structure in XYZ format.
+ |      
+ |      :return:
+ |          The molecule.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data and other attributes defined here:
+ |  
+ |  __hash__ = None
+ |  
+ |  ----------------------------------------------------------------------
+ |  Static methods inherited from pybind11_builtins.pybind11_object:
+ |  
+ |  __new__(*args, **kwargs) from pybind11_builtins.pybind11_type
+ |      Create and return a new object.  See help(type) for accurate signature.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0. ,  0. ,  0. ],
+       [ 0. ,  1.4,  1.1],
+       [ 0. , -1.4,  1.1]])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="gaussian-molecular-basis-sets">
+<h3>Gaussian molecular basis sets<a class="headerlink" href="#gaussian-molecular-basis-sets" title="Permalink to this headline">¶</a></h3>
+<p>Once we have a molecule, we can define a Gaussian molecular basis set. <code class="docutils literal notranslate"><span class="pre">vlx.MolecularBasis.get_avail_basis</span></code> shows the list of already available basis sets in VeloxChem for a given chemical element.</p>
+<div class="cell tag_hide_output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">get_avail_basis</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;6-31++G&#39;,
+ &#39;6-31+G&#39;,
+ &#39;6-31+G(D,P)&#39;,
+ &#39;6-311++G&#39;,
+ &#39;6-311++G(2D,2P)&#39;,
+ &#39;6-311++G(D,P)&#39;,
+ &#39;6-311+G&#39;,
+ &#39;6-311+G(2D,P)&#39;,
+ &#39;6-311G&#39;,
+ &#39;6-311G(2DF,2PD)&#39;,
+ &#39;6-31G&#39;,
+ &#39;6-31G(2DF,P)&#39;,
+ &#39;AUG-CC-PCVDZ&#39;,
+ &#39;AUG-CC-PCVQZ&#39;,
+ &#39;AUG-CC-PCVTZ&#39;,
+ &#39;AUG-CC-PVDZ&#39;,
+ &#39;AUG-CC-PVTZ&#39;,
+ &#39;CC-PCVDZ&#39;,
+ &#39;CC-PVDZ&#39;,
+ &#39;CC-PVDZ-RI&#39;,
+ &#39;CC-PVTZ&#39;,
+ &#39;CC-PVTZ-RI&#39;,
+ &#39;D-AUG-CC-PVDZ&#39;,
+ &#39;D-AUG-CC-PVQZ&#39;,
+ &#39;D-AUG-CC-PVTZ&#39;,
+ &#39;DEF2-QZVP&#39;,
+ &#39;DEF2-QZVPD&#39;,
+ &#39;DEF2-QZVPP&#39;,
+ &#39;DEF2-QZVPPD&#39;,
+ &#39;DEF2-RI-J&#39;,
+ &#39;DEF2-SV(P)&#39;,
+ &#39;DEF2-SVP&#39;,
+ &#39;DEF2-SVPD&#39;,
+ &#39;DEF2-TZVP&#39;,
+ &#39;DEF2-TZVPP&#39;,
+ &#39;DEF2-TZVPPD&#39;,
+ &#39;MIN-CC-PVDZ&#39;,
+ &#39;SADLEJ-PVTZ&#39;,
+ &#39;STO-3G&#39;,
+ &#39;STO-6G&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We generate a basis object for our molecule using one of the bases included in VeloxChem with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">h2o</span><span class="p">,</span> <span class="s2">&quot;sto-3g&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">basis</span><span class="o">.</span><span class="n">get_string</span><span class="p">(</span><span class="n">h2o</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Molecular Basis (Atomic Basis)
+================================
+
+Basis: STO-3G                                         
+
+  Atom Contracted GTOs          Primitive GTOs           
+
+  H   (1S)                     (3S)                     
+  O   (2S,1P)                  (6S,3P)                  
+
+Contracted Basis Functions : 7                        
+Primitive Basis Functions  : 21                       
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="self-consistent-field-calculation-drivers">
+<h3>Self-consistent field calculation drivers<a class="headerlink" href="#self-consistent-field-calculation-drivers" title="Permalink to this headline">¶</a></h3>
+<p>You launch restricted or unrestricted SCF calculations through their respective driver object: <code class="docutils literal notranslate"><span class="pre">vlx.ScfRestrictedDriver</span></code> and <code class="docutils literal notranslate"><span class="pre">vlx.ScfUnrestrictedDriver</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scfdrv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can configure the drivers with options passed as a Python dictionary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">settings</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;conv_thresh&quot;</span><span class="p">:</span> <span class="mf">1e-6</span><span class="p">}</span>
+<span class="n">scfdrv</span><span class="o">.</span><span class="n">update_settings</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, we run the calculation with the <code class="docutils literal notranslate"><span class="pre">compute</span></code> method. The output will be exactly identical to the one obtained from running the input file.</p>
+<div class="cell tag_hide_output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scfdrv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">h2o</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                                                          
+                                            Self Consistent Field Driver Setup                                            
+                                           ====================================                                           
+                                                                                                                          
+                   Wave Function Model             : Spin-Restricted Hartree-Fock                                         
+                   Initial Guess Model             : Superposition of Atomic Densities                                    
+                   Convergence Accelerator         : Two Level Direct Inversion of Iterative Subspace                     
+                   Max. Number of Iterations       : 50                                                                   
+                   Max. Number of Error Vectors    : 10                                                                   
+                   Convergence Threshold           : 1.0e-06                                                              
+                   ERI Screening Scheme            : Cauchy Schwarz + Density                                             
+                   ERI Screening Mode              : Dynamic                                                              
+                   ERI Screening Threshold         : 1.0e-12                                                              
+                   Linear Dependence Threshold     : 1.0e-06                                                              
+                                                                                                                          
+* Info * Nuclear repulsion energy: 9.3436381580 au                                                                        
+                                                                                                                          
+* Info * Overlap matrix computed in 0.18 sec.                                                                             
+                                                                                                                          
+* Info * Kinetic energy matrix computed in 0.00 sec.                                                                      
+                                                                                                                          
+* Info * Nuclear potential matrix computed in 0.00 sec.                                                                   
+                                                                                                                          
+* Info * Orthogonalization matrix computed in 0.09 sec.                                                                   
+                                                                                                                          
+* Info * SAD initial guess computed in 0.00 sec.                                                                          
+                                                                                                                          
+* Info * Starting Reduced Basis SCF calculation...                                                                        
+* Info * ...done. SCF energy in reduced basis set: -74.960337067134 au. Time: 0.48 sec.                                   
+                                                                                                                          
+* Info * Overlap matrix computed in 0.09 sec.                                                                             
+                                                                                                                          
+* Info * Kinetic energy matrix computed in 0.01 sec.                                                                      
+                                                                                                                          
+* Info * Nuclear potential matrix computed in 0.00 sec.                                                                   
+                                                                                                                          
+* Info * Orthogonalization matrix computed in 0.00 sec.                                                                   
+                                                                                                                          
+                                                                                                                          
+               Iter. | Hartree-Fock Energy | Energy Change | Gradient Norm | Max. Gradient | Density Change               
+               --------------------------------------------------------------------------------------------               
+                  1       -74.960337068856    0.0000000000      0.00002391      0.00000577      0.00000000                
+                  2       -74.960337069026   -0.0000000002      0.00000785      0.00000178      0.00001947                
+                  3       -74.960337069049   -0.0000000000      0.00000050      0.00000012      0.00001040                
+                                                                                                                          
+               *** SCF converged in 3 iterations. Time: 0.49 sec.                                                         
+                                                                                                                          
+               Spin-Restricted Hartree-Fock:                                                                              
+               -----------------------------                                                                              
+               Total Energy                       :      -74.9603370690 au                                                
+               Electronic Energy                  :      -84.3039752270 au                                                
+               Nuclear Repulsion Energy           :        9.3436381580 au                                                
+               ------------------------------------                                                                       
+               Gradient Norm                      :        0.0000004994 au                                                
+                                                                                                                          
+                                                                                                                          
+               Ground State Information                                                                                   
+               ------------------------                                                                                   
+               Charge of Molecule            :  0.0                                                                       
+               Multiplicity (2S+1)           :  1.0                                                                       
+               Magnetic Quantum Number (M_S) :  0.0                                                                       
+                                                                                                                          
+                                                                                                                          
+                                                 Spin Restricted Orbitals                                                 
+                                                 ------------------------                                                 
+                                                                                                                          
+               Molecular Orbital No.   1:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 2.0 Energy:  -20.24119 au                                                                      
+               (   1 O   1s  :    -0.99)                                                                                  
+                                                                                                                          
+               Molecular Orbital No.   2:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 2.0 Energy:   -1.27737 au                                                                      
+               (   1 O   1s  :     0.23) (   1 O   2s  :    -0.83) (   2 H   1s  :    -0.16)                              
+               (   3 H   1s  :    -0.16)                                                                                  
+                                                                                                                          
+               Molecular Orbital No.   3:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 2.0 Energy:   -0.62456 au                                                                      
+               (   1 O   1p-1:    -0.61) (   2 H   1s  :    -0.44) (   3 H   1s  :     0.44)                              
+                                                                                                                          
+               Molecular Orbital No.   4:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 2.0 Energy:   -0.45684 au                                                                      
+               (   1 O   2s  :     0.54) (   1 O   1p0 :    -0.78) (   2 H   1s  :    -0.27)                              
+               (   3 H   1s  :    -0.27)                                                                                  
+                                                                                                                          
+               Molecular Orbital No.   5:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 2.0 Energy:   -0.39296 au                                                                      
+               (   1 O   1p+1:     1.00)                                                                                  
+                                                                                                                          
+               Molecular Orbital No.   6:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 0.0 Energy:    0.62228 au                                                                      
+               (   1 O   2s  :    -0.91) (   1 O   1p0 :    -0.75) (   2 H   1s  :     0.81)                              
+               (   3 H   1s  :     0.81)                                                                                  
+                                                                                                                          
+               Molecular Orbital No.   7:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 0.0 Energy:    0.75803 au                                                                      
+               (   1 O   1p-1:    -1.00) (   2 H   1s  :     0.85) (   3 H   1s  :    -0.85)                              
+                                                                                                                          
+</pre></div>
+</div>
+</div>
+</div>
+<p>The driver object contains a wealth of useful information:</p>
+<ul class="simple">
+<li><p>The final SCF energy: <code class="docutils literal notranslate"><span class="pre">scfdrv.get_scf_energy()</span></code></p></li>
+<li><p>Various tensors, such as the molecular orbital coefficients, AO density and Fock matrices: <code class="docutils literal notranslate"><span class="pre">scfdrv.scf_tensors</span></code>.</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">scf_tensors</span></code> property is a Python dictionary with keys:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">C</span></code>, for the molecular orbital coefficients.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E</span></code>, for the orbital energies.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">S</span></code>, for the overlap integral.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">D</span></code>, for the <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> density matrices as a tuple of NumPy arrays.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">F</span></code>, for the <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> Fock matrices as a tuple of NumPy arrays.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scfdrv</span><span class="o">.</span><span class="n">scf_tensors</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;C&#39;, &#39;E&#39;, &#39;S&#39;, &#39;D&#39;, &#39;F&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide_output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scfdrv</span><span class="o">.</span><span class="n">scf_tensors</span><span class="p">[</span><span class="s2">&quot;D&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[ 1.05303213e+00, -2.22302631e-01, -1.46417671e-02,
+         -1.46417671e-02, -2.04228488e-16,  5.41902851e-02,
+         -7.42025150e-18],
+        [-2.22302631e-01,  9.82076521e-01, -1.64989375e-02,
+         -1.64989375e-02, -2.16731540e-16, -3.10480924e-01,
+          6.28860220e-17],
+        [-1.46417671e-02, -1.64989375e-02,  2.97409605e-01,
+         -9.77472101e-02,  2.70379139e-01,  2.33638805e-01,
+          1.91065463e-16],
+        [-1.46417671e-02, -1.64989375e-02, -9.77472101e-02,
+          2.97409605e-01, -2.70379139e-01,  2.33638805e-01,
+         -3.43153996e-16],
+        [-2.04228488e-16, -2.16731540e-16,  2.70379139e-01,
+         -2.70379139e-01,  3.70004394e-01, -1.39439910e-15,
+          1.06935025e-16],
+        [ 5.41902851e-02, -3.10480924e-01,  2.33638805e-01,
+          2.33638805e-01, -1.39439910e-15,  6.22944826e-01,
+         -7.67046565e-17],
+        [-7.42025150e-18,  6.28860220e-17,  1.91065463e-16,
+         -3.43153996e-16,  1.06935025e-16, -7.67046565e-17,
+          1.00000000e+00]]),
+ array([[ 1.05303213e+00, -2.22302631e-01, -1.46417671e-02,
+         -1.46417671e-02, -2.04228488e-16,  5.41902851e-02,
+         -7.42025150e-18],
+        [-2.22302631e-01,  9.82076521e-01, -1.64989375e-02,
+         -1.64989375e-02, -2.16731540e-16, -3.10480924e-01,
+          6.28860220e-17],
+        [-1.46417671e-02, -1.64989375e-02,  2.97409605e-01,
+         -9.77472101e-02,  2.70379139e-01,  2.33638805e-01,
+          1.91065463e-16],
+        [-1.46417671e-02, -1.64989375e-02, -9.77472101e-02,
+          2.97409605e-01, -2.70379139e-01,  2.33638805e-01,
+         -3.43153996e-16],
+        [-2.04228488e-16, -2.16731540e-16,  2.70379139e-01,
+         -2.70379139e-01,  3.70004394e-01, -1.39439910e-15,
+          1.06935025e-16],
+        [ 5.41902851e-02, -3.10480924e-01,  2.33638805e-01,
+          2.33638805e-01, -1.39439910e-15,  6.22944826e-01,
+         -7.67046565e-17],
+        [-7.42025150e-18,  6.28860220e-17,  1.91065463e-16,
+         -3.43153996e-16,  1.06935025e-16, -7.67046565e-17,
+          1.00000000e+00]]))
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ENCCS/veloxchem-workshop",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../../setup/" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Setting up your system</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../next-steps/" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">More advanced usage of the VeloxChem API</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The contributors<br/>
+    
+        &copy; Copyright 2021, The contributors.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

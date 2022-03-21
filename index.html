@@ -1,0 +1,682 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VeloxChem: quantum chemistry from laptop to HPC</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx_lesson.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="#" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/minipres.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex/" />
+    <link rel="search" title="Search" href="search/" />
+    <link rel="next" title="Setting up your system" href="setup/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="#">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/ENCCS-PDC-logos.jpg" class="logo" alt="logo">
+      
+      
+    </a>
+</div><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1 current">
+  <a class="reference internal" href="#">
+   VeloxChem: quantum chemistry from laptop to HPC
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="setup/">
+   Setting up your system
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  The lesson
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/first-steps/">
+   First steps with VeloxChem
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/next-steps/">
+   More advanced usage of the VeloxChem API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/rh-scf/">
+   The Roothaan-Hall self-consistent field procedure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/mp2/">
+   Møller-Plesset perturbation theory to second order
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hpc-setup/">
+   Setting up VeloxChem on a HPC cluster
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="x-ray-cpp/">
+   Complex polarization propagator in the X-ray region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exciton/">
+   Exciton calculation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="xTB-geomeTRIC/">
+   Geometry optimizations and semiempirical Hamiltonians
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="quick-reference/">
+   Quick Reference
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="zbibliography/">
+   Bibliography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="guide/">
+   Instructor’s guide
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/index.rst.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ENCCS/veloxchem-workshop"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ENCCS/veloxchem-workshop/issues/new?title=Issue%20on%20page%20%2Findex.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/ENCCS/veloxchem-workshop/edit/master/content/index.rst"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#who-is-the-course-for">
+   Who is the course for?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#about-the-course">
+   About the course
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interacting-with-the-notebooks">
+     Interacting with the notebooks
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-mybinder-web-interface">
+       The MyBinder web interface
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#accessing-a-terminal">
+         Accessing a terminal
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#starting-the-notebook-from-an-episode">
+       Starting the notebook from an episode
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#see-also">
+   See also
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   Credits
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#instructional-material">
+     Instructional Material
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#software">
+     Software
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>VeloxChem: quantum chemistry from laptop to HPC</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#who-is-the-course-for">
+   Who is the course for?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#about-the-course">
+   About the course
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interacting-with-the-notebooks">
+     Interacting with the notebooks
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-mybinder-web-interface">
+       The MyBinder web interface
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#accessing-a-terminal">
+         Accessing a terminal
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#starting-the-notebook-from-an-episode">
+       Starting the notebook from an episode
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#see-also">
+   See also
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   Credits
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#instructional-material">
+     Instructional Material
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#software">
+     Software
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="veloxchem-quantum-chemistry-from-laptop-to-hpc">
+<h1>VeloxChem: quantum chemistry from laptop to HPC<a class="headerlink" href="#veloxchem-quantum-chemistry-from-laptop-to-hpc" title="Permalink to this headline">¶</a></h1>
+<p>Quantum molecular modeling of complex molecular systems is an indispensable and
+integrated component in advanced material design, as such simulations provide a
+microscopic insight into the underlying physical processes.
+In this workshop, you will learn how to use the <a class="reference external" href="https://veloxchem.org/">VeloxChem program package</a> to:</p>
+<ul class="simple">
+<li><p>Perform quantum chemical simulations of <em>ground- and excited-state properties</em>
+of large systems.</p></li>
+<li><p>Leverage the <em>aggregate resources</em> of modern HPC clusters to efficiently
+tackle large molecular systems.</p></li>
+<li><p>Use the Python application programming interface (API) to prototype new
+methods.</p></li>
+<li><p>Design interactive computational teaching materials in Python.</p></li>
+</ul>
+<div class="admonition-prerequisites prerequisites admonition" id="prerequisites-0">
+<p class="admonition-title">Prerequisites</p>
+<p>Before attending this workshop, please make sure that you have the
+prerequisite software and hardware available.</p>
+<dl class="simple">
+<dt>Day 1</dt><dd><p>We will work within <a class="reference external" href="https://jupyter.org/">Jupyter notebooks</a>. We have
+set up this lesson such that it can be run entirely within your browser,
+using cloud infrastructure.
+You can also use your own computer, provided that it has the necessary
+tools installed. If that is not the case, please follow these
+<a class="reference internal" href="setup/#setup"><span class="std std-ref">detailed instructions</span></a>.</p>
+</dd>
+<dt>Day 2</dt><dd><p>You will need access to a supercomputer.  Any questions on how to use a
+particular HPC resource should be directed to the appropriate support
+desk.  Please follow these <a class="reference internal" href="setup/#compiling"><span class="std std-ref">detailed instructions</span></a> on
+how to set up the necessary software stack.</p>
+</dd>
+</dl>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<table class="colwidths-auto docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>15 min</p></td>
+<td><p><a class="reference internal" href="notebooks/first-steps/"><span class="doc">First steps with VeloxChem</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>15 min</p></td>
+<td><p><a class="reference internal" href="notebooks/next-steps/"><span class="doc">More advanced usage of the VeloxChem API</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>60 min</p></td>
+<td><p><a class="reference internal" href="notebooks/rh-scf/"><span class="doc">The Roothaan-Hall self-consistent field procedure</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>60 min</p></td>
+<td><p><a class="reference internal" href="notebooks/mp2/"><span class="doc">Møller-Plesset perturbation theory to second order</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>30 min</p></td>
+<td><p><a class="reference internal" href="hpc-setup/"><span class="doc">Setting up VeloxChem on a HPC cluster</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>40 min</p></td>
+<td><p><a class="reference internal" href="x-ray-cpp/"><span class="doc">Complex polarization propagator in the X-ray region</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>40 min</p></td>
+<td><p><a class="reference internal" href="exciton/"><span class="doc">Exciton calculation</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>40 min</p></td>
+<td><p><a class="reference internal" href="xTB-geomeTRIC/"><span class="doc">Geometry optimizations and semiempirical Hamiltonians</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zbibliography/">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide/">Instructor’s guide</a></li>
+</ul>
+</div>
+<div class="section" id="who-is-the-course-for">
+<span id="learner-personas"></span><h2>Who is the course for?<a class="headerlink" href="#who-is-the-course-for" title="Permalink to this headline">¶</a></h2>
+<p>This lesson is for researchers and students already familiar with quantum
+chemistry that want to learn how to:</p>
+<ul class="simple">
+<li><p>Perform quantum chemical simulations of ground- and excited-state properties
+on large systems and with efficient use of HPC resources.</p></li>
+<li><p>Use an interactive, computationally-oriented approach to teaching quantum
+chemistry.</p></li>
+</ul>
+<p>We assume that participants have:</p>
+<ul class="simple">
+<li><p>A sufficiently thorough prior knowledge of self-consistent field theory, at
+the level presented in the <em>Modern Quantum Chemistry</em> textbook by Szabo and
+Ostlund <span id="id1">[<a class="reference internal" href="zbibliography/#id3" title="Attila Szabo and Neil S Ostlund. Modern Quantum Chemistry: Introduction to Advanced Electronic Structure Theory. Dover Books on Chemistry. Courier Corporation, July 1996. ISBN 9780486691862. URL: https://play.google.com/store/books/details?id=k-DcCgAAQBAJ.">SO96</a>]</span>.</p></li>
+<li><p>Worked previously with other quantum chemical software packages.</p></li>
+<li><p>Some familiarity with the Python programming language. <a class="reference internal" href="#see-also"><span class="std std-ref">We have listed</span></a> some online resources to refresh your Python knowledge.</p></li>
+</ul>
+</div>
+<div class="section" id="about-the-course">
+<h2>About the course<a class="headerlink" href="#about-the-course" title="Permalink to this headline">¶</a></h2>
+<p>This lesson material is developed by the <a class="reference external" href="https://enccs.se/">EuroCC National Competence Center
+Sweden (ENCCS)</a> and the <a class="reference external" href="https://www.pdc.kth.se/">PDC Center for High Performance Computing</a>.</p>
+<p>Each lesson episode has clearly defined learning objectives and includes
+exercises and solutions, and is therefore also useful for self-learning.
+The lesson material is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">CC-BY-4.0</a> and can be reused in any form
+(with appropriate credit) in other courses and workshops.
+Instructors who wish to teach this lesson can refer to the <a class="reference internal" href="guide/"><span class="doc">Instructor’s guide</span></a> for
+practical advice.</p>
+<div class="section" id="interacting-with-the-notebooks">
+<h3>Interacting with the notebooks<a class="headerlink" href="#interacting-with-the-notebooks" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://mybinder.org/">MyBinder</a> offers a free, customizable cloud
+computing environment and powers some of the contents of this lesson.
+You can run the exercises for Day 1 of this workshop entirely in the
+cloud.</p>
+<div class="section" id="the-mybinder-web-interface">
+<h4>The MyBinder web interface<a class="headerlink" href="#the-mybinder-web-interface" title="Permalink to this headline">¶</a></h4>
+<p>You can access the JupyterLab instance for this workshop by clicking the “launch
+binder” button at the top of the <code class="docutils literal notranslate"><span class="pre">README</span></code> file displayed at
+<a class="reference external" href="https://github.com/ENCCS/veloxchem-workshop">https://github.com/ENCCS/veloxchem-workshop</a></p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/launch_binder_button.png"><img alt="Launching the binder" src="_images/launch_binder_button.png" style="width: 219.1px; height: 107.1px;" /></a>
+</div>
+<p>This will bring you to the loading page for the binder, which might
+take a few minutes to start up. Don’t despair!</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/binder_loading.png"><img alt="The binder is loading" src="_images/binder_loading.png" style="width: 550.0px; height: 245.5px;" /></a>
+</div>
+<p>Once loaded, you will see the introductory notebook already open:</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/jupyterlab_landing.png"><img alt="The Jupyter Lab landing page" src="_images/jupyterlab_landing.png" style="width: 1228.0px; height: 413.0px;" /></a>
+</div>
+<div class="section" id="accessing-a-terminal">
+<h5>Accessing a terminal<a class="headerlink" href="#accessing-a-terminal" title="Permalink to this headline">¶</a></h5>
+<p>From the “Launcher” tab, you can access terminal, Python interpreter, and notebook launchers:</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/launcher_menu.png"><img alt="Launcher menu on Jupyter Lab" src="_images/launcher_menu.png" style="width: 526.5px; height: 427.0px;" /></a>
+</div>
+<p>You can open a text editor (for input files etc) by clicking “New” and
+select Text File. If you prefer a terminal editor, you can use <code class="docutils literal notranslate"><span class="pre">nano</span></code> or
+<code class="docutils literal notranslate"><span class="pre">vim</span></code> or <code class="docutils literal notranslate"><span class="pre">emacs</span></code>.</p>
+</div>
+</div>
+<div class="section" id="starting-the-notebook-from-an-episode">
+<h4>Starting the notebook from an episode<a class="headerlink" href="#starting-the-notebook-from-an-episode" title="Permalink to this headline">¶</a></h4>
+<p>You can run the notebook directly from an episode in the lesson. Click on the
+rocket icon on the top right of the page and select which launcher to use:</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/launchers.png"><img alt="Launcher menu on Jupyter Lab" src="_images/launchers.png" style="width: 153.5px; height: 75.0px;" /></a>
+</div>
+<p>“Binder” will redirect you the binder instance. With “Live code”, you can run
+and modify the code cells within the webpage.
+The “Live code” option is powered by <a class="reference external" href="https://github.com/executablebooks/sphinx-thebe">sphinx-thebe</a> and, behind the scenes,
+MyBinder. Be aware that you will not be able to add new code cells in a live
+session.</p>
+</div>
+</div>
+</div>
+<div class="section" id="see-also">
+<span id="id2"></span><h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<p>There are many free resources online regarding Python and Jupyter:</p>
+<ul class="simple">
+<li><p>The <a class="reference external" href="http://molssi.org/">MolSSI</a>  introductory course on <a class="reference external" href="https://education.molssi.org/python_scripting_cms/">Python scripting
+for computational molecular science</a>.</p></li>
+<li><p>The <a class="reference external" href="https://scicomp.aalto.fi/">Aalto Scientific Computing</a> course on <a class="reference external" href="https://aaltoscicomp.github.io/python-for-scicomp/">Python for scientific
+computing</a>.</p></li>
+<li><p>The <a class="reference external" href="https://coderefinery.org/">CodeRefinery</a> course <a class="reference external" href="https://coderefinery.github.io/jupyter/">Introduction to
+Jupyter and JupyterLab</a></p></li>
+</ul>
+<p>For reference material on quantum chemistry:</p>
+<ul class="simple">
+<li><p>Helgaker, T.; Jørgensen, P.; Olsen, J. <em>Molecular Electronic-Structure Theory</em> <span id="id3">[<a class="reference internal" href="zbibliography/#id4" title="Trygve Helgaker, Poul Jørgensen, and Jeppe Olsen. Molecular Electronic-Structure Theory. Wiley, 1 edition edition, October 2000. ISBN 9780471967552. URL: https://play.google.com/store/books/details?id=2G8vAQAAIAAJ.">HJorgensenO00</a>]</span></p></li>
+<li><p>Szabo, A.; Ostlund, N. S. <em>Modern Quantum Chemistry: Introduction to Advanced Electronic Structure Theory</em> <span id="id4">[<a class="reference internal" href="zbibliography/#id3" title="Attila Szabo and Neil S Ostlund. Modern Quantum Chemistry: Introduction to Advanced Electronic Structure Theory. Dover Books on Chemistry. Courier Corporation, July 1996. ISBN 9780486691862. URL: https://play.google.com/store/books/details?id=k-DcCgAAQBAJ.">SO96</a>]</span></p></li>
+</ul>
+</div>
+<div class="section" id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
+<p>The lesson file structure and browsing layout is inspired by and derived from
+<a class="reference external" href="https://github.com/coderefinery/sphinx-lesson">work</a> by <a class="reference external" href="https://coderefinery.org/">CodeRefinery</a> licensed under the <a class="reference external" href="http://opensource.org/licenses/mit-license.html">MIT license</a>. We have copied and adapted
+most of their license text.</p>
+<div class="section" id="instructional-material">
+<h3>Instructional Material<a class="headerlink" href="#instructional-material" title="Permalink to this headline">¶</a></h3>
+<p>This instructional material is made available under the <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons
+Attribution license (CC-BY-4.0)</a>. The following is a
+human-readable summary of (and not a substitute for) the <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/legalcode">full legal text of the
+CC-BY-4.0 license</a>.
+You are free:</p>
+<ul class="simple">
+<li><p>to <strong>share</strong> - copy and redistribute the material in any medium or format</p></li>
+<li><p>to <strong>adapt</strong> - remix, transform, and build upon the material for any purpose,
+even commercially.</p></li>
+</ul>
+<p>The licensor cannot revoke these freedoms as long as you follow these license terms:</p>
+<ul class="simple">
+<li><p><strong>Attribution</strong> - You must give appropriate credit (mentioning that your work
+is derived from work that is Copyright (c) ENCCS and, where practical, linking
+to <a class="reference external" href="https://enccs.se">https://enccs.se</a>), provide a <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">link to the license</a>, and indicate if changes were
+made. You may do so in any reasonable manner, but not in any way that suggests
+the licensor endorses you or your use.</p></li>
+<li><p><strong>No additional restrictions</strong> - You may not apply legal terms or
+technological measures that legally restrict others from doing anything the
+license permits. With the understanding that:</p>
+<ul>
+<li><p>You do not have to comply with the license for elements of the material in
+the public domain or where your use is permitted by an applicable exception
+or limitation.</p></li>
+<li><p>No warranties are given. The license may not give you all of the permissions
+necessary for your intended use. For example, other rights such as
+publicity, privacy, or moral rights may limit how you use the material.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="software">
+<h3>Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h3>
+<p>Except where otherwise noted, the example programs and other software provided
+with this repository are made available under the <a class="reference external" href="http://opensource.org/">OSI</a>-approved
+<a class="reference external" href="http://opensource.org/licenses/mit-license.html">MIT license</a>.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ENCCS/veloxchem-workshop",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='right-next' id="next-link" href="setup/" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Setting up your system</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The contributors<br/>
+    
+        &copy; Copyright 2021, The contributors.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

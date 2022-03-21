@@ -1,0 +1,589 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instructor’s guide</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/minipres.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="prev" title="Bibliography" href="../zbibliography/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/ENCCS-PDC-logos.jpg" class="logo" alt="logo">
+      
+      
+    </a>
+</div><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../">
+   VeloxChem: quantum chemistry from laptop to HPC
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../setup/">
+   Setting up your system
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  The lesson
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/first-steps/">
+   First steps with VeloxChem
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/next-steps/">
+   More advanced usage of the VeloxChem API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/rh-scf/">
+   The Roothaan-Hall self-consistent field procedure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/mp2/">
+   Møller-Plesset perturbation theory to second order
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../hpc-setup/">
+   Setting up VeloxChem on a HPC cluster
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../x-ray-cpp/">
+   Complex polarization propagator in the X-ray region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exciton/">
+   Exciton calculation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../xTB-geomeTRIC/">
+   Geometry optimizations and semiempirical Hamiltonians
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../quick-reference/">
+   Quick Reference
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../zbibliography/">
+   Bibliography
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Instructor’s guide
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/guide.rst.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ENCCS/veloxchem-workshop"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ENCCS/veloxchem-workshop/issues/new?title=Issue%20on%20page%20%2Fguide.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/ENCCS/veloxchem-workshop/edit/master/content/guide.rst"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#editing-the-material">
+   Editing the material
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#useful-notes-on-jupyter-notebooks">
+     Useful notes on Jupyter notebooks
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#in-jupyterlab">
+       In JupyterLab
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#in-jupyter-notebooks">
+       In Jupyter notebooks
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#in-myst-nb">
+       In
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MyST-nb
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-outcomes">
+   Learning outcomes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#first-iteration">
+   First iteration
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Instructor’s guide</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#editing-the-material">
+   Editing the material
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#useful-notes-on-jupyter-notebooks">
+     Useful notes on Jupyter notebooks
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#in-jupyterlab">
+       In JupyterLab
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#in-jupyter-notebooks">
+       In Jupyter notebooks
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#in-myst-nb">
+       In
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         MyST-nb
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-outcomes">
+   Learning outcomes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#first-iteration">
+   First iteration
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="instructor-s-guide">
+<h1>Instructor’s guide<a class="headerlink" href="#instructor-s-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="editing-the-material">
+<h2>Editing the material<a class="headerlink" href="#editing-the-material" title="Permalink to this headline">¶</a></h2>
+<p>This website uses <a class="reference external" href="https://coderefinery.github.io/sphinx-lesson/">sphinx-lesson</a>. Pages can be added in a variety of formats:</p>
+<ul class="simple">
+<li><p>Jupyter notebooks (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>), like all the pages for Day 1.</p></li>
+<li><p>reStructuredText (<code class="docutils literal notranslate"><span class="pre">.rst</span></code>), as usual for Sphinx-based documentation pages.</p></li>
+<li><p>Markdown (<code class="docutils literal notranslate"><span class="pre">.md</span></code>), like all the pages for Day 2.</p></li>
+</ul>
+<p>However, note that we <strong>do not</strong> use plain Markdown, but the <a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/">MyST</a> parser (short for  <em>Markedly
+Structured Text</em>) that allows for richer content. For example, it is possible to
+embed Jupyter notebook input and/or output cells <em>via</em> <a class="reference external" href="https://myst-nb.readthedocs.io/en/latest/index.html">MyST-nb</a> or even write <em>entire</em>
+notebooks in plain-text!</p>
+<p>Here are some quick guides to <code class="docutils literal notranslate"><span class="pre">.rst</span></code> and <code class="docutils literal notranslate"><span class="pre">.md</span></code> formats:</p>
+<ul class="simple">
+<li><p>For <code class="docutils literal notranslate"><span class="pre">MyST</span></code> <a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/using/syntax.html">https://myst-parser.readthedocs.io/en/latest/using/syntax.html</a></p></li>
+<li><p>For reStructuredText <a class="reference external" href="https://docutils.sourceforge.io/docs/user/rst/quickref.html">https://docutils.sourceforge.io/docs/user/rst/quickref.html</a></p></li>
+<li><p>For <code class="docutils literal notranslate"><span class="pre">MyST-nb</span></code> <a class="reference external" href="https://myst-nb.readthedocs.io/en/latest/use/markdown.html">https://myst-nb.readthedocs.io/en/latest/use/markdown.html</a></p></li>
+</ul>
+<div class="section" id="useful-notes-on-jupyter-notebooks">
+<h3>Useful notes on Jupyter notebooks<a class="headerlink" href="#useful-notes-on-jupyter-notebooks" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes it’s necessary to hide and/or remove content from a notebook when
+using it as training material. This can be accomplished with <em>tags</em>.</p>
+<div class="section" id="in-jupyterlab">
+<h4>In JupyterLab<a class="headerlink" href="#in-jupyterlab" title="Permalink to this headline">¶</a></h4>
+<p>In this example, we want to remove the cell entirely when rendering it as a webpage.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/tags-lab.png"><img alt="Setting tags in with the JupyterLab interface." src="../_images/tags-lab.png" style="width: 1500.0px; height: 396.0px;" /></a>
+</div>
+</div>
+<div class="section" id="in-jupyter-notebooks">
+<h4>In Jupyter notebooks<a class="headerlink" href="#in-jupyter-notebooks" title="Permalink to this headline">¶</a></h4>
+<p>In this example, we want to remove the cell entirely when rendering it as a webpage.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/tags-notebook.png"><img alt="Setting tags in with the notebook interface." src="../_images/tags-notebook.png" style="width: 1016.0px; height: 571.5px;" /></a>
+</div>
+</div>
+<div class="section" id="in-myst-nb">
+<h4>In <code class="docutils literal notranslate"><span class="pre">MyST-nb</span></code><a class="headerlink" href="#in-myst-nb" title="Permalink to this headline">¶</a></h4>
+<p>In this example, we only want to show the <em>output</em> of executing the cell.</p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{code-block} ipython3
+:tags: [remove-input]
+
+import py3Dmol as p3d
+
+v = p3d.view(width=400, height=400)
+
+with open(&quot;inputs/porphyrin.xyz&quot;, &quot;r&quot;) as fh:
+    porphyrin_xyz = fh.read()
+
+v.addModel(porphyrin_xyz, &quot;xyz&quot;)
+v.setStyle({&#39;stick&#39;:{}})
+v.zoomTo()
+v.show()
+```
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="learning-outcomes">
+<h2>Learning outcomes<a class="headerlink" href="#learning-outcomes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Familiarize with VeloxChem</p></li>
+</ul>
+</div>
+<div class="section" id="first-iteration">
+<h2>First iteration<a class="headerlink" href="#first-iteration" title="Permalink to this headline">¶</a></h2>
+<p><strong>Day 1 - Thursday 6 May 2021</strong></p>
+<ul class="simple">
+<li><p>Day 1 is based entirely on notebooks.</p></li>
+<li><p>The first segment (up until the first break) can be conducted as a type-along
+with all attendees in the same room.</p></li>
+<li><p>Subsequent segments are in breakout rooms.</p></li>
+</ul>
+<table class="colwidths-auto docutils align-center">
+<tbody>
+<tr class="row-odd"><td><p>9:00 -  9:10</p></td>
+<td><p>Welcome and introduction to the training course</p></td>
+</tr>
+<tr class="row-even"><td><p>9:10 -  9:25</p></td>
+<td><p><a class="reference internal" href="../notebooks/first-steps/"><span class="doc">First steps with VeloxChem</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>9:25 -  9:40</p></td>
+<td><p><a class="reference internal" href="../notebooks/next-steps/"><span class="doc">More advanced usage of the VeloxChem API</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>9:40 -  9:50</p></td>
+<td><p>Break</p></td>
+</tr>
+<tr class="row-odd"><td><p>9:50 - 10:50</p></td>
+<td><p><a class="reference internal" href="../notebooks/rh-scf/"><span class="doc">The Roothaan-Hall self-consistent field procedure</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>10:50 - 11:00</p></td>
+<td><p>Break</p></td>
+</tr>
+<tr class="row-odd"><td><p>11:00 - 12:00</p></td>
+<td><p><a class="reference internal" href="../notebooks/mp2/"><span class="doc">Møller-Plesset perturbation theory to second order</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>12:00 - 12:10</p></td>
+<td><p>Break</p></td>
+</tr>
+<tr class="row-odd"><td><p>12:10 - 12:30</p></td>
+<td><p>Wrap-up</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Day 2 - Friday 7 February 2021</strong></p>
+<ul class="simple">
+<li><p>Day 2 shows how to run on HPC infrastructure and we assume that has been taken
+care of properly beforehand.</p></li>
+<li><p>The first segment goes through the set up of VeloxChem. This is already
+part of the installation instructions, so it might be skipped.</p></li>
+</ul>
+<table class="colwidths-auto docutils align-center">
+<tbody>
+<tr class="row-odd"><td><p>9:00 -  9:10</p></td>
+<td><p>What did we cover yesterday?</p></td>
+</tr>
+<tr class="row-even"><td><p>9:10 -  9:40</p></td>
+<td><p><a class="reference internal" href="../hpc-setup/#hpc-setup"><span class="std std-ref">Setting up VeloxChem on a HPC cluster</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>9:40 -  9:50</p></td>
+<td><p>Break</p></td>
+</tr>
+<tr class="row-even"><td><p>9:50 - 10:30</p></td>
+<td><p><a class="reference internal" href="../x-ray-cpp/#x-ray-cpp"><span class="std std-ref">Complex polarization propagator in the X-ray region</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>10:30 - 10:40</p></td>
+<td><p>Break</p></td>
+</tr>
+<tr class="row-even"><td><p>10:40 - 11:20</p></td>
+<td><p><a class="reference internal" href="../exciton/#exciton"><span class="std std-ref">Exciton calculation</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>11:20 - 11:30</p></td>
+<td><p>Break</p></td>
+</tr>
+<tr class="row-even"><td><p>11:30 - 12:10</p></td>
+<td><p><a class="reference internal" href="../xTB-geomeTRIC/#xtb-geometric"><span class="std std-ref">Geometry optimizations and semiempirical Hamiltonians</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>12:10 - 12:15</p></td>
+<td><p>Break</p></td>
+</tr>
+<tr class="row-even"><td><p>12:15 - 12:30</p></td>
+<td><p>Wrap-up</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ENCCS/veloxchem-workshop",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../zbibliography/" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Bibliography</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The contributors<br/>
+    
+        &copy; Copyright 2021, The contributors.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

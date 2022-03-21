@@ -1,0 +1,552 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complex polarization propagator in the X-ray region</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/minipres.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Exciton calculation" href="../exciton/" />
+    <link rel="prev" title="Setting up VeloxChem on a HPC cluster" href="../hpc-setup/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/ENCCS-PDC-logos.jpg" class="logo" alt="logo">
+      
+      
+    </a>
+</div><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../">
+   VeloxChem: quantum chemistry from laptop to HPC
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../setup/">
+   Setting up your system
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  The lesson
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/first-steps/">
+   First steps with VeloxChem
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/next-steps/">
+   More advanced usage of the VeloxChem API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/rh-scf/">
+   The Roothaan-Hall self-consistent field procedure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/mp2/">
+   Møller-Plesset perturbation theory to second order
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../hpc-setup/">
+   Setting up VeloxChem on a HPC cluster
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Complex polarization propagator in the X-ray region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exciton/">
+   Exciton calculation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../xTB-geomeTRIC/">
+   Geometry optimizations and semiempirical Hamiltonians
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../quick-reference/">
+   Quick Reference
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../zbibliography/">
+   Bibliography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guide/">
+   Instructor’s guide
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/x-ray-cpp.rst.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ENCCS/veloxchem-workshop"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ENCCS/veloxchem-workshop/issues/new?title=Issue%20on%20page%20%2Fx-ray-cpp.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/ENCCS/veloxchem-workshop/edit/master/content/x-ray-cpp.rst"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-free-base-porphyrin">
+   System: free-base porphyrin
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#input-file">
+   Input file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Complex polarization propagator in the X-ray region</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-free-base-porphyrin">
+   System: free-base porphyrin
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#input-file">
+   Input file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="complex-polarization-propagator-in-the-x-ray-region">
+<span id="x-ray-cpp"></span><h1>Complex polarization propagator in the X-ray region<a class="headerlink" href="#complex-polarization-propagator-in-the-x-ray-region" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Learn how to run a complex polarization propagator (CPP) calculation.</p></li>
+</ul>
+</div>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>Run a CPP calculation.</p></li>
+<li><p>Plot the absorption spectrum.</p></li>
+<li><p>Perform scalability test of the CPP calculation.</p></li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise we will use an efficient implementation of the complex
+polarization propagator approach (CPP) to compute the near-edge X-ray
+absorption fine-structure spectrum of free-base porphyrin.</p>
+<p>Conventional response theory solves a generalized eigenvalue problem and
+provides excitation energies starting from the lowest excited states. It is therefore
+impractical to study spectral regions with high density-of-states. The CPP
+approach introduces a damping term which, from a purely computational
+perspective, removes the singularities of the response functions at resonance
+frequencies. The damped response theory can be applied to any frequency region
+of interest. You may read more in <a class="reference external" href="https://pubs.acs.org/doi/10.1021/ct500114m">this paper</a> <span id="id1">[<a class="reference internal" href="../zbibliography/#id5" title="Joanna Kauczor and Patrick Norman. Efficient Calculations of Molecular Linear Response Properties for Spectral Regions. J. Chem. Theory Comput., 10(6):2449–2455, June 2014. URL: http://dx.doi.org/10.1021/ct500114m, doi:10.1021/ct500114m.">KN14</a>]</span></p>
+<p>The CPP solver in VeloxChem will solve multiple frequencies simultaneously. The
+complex response equations for a given frequency can be expressed in terms of a
+coupled set of linear equations for a real symmetric matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+ E^{[2]} &amp; -\omega S^{[2]}  &amp; \gamma S^{[2]}  &amp; 0 \\
+ -\omega S^{[2]} &amp; E^{[2]} &amp; 0 &amp; \gamma S^{[2]} \\
+ \gamma S^{[2]} &amp; 0 &amp; -E^{[2]} &amp;\omega S^{[2]} \\
+ 0 &amp; \gamma S^{[2]}  &amp; \omega S^{[2]} &amp; -E^{[2]}
+\end{pmatrix}
+\begin{pmatrix}
+X^R_g\\
+X^R_u\\
+X^I_u\\
+X^I_g
+\end{pmatrix} =
+\begin{pmatrix}
+G^R_g\\
+G^R_u\\
+-G^I_u\\
+-G^I_g
+\end{pmatrix}\end{split}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(\omega\)</span> is the frequency, <span class="math notranslate nohighlight">\(\gamma\)</span> is the damping parameter, <span class="math notranslate nohighlight">\(E^{[2]}\)</span>
+and <span class="math notranslate nohighlight">\(S^{[2]}\)</span> are the Hessian and metric matrices, respectively, and <span class="math notranslate nohighlight">\(G\)</span> is the
+gradient vector. The <span class="math notranslate nohighlight">\(R\)</span>/<span class="math notranslate nohighlight">\(I\)</span> superscripts denote real/imaginary components,
+while the <span class="math notranslate nohighlight">\(g\)</span>/<span class="math notranslate nohighlight">\(u\)</span> subscripts denote <em>gerade</em>/<em>ungerade</em> symmetry.</p>
+</div>
+<div class="section" id="system-free-base-porphyrin">
+<h2>System: free-base porphyrin<a class="headerlink" href="#system-free-base-porphyrin" title="Permalink to this headline">¶</a></h2>
+<div style="height: 400px; width: 600px; position: relative;" class='viewer_3Dmoljs' data-href='../_static/porphyrin.xyz' data-type='xyz' data-backgroundcolor='0xffffff' data-style='stick'></div></div>
+<div class="section" id="input-file">
+<h2>Input file<a class="headerlink" href="#input-file" title="Permalink to this headline">¶</a></h2>
+<p>Below is the input file for a CPP calculation of free-base porphyrin.
+You can read more about the VeloxChem input keywords in
+<a class="reference external" href="https://docs.veloxchem.org/inputs/keywords.html">this page</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">response</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="nd">@end</span>
+
+<span class="hll"><span class="nd">@response</span>
+</span><span class="hll"><span class="nb">property</span><span class="p">:</span> <span class="n">absorption</span> <span class="p">(</span><span class="n">cpp</span><span class="p">)</span>
+</span><span class="hll"><span class="n">frequencies</span><span class="p">:</span> <span class="mf">10.01</span> <span class="o">-</span> <span class="mf">10.17</span> <span class="p">(</span><span class="mf">0.0016</span><span class="p">)</span>
+</span><span class="hll"><span class="nd">@end</span>
+</span>
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">xyz</span><span class="p">:</span>
+<span class="n">H</span>  <span class="mf">3.209599995</span>  <span class="mf">3.172309777</span>  <span class="mf">0.000000000</span>
+<span class="n">N</span>  <span class="mf">0.000000000</span> <span class="o">-</span><span class="mf">2.113600613</span>  <span class="mf">0.000000000</span>
+<span class="n">N</span>  <span class="mf">2.031813914</span>  <span class="mf">0.000000000</span>  <span class="mf">0.000000000</span>
+<span class="n">N</span>  <span class="mf">0.000000000</span>  <span class="mf">2.113600613</span>  <span class="mf">0.000000000</span>
+<span class="n">N</span> <span class="o">-</span><span class="mf">2.031813914</span>  <span class="mf">0.000000000</span>  <span class="mf">0.000000000</span>
+<span class="n">C</span>  <span class="mf">1.126850920</span> <span class="o">-</span><span class="mf">2.888627221</span>  <span class="mf">0.000000000</span>
+<span class="n">C</span> <span class="o">-</span><span class="mf">1.126850920</span> <span class="o">-</span><span class="mf">2.888627221</span>  <span class="mf">0.000000000</span>
+<span class="n">C</span>  <span class="mf">1.126850920</span>  <span class="mf">2.888627221</span>  <span class="mf">0.000000000</span>
+<span class="n">C</span> <span class="o">-</span><span class="mf">1.126850920</span>  <span class="mf">2.888627221</span>  <span class="mf">0.000000000</span>
+<span class="n">C</span>  <span class="mf">2.850160984</span> <span class="o">-</span><span class="mf">1.083939750</span>  <span class="mf">0.000000000</span>
+<span class="n">C</span>  <span class="mf">2.850160984</span>  <span class="mf">1.083939750</span>  <span class="mf">0.000000000</span>
+<span class="n">C</span> <span class="o">-</span><span class="mf">2.850160984</span> <span class="o">-</span><span class="mf">1.083939750</span>  <span class="mf">0.000000000</span>
+<span class="n">C</span> <span class="o">-</span><span class="mf">2.850160984</span>  <span class="mf">1.083939750</span>  <span class="mf">0.000000000</span>
+<span class="n">C</span>  <span class="mf">0.683827200</span> <span class="o">-</span><span class="mf">4.249372023</span>  <span class="mf">0.000000000</span>
+<span class="n">C</span> <span class="o">-</span><span class="mf">0.683827200</span> <span class="o">-</span><span class="mf">4.249372023</span>  <span class="mf">0.000000000</span>
+<span class="n">C</span>  <span class="mf">0.683827200</span>  <span class="mf">4.249372023</span>  <span class="mf">0.000000000</span>
+<span class="n">C</span> <span class="o">-</span><span class="mf">0.683827200</span>  <span class="mf">4.249372023</span>  <span class="mf">0.000000000</span>
+<span class="n">C</span>  <span class="mf">4.248378966</span> <span class="o">-</span><span class="mf">0.675836785</span>  <span class="mf">0.000000000</span>
+<span class="n">C</span>  <span class="mf">4.248378966</span>  <span class="mf">0.675836785</span>  <span class="mf">0.000000000</span>
+<span class="n">C</span> <span class="o">-</span><span class="mf">4.248378966</span> <span class="o">-</span><span class="mf">0.675836785</span>  <span class="mf">0.000000000</span>
+<span class="n">C</span> <span class="o">-</span><span class="mf">4.248378966</span>  <span class="mf">0.675836785</span>  <span class="mf">0.000000000</span>
+<span class="n">C</span>  <span class="mf">2.433989580</span> <span class="o">-</span><span class="mf">2.416542873</span>  <span class="mf">0.000000000</span>
+<span class="n">C</span> <span class="o">-</span><span class="mf">2.433989580</span> <span class="o">-</span><span class="mf">2.416542873</span>  <span class="mf">0.000000000</span>
+<span class="n">C</span> <span class="o">-</span><span class="mf">2.433989580</span>  <span class="mf">2.416542873</span>  <span class="mf">0.000000000</span>
+<span class="n">C</span>  <span class="mf">2.433989580</span>  <span class="mf">2.416542873</span>  <span class="mf">0.000000000</span>
+<span class="n">H</span>  <span class="mf">1.341416542</span> <span class="o">-</span><span class="mf">5.103998738</span>  <span class="mf">0.000000000</span>
+<span class="n">H</span> <span class="o">-</span><span class="mf">1.341416542</span> <span class="o">-</span><span class="mf">5.103998738</span>  <span class="mf">0.000000000</span>
+<span class="n">H</span>  <span class="mf">1.341416542</span>  <span class="mf">5.103998738</span>  <span class="mf">0.000000000</span>
+<span class="n">H</span> <span class="o">-</span><span class="mf">1.341416542</span>  <span class="mf">5.103998738</span>  <span class="mf">0.000000000</span>
+<span class="n">H</span>  <span class="mf">5.096138011</span> <span class="o">-</span><span class="mf">1.344322017</span>  <span class="mf">0.000000000</span>
+<span class="n">H</span>  <span class="mf">5.096138011</span>  <span class="mf">1.344322017</span>  <span class="mf">0.000000000</span>
+<span class="n">H</span> <span class="o">-</span><span class="mf">5.096138011</span> <span class="o">-</span><span class="mf">1.344322017</span>  <span class="mf">0.000000000</span>
+<span class="n">H</span> <span class="o">-</span><span class="mf">5.096138011</span>  <span class="mf">1.344322017</span>  <span class="mf">0.000000000</span>
+<span class="n">H</span>  <span class="mf">3.209599995</span> <span class="o">-</span><span class="mf">3.172309777</span>  <span class="mf">0.000000000</span>
+<span class="n">H</span> <span class="o">-</span><span class="mf">3.209599995</span> <span class="o">-</span><span class="mf">3.172309777</span>  <span class="mf">0.000000000</span>
+<span class="n">H</span> <span class="o">-</span><span class="mf">3.209599995</span>  <span class="mf">3.172309777</span>  <span class="mf">0.000000000</span>
+<span class="n">H</span>  <span class="mf">0.000000000</span> <span class="o">-</span><span class="mf">1.102285542</span>  <span class="mf">0.000000000</span>
+<span class="n">H</span>  <span class="mf">0.000000000</span>  <span class="mf">1.102285542</span>  <span class="mf">0.000000000</span>
+<span class="nd">@end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Submit a job</p>
+<blockquote>
+<div><p>Runs the above example on <strong>16</strong> nodes.
+On Beskow this will take around 9 minutes so please make sure that you
+specify a proper walltime limit in the job script.</p>
+</div></blockquote>
+</li>
+<li><p>Plot and analyse the spectrum</p>
+<blockquote>
+<div><p>The absorption spectrum will be printed at the end of the output file.
+Compare this to the results provided in <a class="reference external" href="https://mybinder.org/v2/gh/ENCCS/veloxchem-workshop/master?urlpath=lab%2Ftree%2Fcontent%2Fnotebooks%2Fcpp_analysis%2Fvlx_cpp.ipynb">this Jupyter notebook on MyBinder</a>,
+where analysis of polarization dependence and the association of features
+to chemically unique atoms is also available. Results for a smaller system
+(vinylfluoride) are also available.</p>
+</div></blockquote>
+</li>
+<li><p>Run scalability test</p>
+<blockquote>
+<div><p>Run the CPP calculation on fewer number of nodes and plot the speedup with
+respect to the number of nodes.</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ENCCS/veloxchem-workshop",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../hpc-setup/" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Setting up VeloxChem on a HPC cluster</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../exciton/" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exciton calculation</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The contributors<br/>
+    
+        &copy; Copyright 2021, The contributors.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

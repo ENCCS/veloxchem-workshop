@@ -1,0 +1,681 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Geometry optimizations and semiempirical Hamiltonians</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/minipres.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Quick Reference" href="../quick-reference/" />
+    <link rel="prev" title="Exciton calculation" href="../exciton/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/ENCCS-PDC-logos.jpg" class="logo" alt="logo">
+      
+      
+    </a>
+</div><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../">
+   VeloxChem: quantum chemistry from laptop to HPC
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../setup/">
+   Setting up your system
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  The lesson
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/first-steps/">
+   First steps with VeloxChem
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/next-steps/">
+   More advanced usage of the VeloxChem API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/rh-scf/">
+   The Roothaan-Hall self-consistent field procedure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/mp2/">
+   Møller-Plesset perturbation theory to second order
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../hpc-setup/">
+   Setting up VeloxChem on a HPC cluster
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../x-ray-cpp/">
+   Complex polarization propagator in the X-ray region
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../exciton/">
+   Exciton calculation
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Geometry optimizations and semiempirical Hamiltonians
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../quick-reference/">
+   Quick Reference
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../zbibliography/">
+   Bibliography
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../guide/">
+   Instructor’s guide
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/xTB-geomeTRIC.rst.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/ENCCS/veloxchem-workshop"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/ENCCS/veloxchem-workshop/issues/new?title=Issue%20on%20page%20%2FxTB-geomeTRIC.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/ENCCS/veloxchem-workshop/edit/master/content/xTB-geomeTRIC.rst"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-zinc-tetraphenylporphyrin-dimer">
+   System: zinc tetraphenylporphyrin dimer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#input-file">
+   Input file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results">
+   Results
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Geometry optimizations and semiempirical Hamiltonians</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-zinc-tetraphenylporphyrin-dimer">
+   System: zinc tetraphenylporphyrin dimer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#input-file">
+   Input file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results">
+   Results
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="geometry-optimizations-and-semiempirical-hamiltonians">
+<span id="xtb-geometric"></span><h1>Geometry optimizations and semiempirical Hamiltonians<a class="headerlink" href="#geometry-optimizations-and-semiempirical-hamiltonians" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Learn how to run geometry optimization using the semiempirical xTB method.</p></li>
+</ul>
+</div>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>Run a geometry optimization calculation.</p></li>
+<li><p>Visualize the change of geometry during optimization.</p></li>
+<li><p>(Optional) Try geometry optimization using a different coordinate system</p></li>
+</ul>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise we will use <a class="reference external" href="https://onlinelibrary.wiley.com/doi/10.1002/wcms.1493">the semiempirical extended tight-binding (xTB)
+method</a> <span id="id1">[<a class="reference internal" href="../zbibliography/#id7" title="Christoph Bannwarth, Eike Caldeweyher, Sebastian Ehlert, Andreas Hansen, Philipp Pracht, Jakob Seibert, Sebastian Spicher, and Stefan Grimme. Extended tight‐binding quantum chemistry methods. Wiley Interdiscip. Rev. Comput. Mol. Sci., March 2021. URL: https://onlinelibrary.wiley.com/doi/10.1002/wcms.1493, doi:10.1002/wcms.1493.">BCE+21</a>]</span>,
+combined with <a class="reference external" href="https://aip.scitation.org/doi/10.1063/1.4952956">the geomeTRIC optimization code</a> <span id="id2">[<a class="reference internal" href="../zbibliography/#id8" title="Lee-Ping Wang and Chenchen Song. Geometry optimization made simple with translation and rotation coordinates. J. Chem. Phys., 144(21):214108, June 2016. URL: http://dx.doi.org/10.1063/1.4952956, doi:10.1063/1.4952956.">WS16</a>]</span>,
+to optimize the geometry of the zinc tetraphenylporphyrin dimer.</p>
+<p>Geometry optimization is the procedure to find local minimum on the potential
+energy surface. A coordinate system is therefore necessary for describing the
+geometry of the system of interest. The Cartesian coordinate system is the
+simplest; however, it is very inefficient due to the complexity of the potential
+energy surface. In practice, it is common to employ the so-called internal coordinates
+that describes the collective motion of atoms in a more efficient way. A displacement
+in the internal coordinate <span class="math notranslate nohighlight">\(\Delta \mathbf{q}\)</span> is related to the displacement in
+Cartesian coordinates <span class="math notranslate nohighlight">\(\Delta \mathbf{x}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\Delta \mathbf{x} = \mathbf{B}^T \mathbf{G}^{-1} \Delta \mathbf{q}\]</div>
+<p>Here <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> is the Wilson B-matrix, with elements:</p>
+<div class="math notranslate nohighlight">
+\[B_{ij} = \frac{\partial q_i}{\partial x_j}\]</div>
+<p>and <span class="math notranslate nohighlight">\(\mathbf{G} = \mathbf{B} \mathbf{B}^T\)</span>.</p>
+<p>In the geomeTRIC optimization code, the translation-rotation internal coordinate
+(TRIC) system is employed. This coordinate system treats intra- and
+intermolecular coordinates separately by introducing translation and rotation
+coordinates for the individual molecules in the system.</p>
+<p>Efficient geometry optimizations demand good prediction of the next step in the
+conformation space. This can be done based on a quadratic approximation for the local
+shape of the potential energy, where an apprximate evaluation of the Hessian can be
+provided by, for example, the Broyden-Fletcher-Goldfarb-Shanno (BFGS) method.</p>
+<p>The gradient, or the first derivative of the energy with respect to nuclear
+displacements, is provided by the semiempirical xTB method, which is an
+efficient tight-binding model that covers almost the entire periodic table (<span class="math notranslate nohighlight">\(Z \le 86\)</span>).</p>
+</div>
+<div class="section" id="system-zinc-tetraphenylporphyrin-dimer">
+<h2>System: zinc tetraphenylporphyrin dimer<a class="headerlink" href="#system-zinc-tetraphenylporphyrin-dimer" title="Permalink to this headline">¶</a></h2>
+<div style="height: 400px; width: 600px; position: relative;" class='viewer_3Dmoljs' data-href='../_static/zn-porphyrin-dimer.xyz' data-type='xyz' data-backgroundcolor='0xffffff' data-style='stick'></div></div>
+<div class="section" id="input-file">
+<h2>Input file<a class="headerlink" href="#input-file" title="Permalink to this headline">¶</a></h2>
+<p>Below is the input file for the geometry optimization of the zinc tetraphenylporphyrin dimer.
+You can read more about the VeloxChem input keywords in
+<a class="reference external" href="https://docs.veloxchem.org/inputs/keywords.html">this page</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">optimize</span>
+<span class="nd">@end</span>
+
+<span class="hll"><span class="nd">@method</span> <span class="n">settings</span>
+</span><span class="hll"><span class="n">xtb</span><span class="p">:</span> <span class="n">gfn2</span>
+</span><span class="hll"><span class="nd">@end</span>
+</span><span class="hll">
+</span><span class="hll"><span class="nd">@optimize</span>
+</span><span class="hll"><span class="n">coordsys</span><span class="p">:</span> <span class="n">tric</span>
+</span><span class="hll"><span class="nd">@end</span>
+</span>
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">xyz</span><span class="p">:</span>
+<span class="n">C</span>         <span class="mf">61.02000</span>       <span class="mf">57.63000</span>       <span class="mf">26.81000</span>
+<span class="n">C</span>         <span class="mf">60.13000</span>       <span class="mf">58.56000</span>       <span class="mf">27.35000</span>
+<span class="n">H</span>         <span class="mf">59.66000</span>       <span class="mf">59.27000</span>       <span class="mf">26.67000</span>
+<span class="n">C</span>         <span class="mf">60.00000</span>       <span class="mf">58.63000</span>       <span class="mf">28.74000</span>
+<span class="n">H</span>         <span class="mf">59.41000</span>       <span class="mf">59.43000</span>       <span class="mf">29.18000</span>
+<span class="n">C</span>         <span class="mf">61.69000</span>       <span class="mf">56.68000</span>       <span class="mf">27.61000</span>
+<span class="n">H</span>         <span class="mf">62.19000</span>       <span class="mf">55.82000</span>       <span class="mf">27.18000</span>
+<span class="n">C</span>         <span class="mf">61.51000</span>       <span class="mf">56.81000</span>       <span class="mf">28.98000</span>
+<span class="n">H</span>         <span class="mf">62.08000</span>       <span class="mf">56.16000</span>       <span class="mf">29.64000</span>
+<span class="n">C</span>         <span class="mf">60.59000</span>       <span class="mf">57.69000</span>       <span class="mf">29.57000</span>
+<span class="n">C</span>         <span class="mf">60.37000</span>       <span class="mf">57.79000</span>       <span class="mf">31.03000</span>
+<span class="n">C</span>         <span class="mf">59.85000</span>       <span class="mf">56.56000</span>       <span class="mf">31.60000</span>
+<span class="n">N</span>         <span class="mf">59.49000</span>       <span class="mf">56.52000</span>       <span class="mf">32.87000</span>
+<span class="n">C</span>         <span class="mf">59.10000</span>       <span class="mf">55.22000</span>       <span class="mf">33.10000</span>
+<span class="n">C</span>         <span class="mf">59.19000</span>       <span class="mf">54.43000</span>       <span class="mf">31.92000</span>
+<span class="n">C</span>         <span class="mf">59.70000</span>       <span class="mf">55.29000</span>       <span class="mf">30.97000</span>
+<span class="n">H</span>         <span class="mf">59.80000</span>       <span class="mf">55.11000</span>       <span class="mf">29.91000</span>
+<span class="n">H</span>         <span class="mf">58.72000</span>       <span class="mf">53.46000</span>       <span class="mf">31.74000</span>
+<span class="n">C</span>         <span class="mf">60.82000</span>       <span class="mf">58.94000</span>       <span class="mf">31.61000</span>
+<span class="n">N</span>         <span class="mf">60.45000</span>       <span class="mf">59.24000</span>       <span class="mf">32.89000</span>
+<span class="n">C</span>         <span class="mf">61.63000</span>       <span class="mf">59.93000</span>       <span class="mf">30.98000</span>
+<span class="n">H</span>         <span class="mf">62.03000</span>       <span class="mf">60.07000</span>       <span class="mf">29.98000</span>
+<span class="n">C</span>         <span class="mf">61.65000</span>       <span class="mf">60.89000</span>       <span class="mf">31.97000</span>
+<span class="n">H</span>         <span class="mf">62.09000</span>       <span class="mf">61.87000</span>       <span class="mf">31.81000</span>
+<span class="n">C</span>         <span class="mf">60.90000</span>       <span class="mf">60.46000</span>       <span class="mf">33.11000</span>
+<span class="n">C</span>         <span class="mf">60.57000</span>       <span class="mf">61.25000</span>       <span class="mf">34.28000</span>
+<span class="n">C</span>         <span class="mf">61.20000</span>       <span class="mf">62.59000</span>       <span class="mf">34.20000</span>
+<span class="n">C</span>         <span class="mf">62.50000</span>       <span class="mf">62.80000</span>       <span class="mf">34.66000</span>
+<span class="n">C</span>         <span class="mf">63.08000</span>       <span class="mf">64.07000</span>       <span class="mf">34.69000</span>
+<span class="n">C</span>         <span class="mf">62.43000</span>       <span class="mf">65.19000</span>       <span class="mf">34.15000</span>
+<span class="n">C</span>         <span class="mf">61.08000</span>       <span class="mf">64.95000</span>       <span class="mf">33.88000</span>
+<span class="n">C</span>         <span class="mf">60.42000</span>       <span class="mf">63.73000</span>       <span class="mf">33.94000</span>
+<span class="n">H</span>         <span class="mf">59.35000</span>       <span class="mf">63.68000</span>       <span class="mf">33.83000</span>
+<span class="n">H</span>         <span class="mf">60.46000</span>       <span class="mf">65.84000</span>       <span class="mf">33.79000</span>
+<span class="n">H</span>         <span class="mf">64.12000</span>       <span class="mf">64.24000</span>       <span class="mf">34.93000</span>
+<span class="n">H</span>         <span class="mf">63.10000</span>       <span class="mf">61.94000</span>       <span class="mf">34.94000</span>
+<span class="n">C</span>         <span class="mf">60.13000</span>       <span class="mf">60.69000</span>       <span class="mf">35.45000</span>
+<span class="n">N</span>         <span class="mf">59.62000</span>       <span class="mf">59.44000</span>       <span class="mf">35.68000</span>
+<span class="n">C</span>         <span class="mf">60.02000</span>       <span class="mf">61.48000</span>       <span class="mf">36.63000</span>
+<span class="n">H</span>         <span class="mf">60.32000</span>       <span class="mf">62.52000</span>       <span class="mf">36.71000</span>
+<span class="n">C</span>         <span class="mf">59.45000</span>       <span class="mf">60.64000</span>       <span class="mf">37.54000</span>
+<span class="n">H</span>         <span class="mf">59.14000</span>       <span class="mf">60.85000</span>       <span class="mf">38.55000</span>
+<span class="n">C</span>         <span class="mf">59.07000</span>       <span class="mf">59.44000</span>       <span class="mf">36.87000</span>
+<span class="n">C</span>         <span class="mf">58.27000</span>       <span class="mf">58.37000</span>       <span class="mf">37.47000</span>
+<span class="n">C</span>         <span class="mf">57.95000</span>       <span class="mf">58.61000</span>       <span class="mf">38.88000</span>
+<span class="n">C</span>         <span class="mf">56.62000</span>       <span class="mf">58.49000</span>       <span class="mf">39.31000</span>
+<span class="n">H</span>         <span class="mf">55.76000</span>       <span class="mf">58.37000</span>       <span class="mf">38.65000</span>
+<span class="n">C</span>         <span class="mf">56.29000</span>       <span class="mf">58.46000</span>       <span class="mf">40.67000</span>
+<span class="n">H</span>         <span class="mf">55.24000</span>       <span class="mf">58.39000</span>       <span class="mf">40.91000</span>
+<span class="n">C</span>         <span class="mf">57.32000</span>       <span class="mf">58.67000</span>       <span class="mf">41.60000</span>
+<span class="n">C</span>         <span class="mf">58.65000</span>       <span class="mf">58.67000</span>       <span class="mf">41.17000</span>
+<span class="n">H</span>         <span class="mf">59.41000</span>       <span class="mf">58.80000</span>       <span class="mf">41.93000</span>
+<span class="n">C</span>         <span class="mf">58.98000</span>       <span class="mf">58.61000</span>       <span class="mf">39.82000</span>
+<span class="n">H</span>         <span class="mf">60.03000</span>       <span class="mf">58.43000</span>       <span class="mf">39.59000</span>
+<span class="n">C</span>         <span class="mf">58.14000</span>       <span class="mf">57.18000</span>       <span class="mf">36.80000</span>
+<span class="n">N</span>         <span class="mf">58.54000</span>       <span class="mf">56.82000</span>       <span class="mf">35.54000</span>
+<span class="n">C</span>         <span class="mf">57.52000</span>       <span class="mf">56.11000</span>       <span class="mf">37.50000</span>
+<span class="n">H</span>         <span class="mf">57.13000</span>       <span class="mf">56.21000</span>       <span class="mf">38.50000</span>
+<span class="n">C</span>         <span class="mf">57.64000</span>       <span class="mf">55.06000</span>       <span class="mf">36.64000</span>
+<span class="n">H</span>         <span class="mf">57.25000</span>       <span class="mf">54.07000</span>       <span class="mf">36.85000</span>
+<span class="n">C</span>         <span class="mf">58.31000</span>       <span class="mf">55.52000</span>       <span class="mf">35.46000</span>
+<span class="n">C</span>         <span class="mf">58.48000</span>       <span class="mf">54.77000</span>       <span class="mf">34.23000</span>
+<span class="n">C</span>         <span class="mf">57.72000</span>       <span class="mf">53.51000</span>       <span class="mf">34.33000</span>
+<span class="n">C</span>         <span class="mf">58.36000</span>       <span class="mf">52.27000</span>       <span class="mf">34.33000</span>
+<span class="n">H</span>         <span class="mf">59.43000</span>       <span class="mf">52.22000</span>       <span class="mf">34.14000</span>
+<span class="n">C</span>         <span class="mf">57.69000</span>       <span class="mf">51.08000</span>       <span class="mf">34.62000</span>
+<span class="n">H</span>         <span class="mf">58.24000</span>       <span class="mf">50.15000</span>       <span class="mf">34.70000</span>
+<span class="n">C</span>         <span class="mf">56.30000</span>       <span class="mf">51.10000</span>       <span class="mf">34.76000</span>
+<span class="n">C</span>         <span class="mf">55.62000</span>       <span class="mf">52.30000</span>       <span class="mf">34.59000</span>
+<span class="n">H</span>         <span class="mf">54.54000</span>       <span class="mf">52.23000</span>       <span class="mf">34.46000</span>
+<span class="n">C</span>         <span class="mf">56.32000</span>       <span class="mf">53.50000</span>       <span class="mf">34.49000</span>
+<span class="n">H</span>         <span class="mf">55.79000</span>       <span class="mf">54.43000</span>       <span class="mf">34.42000</span>
+<span class="n">Zn</span>        <span class="mf">59.32000</span>       <span class="mf">58.09000</span>       <span class="mf">34.16000</span>
+<span class="n">C</span>         <span class="mf">61.11500</span>       <span class="mf">57.37900</span>       <span class="mf">25.29400</span>
+<span class="n">H</span>         <span class="mf">62.11800</span>       <span class="mf">57.10600</span>       <span class="mf">25.04000</span>
+<span class="n">H</span>         <span class="mf">60.45000</span>       <span class="mf">56.58600</span>       <span class="mf">25.02100</span>
+<span class="n">H</span>         <span class="mf">60.84400</span>       <span class="mf">58.27000</span>       <span class="mf">24.76700</span>
+<span class="n">C</span>         <span class="mf">63.05900</span>       <span class="mf">66.57900</span>       <span class="mf">33.93200</span>
+<span class="n">H</span>         <span class="mf">62.86400</span>       <span class="mf">67.19700</span>       <span class="mf">34.78300</span>
+<span class="n">H</span>         <span class="mf">64.11600</span>       <span class="mf">66.47500</span>       <span class="mf">33.80100</span>
+<span class="n">H</span>         <span class="mf">62.63400</span>       <span class="mf">67.02900</span>       <span class="mf">33.05900</span>
+<span class="n">C</span>         <span class="mf">56.98100</span>       <span class="mf">58.53100</span>       <span class="mf">43.09600</span>
+<span class="n">H</span>         <span class="mf">55.98500</span>       <span class="mf">58.88200</span>       <span class="mf">43.27000</span>
+<span class="n">H</span>         <span class="mf">57.05200</span>       <span class="mf">57.50300</span>       <span class="mf">43.38300</span>
+<span class="n">H</span>         <span class="mf">57.67000</span>       <span class="mf">59.11100</span>       <span class="mf">43.67300</span>
+<span class="n">C</span>         <span class="mf">55.51800</span>       <span class="mf">49.77900</span>       <span class="mf">34.88200</span>
+<span class="n">H</span>         <span class="mf">55.35500</span>       <span class="mf">49.37000</span>       <span class="mf">33.90600</span>
+<span class="n">H</span>         <span class="mf">56.08000</span>       <span class="mf">49.08400</span>       <span class="mf">35.47000</span>
+<span class="n">H</span>         <span class="mf">54.57500</span>       <span class="mf">49.96500</span>       <span class="mf">35.35300</span>
+<span class="n">C</span>         <span class="mf">51.90685</span>       <span class="mf">54.01054</span>       <span class="mf">27.22931</span>
+<span class="n">C</span>         <span class="mf">51.08826</span>       <span class="mf">55.04635</span>       <span class="mf">26.75625</span>
+<span class="n">H</span>         <span class="mf">50.63137</span>       <span class="mf">54.97974</span>       <span class="mf">25.75855</span>
+<span class="n">C</span>         <span class="mf">50.85509</span>       <span class="mf">56.17646</span>       <span class="mf">27.52709</span>
+<span class="n">H</span>         <span class="mf">50.16044</span>       <span class="mf">56.95120</span>       <span class="mf">27.21364</span>
+<span class="n">C</span>         <span class="mf">52.43436</span>       <span class="mf">54.16073</span>       <span class="mf">28.50813</span>
+<span class="n">H</span>         <span class="mf">53.07729</span>       <span class="mf">53.35934</span>       <span class="mf">28.89585</span>
+<span class="n">C</span>         <span class="mf">52.24520</span>       <span class="mf">55.31614</span>       <span class="mf">29.27427</span>
+<span class="n">H</span>         <span class="mf">52.83384</span>       <span class="mf">55.39049</span>       <span class="mf">30.18606</span>
+<span class="n">C</span>         <span class="mf">51.41554</span>       <span class="mf">56.33346</span>       <span class="mf">28.78956</span>
+<span class="n">C</span>         <span class="mf">51.33770</span>       <span class="mf">57.58639</span>       <span class="mf">29.56986</span>
+<span class="n">C</span>         <span class="mf">50.29095</span>       <span class="mf">57.44320</span>       <span class="mf">30.56834</span>
+<span class="n">N</span>         <span class="mf">50.23192</span>       <span class="mf">58.24238</span>       <span class="mf">31.61367</span>
+<span class="n">C</span>         <span class="mf">49.14509</span>       <span class="mf">57.72138</span>       <span class="mf">32.28848</span>
+<span class="n">C</span>         <span class="mf">48.58769</span>       <span class="mf">56.53405</span>       <span class="mf">31.74108</span>
+<span class="n">C</span>         <span class="mf">49.29854</span>       <span class="mf">56.42902</span>       <span class="mf">30.57993</span>
+<span class="n">H</span>         <span class="mf">49.18752</span>       <span class="mf">55.65041</span>       <span class="mf">29.81806</span>
+<span class="n">H</span>         <span class="mf">47.80098</span>       <span class="mf">55.86766</span>       <span class="mf">32.10413</span>
+<span class="n">C</span>         <span class="mf">52.22597</span>       <span class="mf">58.63368</span>       <span class="mf">29.52727</span>
+<span class="n">N</span>         <span class="mf">52.15765</span>       <span class="mf">59.80755</span>       <span class="mf">30.22661</span>
+<span class="n">C</span>         <span class="mf">53.34680</span>       <span class="mf">58.65385</span>       <span class="mf">28.64531</span>
+<span class="n">H</span>         <span class="mf">53.60257</span>       <span class="mf">57.91295</span>       <span class="mf">27.90461</span>
+<span class="n">C</span>         <span class="mf">53.96035</span>       <span class="mf">59.87727</span>       <span class="mf">28.80717</span>
+<span class="n">H</span>         <span class="mf">54.82908</span>       <span class="mf">60.22741</span>       <span class="mf">28.27602</span>
+<span class="n">C</span>         <span class="mf">53.18605</span>       <span class="mf">60.51770</span>       <span class="mf">29.83074</span>
+<span class="n">C</span>         <span class="mf">53.53974</span>       <span class="mf">61.80807</span>       <span class="mf">30.40792</span>
+<span class="n">C</span>         <span class="mf">54.25378</span>       <span class="mf">62.66374</span>       <span class="mf">29.42664</span>
+<span class="n">C</span>         <span class="mf">55.60300</span>       <span class="mf">62.95809</span>       <span class="mf">29.54126</span>
+<span class="n">C</span>         <span class="mf">56.27367</span>       <span class="mf">63.68836</span>       <span class="mf">28.54271</span>
+<span class="n">C</span>         <span class="mf">55.59029</span>       <span class="mf">64.02614</span>       <span class="mf">27.36676</span>
+<span class="n">C</span>         <span class="mf">54.29840</span>       <span class="mf">63.54640</span>       <span class="mf">27.17441</span>
+<span class="n">C</span>         <span class="mf">53.59645</span>       <span class="mf">62.93900</span>       <span class="mf">28.22217</span>
+<span class="n">H</span>         <span class="mf">52.56662</span>       <span class="mf">62.63989</span>       <span class="mf">28.05223</span>
+<span class="n">H</span>         <span class="mf">53.78787</span>       <span class="mf">63.75629</span>       <span class="mf">26.22642</span>
+<span class="n">H</span>         <span class="mf">57.27868</span>       <span class="mf">64.08228</span>       <span class="mf">28.67150</span>
+<span class="n">H</span>         <span class="mf">56.12443</span>       <span class="mf">62.72773</span>       <span class="mf">30.45988</span>
+<span class="n">C</span>         <span class="mf">53.25154</span>       <span class="mf">62.17278</span>       <span class="mf">31.69125</span>
+<span class="n">N</span>         <span class="mf">52.19464</span>       <span class="mf">61.71645</span>       <span class="mf">32.44105</span>
+<span class="n">C</span>         <span class="mf">54.06370</span>       <span class="mf">63.13581</span>       <span class="mf">32.35307</span>
+<span class="n">H</span>         <span class="mf">54.99243</span>       <span class="mf">63.65131</span>       <span class="mf">32.10343</span>
+<span class="n">C</span>         <span class="mf">53.38562</span>       <span class="mf">63.20580</span>       <span class="mf">33.54735</span>
+<span class="n">H</span>         <span class="mf">53.76259</span>       <span class="mf">63.81070</span>       <span class="mf">34.37553</span>
+<span class="n">C</span>         <span class="mf">52.20650</span>       <span class="mf">62.41438</span>       <span class="mf">33.56272</span>
+<span class="n">C</span>         <span class="mf">51.16392</span>       <span class="mf">62.22037</span>       <span class="mf">34.56067</span>
+<span class="n">C</span>         <span class="mf">51.08203</span>       <span class="mf">63.30535</span>       <span class="mf">35.56874</span>
+<span class="n">C</span>         <span class="mf">49.90980</span>       <span class="mf">64.05988</span>       <span class="mf">35.71530</span>
+<span class="n">H</span>         <span class="mf">49.04323</span>       <span class="mf">63.93837</span>       <span class="mf">35.07375</span>
+<span class="n">C</span>         <span class="mf">49.77985</span>       <span class="mf">64.95739</span>       <span class="mf">36.77483</span>
+<span class="n">H</span>         <span class="mf">48.86230</span>       <span class="mf">65.46814</span>       <span class="mf">37.01529</span>
+<span class="n">C</span>         <span class="mf">50.81683</span>       <span class="mf">65.14126</span>       <span class="mf">37.68799</span>
+<span class="n">C</span>         <span class="mf">52.02339</span>       <span class="mf">64.45505</span>       <span class="mf">37.48616</span>
+<span class="n">H</span>         <span class="mf">52.74371</span>       <span class="mf">64.51766</span>       <span class="mf">38.29154</span>
+<span class="n">C</span>         <span class="mf">52.12549</span>       <span class="mf">63.46800</span>       <span class="mf">36.49229</span>
+<span class="n">H</span>         <span class="mf">53.02731</span>       <span class="mf">62.87378</span>       <span class="mf">36.39942</span>
+<span class="n">C</span>         <span class="mf">50.27029</span>       <span class="mf">61.20423</span>       <span class="mf">34.59321</span>
+<span class="n">N</span>         <span class="mf">50.09230</span>       <span class="mf">60.17540</span>       <span class="mf">33.70843</span>
+<span class="n">C</span>         <span class="mf">49.45803</span>       <span class="mf">60.96836</span>       <span class="mf">35.75671</span>
+<span class="n">H</span>         <span class="mf">49.36640</span>       <span class="mf">61.59538</span>       <span class="mf">36.63413</span>
+<span class="n">C</span>         <span class="mf">48.66956</span>       <span class="mf">59.90166</span>       <span class="mf">35.41752</span>
+<span class="n">H</span>         <span class="mf">47.86239</span>       <span class="mf">59.57121</span>       <span class="mf">36.05649</span>
+<span class="n">C</span>         <span class="mf">49.07159</span>       <span class="mf">59.46371</span>       <span class="mf">34.12524</span>
+<span class="n">C</span>         <span class="mf">48.63160</span>       <span class="mf">58.26794</span>       <span class="mf">33.41959</span>
+<span class="n">C</span>         <span class="mf">47.55852</span>       <span class="mf">57.63075</span>       <span class="mf">34.21443</span>
+<span class="n">C</span>         <span class="mf">47.74741</span>       <span class="mf">56.42903</span>       <span class="mf">34.89642</span>
+<span class="n">H</span>         <span class="mf">48.75643</span>       <span class="mf">55.99974</span>       <span class="mf">34.92928</span>
+<span class="n">C</span>         <span class="mf">46.71433</span>       <span class="mf">55.65391</span>       <span class="mf">35.45153</span>
+<span class="n">H</span>         <span class="mf">46.96803</span>       <span class="mf">54.70387</span>       <span class="mf">35.90402</span>
+<span class="n">C</span>         <span class="mf">45.40565</span>       <span class="mf">56.08167</span>       <span class="mf">35.28487</span>
+<span class="n">C</span>         <span class="mf">45.17826</span>       <span class="mf">57.26877</span>       <span class="mf">34.56816</span>
+<span class="n">H</span>         <span class="mf">44.20226</span>       <span class="mf">57.71751</span>       <span class="mf">34.43869</span>
+<span class="n">C</span>         <span class="mf">46.22569</span>       <span class="mf">58.06008</span>       <span class="mf">34.08539</span>
+<span class="n">H</span>         <span class="mf">46.05336</span>       <span class="mf">59.04010</span>       <span class="mf">33.66259</span>
+<span class="n">Zn</span>        <span class="mf">51.32929</span>       <span class="mf">59.90367</span>       <span class="mf">32.08904</span>
+<span class="n">C</span>         <span class="mf">52.27990</span>       <span class="mf">52.78969</span>       <span class="mf">26.36754</span>
+<span class="n">H</span>         <span class="mf">53.30327</span>       <span class="mf">52.86701</span>       <span class="mf">26.06458</span>
+<span class="n">H</span>         <span class="mf">52.14439</span>       <span class="mf">51.89471</span>       <span class="mf">26.93907</span>
+<span class="n">H</span>         <span class="mf">51.65292</span>       <span class="mf">52.75858</span>       <span class="mf">25.50165</span>
+<span class="n">C</span>         <span class="mf">56.35220</span>       <span class="mf">64.88676</span>       <span class="mf">26.34155</span>
+<span class="n">H</span>         <span class="mf">56.62834</span>       <span class="mf">65.81747</span>       <span class="mf">26.79255</span>
+<span class="n">H</span>         <span class="mf">57.23252</span>       <span class="mf">64.36862</span>       <span class="mf">26.02540</span>
+<span class="n">H</span>         <span class="mf">55.72443</span>       <span class="mf">65.07263</span>       <span class="mf">25.49586</span>
+<span class="n">C</span>         <span class="mf">50.67441</span>       <span class="mf">66.04556</span>       <span class="mf">38.92639</span>
+<span class="n">H</span>         <span class="mf">50.65214</span>       <span class="mf">65.44182</span>       <span class="mf">39.80888</span>
+<span class="n">H</span>         <span class="mf">51.50547</span>       <span class="mf">66.71789</span>       <span class="mf">38.97389</span>
+<span class="n">H</span>         <span class="mf">49.76618</span>       <span class="mf">66.60651</span>       <span class="mf">38.85488</span>
+<span class="n">C</span>         <span class="mf">44.20161</span>       <span class="mf">55.21778</span>       <span class="mf">35.70364</span>
+<span class="n">H</span>         <span class="mf">43.49410</span>       <span class="mf">55.82310</span>       <span class="mf">36.23077</span>
+<span class="n">H</span>         <span class="mf">43.73866</span>       <span class="mf">54.80444</span>       <span class="mf">34.83142</span>
+<span class="n">H</span>         <span class="mf">44.53612</span>       <span class="mf">54.42480</span>       <span class="mf">36.33918</span>
+<span class="nd">@end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="results">
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Submit a job</p>
+<blockquote>
+<div><p>Runs the above example on <strong>1</strong> node.
+On Beskow this will take around 10 minutes so please make sure that you
+specify a proper walltime limit in the job script.</p>
+</div></blockquote>
+</li>
+<li><p>Visualize the result</p>
+<blockquote>
+<div><p>The change of energy during optimization is printed at the end of the output file.</p>
+<p>We can visualize the process of the optimization in a <a class="reference external" href="https://mybinder.org/v2/gh/ENCCS/veloxchem-workshop/master?urlpath=lab%2Ftree%2Fcontent%2Fnotebooks%2Fvisualization_xTB-geomeTRIC.ipynb">Jupyter notebook on
+MyBinder</a>.</p>
+</div></blockquote>
+</li>
+<li><p>(Optional) Rerun the optimization using another coordinate system</p>
+<blockquote>
+<div><p>You can find the input keyword for other coordinate systems in
+<a class="reference external" href="https://docs.veloxchem.org/inputs/keywords.html">this page</a>.</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ENCCS/veloxchem-workshop",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../exciton/" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Exciton calculation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../quick-reference/" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Quick Reference</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The contributors<br/>
+    
+        &copy; Copyright 2021, The contributors.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
