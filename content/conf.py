@@ -129,3 +129,10 @@ rst_epilog = f"""
 .. role:: blue
 .. _VeloxChem: https://veloxchem.org
 """
+
+import os
+if os.environ.get('GITHUB_REF', '') == 'refs/heads/main':
+    html_js_files = [
+        ('https://plausible.io/js/script.js', {"data-domain": "enccs.github.io/veloxchem-workshop", "defer": "\
+defer"}),
+    ]
